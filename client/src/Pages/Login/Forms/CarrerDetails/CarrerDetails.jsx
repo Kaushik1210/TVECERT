@@ -6,6 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import io from "socket.io-client";
 import CareerDNavBar from "./CareerDNavBar";
 import Footer from "../../../../CommonComponents/Footer";
+import { URL } from "../../../../constant";
 
 const columns = [
   { field: 'jobTitle', headerName: 'Job Title', width: 200 },
@@ -48,7 +49,7 @@ const CareerDetails = () => {
 
   // Socket.IO client connection
   useEffect(() => {
-    const socket = io("http://localhost:5000");
+    const socket = io(`${URL}`);
 
     socket.on("newData", (newData) => {
       setRows((prevRows) => [...prevRows, newData]);
@@ -56,7 +57,7 @@ const CareerDetails = () => {
 
     const fetchCareerData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/data/certificationInfo/careerInfo");
+        const response = await axios.get(`${URL}/data/certificationInfo/careerInfo`);
         const dataWithIds = response.data.map((item) => ({
           ...item,
           id: item._id || Date.now(),
@@ -98,7 +99,7 @@ const CareerDetails = () => {
     e.preventDefault();
     setError("");
     try {
-      const response = await axios.post("http://localhost:5000/data/certificationInfo/careerInfo", {
+      const response = await axios.post(`${URL}/data/certificationInfo/careerInfo`, {
         ...careerData,
       });
 
@@ -136,7 +137,7 @@ const CareerDetails = () => {
   const handleDelete = async () => {
     try {
       if (selectedRows.length > 0) {
-        await axios.delete("http://localhost:5000/data/certificationInfo/careerInfo", {
+        await axios.delete(`${URL}/data/certificationInfo/careerInfo`, {
           data: { ids: selectedRows }, 
         });
   

@@ -8,6 +8,7 @@ import axios from "axios";
 import dayjs from "dayjs";  
 import * as XLSX from "xlsx";  
 import DelegateFormNav from "./DelegateFormNav";  
+import { URL } from "../../../../constant";
 
 const columns = [  
   { field: "delegateName", headerName: "Delegate Name", width: 200 },  
@@ -35,7 +36,7 @@ const DelegateForm = () => {
     const fetchDelegateData = async () => {  
       try {  
         const response = await axios.get(  
-          "http://localhost:5000/data/certificationInfo/delegatesInfo"  
+          `${URL}/data/certificationInfo/delegatesInfo`  
         );  
         const dataWithIds = response.data.map((item) => ({  
           ...item,  
@@ -78,7 +79,7 @@ const DelegateForm = () => {
     setError("");  
     try {  
       const response = await axios.post(  
-        "http://localhost:5000/data/certificationInfo/delegatesInfo",  
+        `${URL}/data/certificationInfo/delegatesInfo`,  
         delegateData  
       );  
 
@@ -108,7 +109,7 @@ const DelegateForm = () => {
 
   const handleDelete = async () => {  
     try {  
-      await axios.delete("http://localhost:5000/data/certificationInfo/delegatesInfo", {  
+      await axios.delete(`${URL}/data/certificationInfo/delegatesInfo`, {  
         data: { ids: selectedRows },  
       });  
       setRows((prevRows) => prevRows.filter((row) => !selectedRows.includes(row.id)));  

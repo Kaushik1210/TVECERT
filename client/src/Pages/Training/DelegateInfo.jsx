@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BiSearchAlt } from "react-icons/bi";
+import { URL } from '../../constant';
 
 const DelegateInfo = () => {
   const [searchCert, setSearchCert] = useState('');
@@ -12,7 +13,7 @@ const DelegateInfo = () => {
   useEffect(() => {
     const fetchDelegateData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/data/certificationInfo/delegatesInfo');
+        const response = await fetch(`${URL}/data/certificationInfo/delegatesInfo`);
         const data = await response.json();
         setDelegateData(data);
         setLoading(false);

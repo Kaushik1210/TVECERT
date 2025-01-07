@@ -12,6 +12,7 @@ import CertFormNavBar from "./CertFormNavBar";
 import Footer from "../../../../CommonComponents/Footer";
 import * as XLSX from "xlsx";
 import { v4 as uuidv4 } from "uuid";
+import { URL } from "../../../../constant";
 
 const columns = [
   {
@@ -83,7 +84,7 @@ const CertForm = () => {
     const fetchCertificationData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/data/certificationInfo/certificateInfo"
+          `${URL}/data/certificationInfo/certificateInfo`
         );
         const dataWithIds = response.data.map((item) => ({
           ...item,
@@ -139,7 +140,7 @@ const CertForm = () => {
     setError("");
     try {
       const response = await axios.post(
-        "http://localhost:5000/data/certificationInfo/certificateInfo",
+        `${URL}/data/certificationInfo/certificateInfo`,
         certificateInfoData
       );
 
@@ -200,7 +201,7 @@ const CertForm = () => {
       }
 
       const response = await axios.delete(
-        "http://localhost:5000/data/certificationInfo/certificateInfo",
+        `${URL}/data/certificationInfo/certificateInfo`,
         {
           data: { ids: idsToDelete },
         }

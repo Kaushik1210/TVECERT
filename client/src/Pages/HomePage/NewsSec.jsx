@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Box, Typography } from "@mui/material";
+import { URL } from "../../constant";
 
 const NewsSec = () => {
   const [newsData, setNewsData] = useState([]);
@@ -8,7 +9,7 @@ const NewsSec = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/data/certificationInfo/newsUpdate");
+        const response = await axios.get(`${URL}/data/certificationInfo/newsUpdate`);
         setNewsData(response.data);
       } catch (error) {
         console.error("Error fetching news data", error);

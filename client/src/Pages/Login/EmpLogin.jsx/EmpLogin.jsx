@@ -14,6 +14,7 @@ import image from "../../../Assets/dummy";
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
+import { URL } from "../../../constant";
 
 const EmpLogin = ({ setIsAuthenticated }) => {
   const [step, setStep] = useState("login");
@@ -85,7 +86,7 @@ const EmpLogin = ({ setIsAuthenticated }) => {
   const handleLoginSubmit = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post(`${URL}/api/login`, {
         userName,
         password,
       });
@@ -102,7 +103,7 @@ const EmpLogin = ({ setIsAuthenticated }) => {
   const handleEmailSubmit = async () => {
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/verify-email", {
+      await axios.post(`${URL}/api/verify-email`, {
         email: userEmail,
       });
       setStep("otpVerification");
@@ -118,7 +119,7 @@ const EmpLogin = ({ setIsAuthenticated }) => {
   const handleOtpSubmit = async () => {
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/verify-otp", {
+      await axios.post(`${URL}/api/verify-otp`, {
         email: userEmail,
         otp,
       });

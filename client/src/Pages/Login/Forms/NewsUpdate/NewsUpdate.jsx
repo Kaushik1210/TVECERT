@@ -9,6 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Footer from "../../../../CommonComponents/Footer"; // Adjust the import path if needed
 import NewsUpdateNav from "./NewsUpdateNav";
+import { URL } from "../../../../constant";
 
 const columns = [
   { field: "title", headerName: "Title", width: 200 },
@@ -32,7 +33,7 @@ const NewsUpdate = () => {
     const fetchNewsData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/data/certificationInfo/newsUpdate"
+          `${URL}/data/certificationInfo/newsUpdate`
         );
         const dataWithIds = response.data.map((item) => ({
           ...item,
@@ -63,7 +64,7 @@ const NewsUpdate = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/data/certificationInfo/newsUpdate",
+        `${URL}/data/certificationInfo/newsUpdate`,
         newsData
       );
 
@@ -93,7 +94,7 @@ const NewsUpdate = () => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/data/certificationInfo/newsUpdate",
+        `${URL}/data/certificationInfo/newsUpdate`,
         {
           data: { ids: selectedRows }, // Pass selected IDs
         }

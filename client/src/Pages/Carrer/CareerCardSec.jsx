@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CarrerCard from '../../Components/CarrerCard';
+import { URL } from '../../constant';
 
 const CareerCardSec = () => {
   const [careerData, setCareerData] = useState([]);
@@ -10,7 +11,7 @@ const CareerCardSec = () => {
     // Fetch career data when the component mounts
     const fetchCareerData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/data/certificationInfo/careerInfo");
+        const response = await axios.get(`${URL}/data/certificationInfo/careerInfo`);
         setCareerData(response.data);
       } catch (err) {
         console.error("Error fetching career data", err);
