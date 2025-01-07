@@ -24,7 +24,7 @@ const Result = ({ open, onClose, result }) => {
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>
         {/* Uncomment if you want to use the title */}
-        <p>{result.mainHeading}</p>
+        {/* <p>{result.mainHeading}</p> */}
         <IconButton
           aria-label="close"
           onClick={onClose}

@@ -33,7 +33,7 @@ module.exports = {
         
       },
       backgroundImage:{
-        'herobg':"url(./Assets/herosecbg.svg)",
+        'herobg':"url(./Assets/herosecbg.jpg)",
         'slider1':"url(./Assets/slider1.svg)",
         'newsletter':"url(./Assets/newsletterbg.jpg)",
         'bbgufill':"url(./Assets/bbgufill.svg)",
@@ -41,11 +41,11 @@ module.exports = {
         'sbgdline':"url(./Assets/sbgdline.svg)",
         'sbguline':"url(./Assets/sbguline.svg)",
 
-        'careerherobg':"url(./Assets/careermainbg.svg)",
+        'careerherobg':"url(./Assets/careermainbg.jpg)",
 
-        'certbg':"url(./Assets/certbg.svg)",
+        'certbg':"url(./Assets/certbg.jpg)",
 
-        'trainbg':"url(./Assets/trainingherobg.png)",
+        'trainbg':"url(./Assets/trainingherobg.jpg)",
         
         'loginbg':"url(./Assets/loginbg.jpg)",
         'updatebg':"url(./Assets/updatebg.jpg)",
