@@ -59,7 +59,7 @@ const HomeNavBar = () => {
   };
 
   const openLoginInNewTab = () => {
-    const newTab = window.open("/updation", "_blank");
+    const newTab = window.open("#/updation", "_blank"); // Updated to use HashRouter
     if (newTab) {
       newTab.document.title = "TVE CERT Employee";
     }
@@ -73,9 +73,6 @@ const HomeNavBar = () => {
           className=" w-[80px]  bg-white rounded-lg "
           src={image.tvecertLogo}
         />
-        {/* <div>
-          <h2 className="text-35 font-medium text-white">TVE.</h2>
-        </div> */}
 
         {/* Desktop Menu */}
         <div className="max-[950px]:hidden flex gap-5">
@@ -89,11 +86,9 @@ const HomeNavBar = () => {
             Career
           </a>
           <Link className=" text-16 text-white" to="/certification">
-            
             Certification
           </Link>
           <Link className=" text-16 text-white" to="/training">
-            
             Training
           </Link>
           <a className=" text-16 text-white" href="#contactus">
@@ -103,13 +98,9 @@ const HomeNavBar = () => {
 
         {/* Login Button for Desktop */}
         <div className="text-white flex gap-2 items-center max-[950px]:hidden">
-          {/* <p onClick={openLoginInNewTab} className="cursor-pointer">
+          <p onClick={openLoginInNewTab} className="cursor-pointer">
             Login as Employee
-          </p> */}
-          <Link className=" text-16 text-white" to="/updation">
-            
-          Login as Employee
-          </Link>
+          </p>
         </div>
 
         {/* Menu Toggle Button */}
@@ -136,19 +127,17 @@ const HomeNavBar = () => {
               Career
             </a>
             <Link className=" text-16" to="/certification">
-              {" "}
-              Certification{" "}
+              Certification
             </Link>
             <Link className=" text-16" to="/training">
-              {" "}
-              Training{" "}
+              Training
             </Link>
             <a className=" text-16" href="#contactus">
               Contact us
             </a>
 
             <div className="w-full border my-2" />
-            {/* <p
+            <p
               onClick={() => {
                 setHomeMenu(false);
                 openLoginInNewTab();
@@ -156,11 +145,7 @@ const HomeNavBar = () => {
               className="mt-1 text-blue-600 font-semibold hover:underline-offset-0 cursor-pointer"
             >
               Login as Employee
-            </p> */}
-            <Link className=" mt-1 text-blue-600 font-semibold hover:underline-offset-0 cursor-pointer" to="/updation">
-            
-            Login as Employee
-            </Link>
+            </p>
           </div>
         )}
       </div>
