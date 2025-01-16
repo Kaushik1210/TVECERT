@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; 
 import Lottie from "react-lottie-player";
 import animationData from "./animationIntro.json";
 import Home from "./Pages/HomePage/Home";
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App font-in scroll-smooth">
       {!isAnimationComplete ? (
-        <div className=" h-screen flex justify-center items-center">
+        <div className="h-screen flex justify-center items-center">
           <Lottie
             loop={false}
             animationData={animationData}
@@ -32,14 +32,13 @@ function App() {
           />
         </div>
       ) : (
-        <BrowserRouter>
+        <Router>
           <Routes>
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="carrers" element={<CareerMain />} />
             <Route path="certification" element={<CertificationMain />} />
             <Route path="training" element={<TrainingMain />} />
-
             <Route
               path="/updation"
               element={
@@ -52,13 +51,12 @@ function App() {
               path="/login"
               element={<EmpLogin setIsAuthenticated={setIsAuthenticated} />}
             />
-
             <Route path="certForm" element={<CertForm />} />
             <Route path="delegateForm" element={<DelegateForm />} />
             <Route path="carrerUpdate" element={<CarrerDetails />} />
-            <Route path="newsUpdate" element={<NewsUpdate/>} />
+            <Route path="newsUpdate" element={<NewsUpdate />} />
           </Routes>
-        </BrowserRouter>
+        </Router>
       )}
     </div>
   );
