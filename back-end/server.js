@@ -10,7 +10,7 @@ const app = express();
 const port = 5000;
 
 // MongoDB Atlas URI
-const uri = "mongodb+srv://tvecert:HelloWorld@tvecert.6dxi7.mongodb.net/";
+const uri = "mongodb+srv://tvecert:HelloWorld@tvecert.6dxi7.mongodb.net/?retryWrites=true&w=majority&appName=TVECERT";
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
