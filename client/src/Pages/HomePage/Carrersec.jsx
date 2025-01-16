@@ -8,7 +8,7 @@ const Carrersec = () => {
   return (
     <div id='career' className='relative'>
 
-    <section  className='animate mx-100 my-10 relative z-10
+    <section  className='animate-appear timeline-view timeline-range mx-100 my-10 relative z-10
                            max-lg:mx-20
                            max-[850px]:mx-14
                            max-sm:mx-6'>

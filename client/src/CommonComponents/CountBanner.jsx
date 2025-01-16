@@ -88,7 +88,7 @@ const CountBanner = ({ count1, count2, count3, category1, category2, category3 }
   }, [count1, count2, count3]);
 
   return (
-    <div className='w-full animate flex justify-center text-white'>
+    <div className='w-full  flex justify-center text-white'>
       <div className='w-700 h-28 mx-6 px-5 bg-gradient-to-r from-bannerfrom to-bannerto rounded-lg shadow-3xl
                       max-sm:h-full
                       max-sm:mx-10'>

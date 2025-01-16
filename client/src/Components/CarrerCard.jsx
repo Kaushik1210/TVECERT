@@ -9,7 +9,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const CarrerCard = ({cd}) => {
   return (
-    <div className=' animate bg-white p-4 w-80  max-md:w-full m-5 flex flex-col justify-between   rounded-2xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.3)] border-2 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)]  '>
+    <div className=' animate-appear timeline-view timeline-range bg-white p-4 w-80  max-md:w-full m-5 flex flex-col justify-between   rounded-2xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.3)] border-2 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)]  '>
 
         <div>
 

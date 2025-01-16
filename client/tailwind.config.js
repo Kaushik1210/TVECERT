@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -7,6 +8,22 @@ module.exports = {
       
     },
     extend: {
+
+      animation: {
+        appear: "appear 5s linear",
+      },
+      keyframes: {
+        appear: {
+          from: {
+            opacity: "0",
+            transform: "scale(0.4)",
+          },
+          to: {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
+      },
       
       colors:{
         'white': '#ffff',
@@ -89,6 +106,17 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".timeline-view": {
+          "animation-timeline": "view-timeline",
+        },
+        ".timeline-range": {
+          "animation-range": "entry 0% cover 40%",
+        },
+      });
+    }),
+  ],
 }
 
