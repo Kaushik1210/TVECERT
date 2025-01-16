@@ -13,7 +13,7 @@ const CertInfoSec = () => {
   useEffect(() => {
     const fetchCertData = async () => {
       try {
-        const response = await fetch(`${URL}:5000/data/certificationInfo/certificateInfo`);
+        const response = await fetch("http://localhost:5000/data/certificationInfo/certificateInfo");
         const data = await response.json();
         setCertData(data);
         setLoading(false);

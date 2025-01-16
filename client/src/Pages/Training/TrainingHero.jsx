@@ -57,7 +57,7 @@ const TrainingHero = () => {
                    max-md:justify-center                   
                    max-md:items-center
                    max-sm:flex-col'>
-                    <a href='#certificateinfo'> <Button text="Certification Info"/>  </a>
+                    <a href='#delegateinfo'> <Button text="Delegates Info"/>  </a>
                       
                     
                    </div>

@@ -1,1 +1,1 @@
-export const URL = "https://tvecert-backend.onrender.com";
+export const URL = "http://localhost:5000";

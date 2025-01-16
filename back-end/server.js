@@ -1,18 +1,23 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const cors = require("cors");
 const http = require("http");
 const socketIo = require("socket.io");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-
-
 const app = express();
 const port = 5000;
 
-const url = "mongodb://localhost:27017/tvecertData";
-const client = new MongoClient(url);
+// MongoDB Atlas URI
+const uri = "mongodb+srv://tvecert:HelloWorld@tvecert.6dxi7.mongodb.net/";
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 
 // Create an HTTP server
 const server = http.createServer(app);
@@ -26,14 +31,12 @@ const otpStore = {};
 
 console.log("Email User:", process.env.EMAIL_USER);
 
-
-
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
-    pass:process.env.EMAIL_PASS,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -47,7 +50,7 @@ io.on("connection", (socket) => {
   });
 });
 
-//////// C E R T I F I C A T E S    U P D A T E S ////////
+/////// C E R T I F I C A T E S    U P D A T E S ///////
 app.get("/data/certificationInfo/certificateInfo", async (req, res) => {
   try {
     await client.connect();
@@ -87,7 +90,6 @@ app.post("/data/certificationInfo/certificateInfo", async (req, res) => {
 app.delete("/data/certificationInfo/certificateInfo", async (req, res) => {
   const { ids } = req.body; // Expecting an array of `_id` values in the request body
 
-  // Validate the input
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
   }
@@ -97,22 +99,14 @@ app.delete("/data/certificationInfo/certificateInfo", async (req, res) => {
     const database = client.db("certificationInfo");
     const collection = database.collection("certificateInfo");
 
-    // Convert provided ids to MongoDB ObjectId
-    const objectIds = ids.map((id) => {
-      if (!ObjectId.isValid(id)) {
-        throw new Error(`Invalid ID format: ${id}`);
-      }
-      return new ObjectId(id);
-    });
+    const objectIds = ids.map((id) => new ObjectId(id));
 
-    // Attempt to delete documents with matching _id values
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
     if (result.deletedCount === 0) {
       return res.status(404).json({ message: "No records found to delete" });
     }
 
-    // Respond with success
     res.status(200).json({
       message: `Successfully deleted ${result.deletedCount} record(s)`,
     });
@@ -125,17 +119,7 @@ app.delete("/data/certificationInfo/certificateInfo", async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-//////// D E L E G A T E S    U P D A T E S ////////
-
+/////// D E L E G A T E S    U P D A T E S ///////
 app.get("/data/certificationInfo/delegatesInfo", async (req, res) => {
   try {
     await client.connect();
@@ -158,11 +142,10 @@ app.post("/data/certificationInfo/delegatesInfo", async (req, res) => {
 
     const result = await collection.insertOne(newData);
 
-    // Emit an event to notify all clients about the new data
     io.emit("newData", { ...newData, id: result.insertedId });
 
     res.status(201).send(
-      `Data inserted into certificationInfo/certificateInfo with id: ${result.insertedId}`
+      `Data inserted into certificationInfo/delegatesInfo with id: ${result.insertedId}`
     );
   } catch (err) {
     res.status(500).send("Error inserting data into MongoDB");
@@ -170,15 +153,19 @@ app.post("/data/certificationInfo/delegatesInfo", async (req, res) => {
 });
 
 app.delete("/data/certificationInfo/delegatesInfo", async (req, res) => {
+  const { ids } = req.body;
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
+  }
+
   try {
-    const { ids } = req.body; // Array of IDs to delete
     await client.connect();
     const database = client.db("certificationInfo");
     const collection = database.collection("delegatesInfo");
 
-    await collection.deleteMany({
-      _id: { $in: ids.map((id) => new ObjectId(id)) },
-    });
+    const objectIds = ids.map((id) => new ObjectId(id));
+
+    const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
     res.status(200).json({ message: "Data deleted successfully" });
   } catch (err) {
@@ -187,14 +174,7 @@ app.delete("/data/certificationInfo/delegatesInfo", async (req, res) => {
   }
 });
 
-
-
-
-
-//////// N E W S    U P D A T E S ////////
-
-
-
+/////// N E W S    U P D A T E S ///////
 app.post("/data/certificationInfo/newsUpdate", async (req, res) => {
   try {
     await client.connect();
@@ -202,13 +182,7 @@ app.post("/data/certificationInfo/newsUpdate", async (req, res) => {
     const collection = database.collection("newsUpdate");
 
     const { title, description, date, expiryDate } = req.body;
-
-    const newData = {
-      title,
-      description,
-      date,
-      expiryDate,
-    };
+    const newData = { title, description, date, expiryDate };
 
     const result = await collection.insertOne(newData);
 
@@ -224,29 +198,27 @@ app.post("/data/certificationInfo/newsUpdate", async (req, res) => {
   }
 });
 
-const { ObjectId } = require("mongodb");
-
 app.delete("/data/certificationInfo/newsUpdate", async (req, res) => {
+  const { ids } = req.body;
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
+  }
+
   try {
-    const { ids } = req.body; // Array of IDs to delete
     await client.connect();
     const database = client.db("certificationInfo");
     const collection = database.collection("newsUpdate");
 
-    const objectIds = ids.map((id) => new ObjectId(id)); // Convert string IDs to ObjectId
+    const objectIds = ids.map((id) => new ObjectId(id));
+
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
-    if (result.deletedCount > 0) {
-      res.status(200).json({ message: "News deleted successfully" });
-    } else {
-      res.status(404).json({ message: "No news items found to delete" });
-    }
+    res.status(200).json({ message: "News deleted successfully" });
   } catch (err) {
     console.error("Error deleting data from MongoDB:", err);
     res.status(500).send("Error deleting data from MongoDB");
   }
 });
-
 
 app.get("/data/certificationInfo/newsUpdate", async (req, res) => {
   try {
@@ -261,13 +233,6 @@ app.get("/data/certificationInfo/newsUpdate", async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
 app.get("/data/certificationInfo/careerInfo", async (req, res) => {
   try {
     await client.connect();
@@ -281,8 +246,6 @@ app.get("/data/certificationInfo/careerInfo", async (req, res) => {
   }
 });
 
-
-
 app.post("/data/certificationInfo/careerInfo", async (req, res) => {
   try {
     await client.connect();
@@ -292,54 +255,45 @@ app.post("/data/certificationInfo/careerInfo", async (req, res) => {
 
     const result = await collection.insertOne(newData);
 
-    // Emit an event to notify all clients about the new data
     io.emit("newData", { ...newData, id: result.insertedId });
 
     res.status(201).send(
-      `Data inserted into certificationInfo/deligatesInfo with id: ${result.insertedId}`
+      `Data inserted into certificationInfo/careerInfo with id: ${result.insertedId}`
     );
   } catch (err) {
     res.status(500).send("Error inserting data into MongoDB");
   }
 });
 
-
 app.delete("/data/certificationInfo/careerInfo", async (req, res) => {
+  const { ids } = req.body;
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
+  }
+
   try {
     await client.connect();
     const database = client.db("certificationInfo");
     const collection = database.collection("careerInfo");
-    const { ids } = req.body; // Array of IDs to delete
 
-    if (ids && ids.length > 0) {
-      const result = await collection.deleteMany({
-        _id: { $in: ids.map(id => new ObjectId(id)) }, // Convert string ids to ObjectId
-      });
+    const objectIds = ids.map((id) => new ObjectId(id));
 
-      // Emit an event to notify all clients that data was deleted
-      io.emit("deletedData", ids);
+    const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
-      res.status(200).send(`${result.deletedCount} document(s) deleted successfully`);
-    } else {
-      res.status(400).send("No IDs provided for deletion");
-    }
+    io.emit("deletedData", ids);
+
+    res.status(200).send(`${result.deletedCount} document(s) deleted successfully`);
   } catch (err) {
     res.status(500).send("Error deleting data from MongoDB");
   }
 });
 
-
-
-
-
-
-
-// New Feature: Login Route
+// Login Route
 app.post("/api/login", async (req, res) => {
   const { userName, password } = req.body;
   try {
     await client.connect();
-    const db = client.db("admin");
+    const db = client.db("tvecert");
     const collection = db.collection("credentials");
 
     console.log(`Login attempt for username: ${userName}`);
@@ -361,12 +315,12 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// New Feature: Email Verification
+// Email Verification
 app.post("/api/verify-email", async (req, res) => {
   const { email } = req.body;
   try {
     await client.connect();
-    const db = client.db("admin");
+    const db = client.db("tvecert");
     const collection = db.collection("credentials");
 
     const user = await collection.findOne({ Email: email });
@@ -395,7 +349,7 @@ app.post("/api/verify-email", async (req, res) => {
   }
 });
 
-// New Feature: OTP Verification
+// OTP Verification
 app.post("/api/verify-otp", (req, res) => {
   const { email, otp } = req.body;
 
