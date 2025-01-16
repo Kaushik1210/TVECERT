@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { HashRouter as Router, Routes, Route } from "react-router-dom"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Using BrowserRouter
 import Lottie from "react-lottie-player";
 import animationData from "./animationIntro.json";
 import Home from "./Pages/HomePage/Home";
