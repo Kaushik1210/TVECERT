@@ -34,11 +34,12 @@ function App() {
       ) : (
         <Router>
           <Routes>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="carrers" element={<CareerMain />} />
-            <Route path="certification" element={<CertificationMain />} />
-            <Route path="training" element={<TrainingMain />} />
+            {/* <Route index element={<Home />} /> */}
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/career" element={<CareerMain />} />
+            <Route path="/certification" element={<CertificationMain />} />
+            <Route path="/training" element={<TrainingMain />} />
             <Route
               path="/updation"
               element={
@@ -51,10 +52,10 @@ function App() {
               path="/login"
               element={<EmpLogin setIsAuthenticated={setIsAuthenticated} />}
             />
-            <Route path="certForm" element={<CertForm />} />
-            <Route path="delegateForm" element={<DelegateForm />} />
-            <Route path="carrerUpdate" element={<CarrerDetails />} />
-            <Route path="newsUpdate" element={<NewsUpdate />} />
+            <Route path="/certForm" element={<CertForm />} />
+            <Route path="/delegateForm" element={<DelegateForm />} />
+            <Route path="/carrerUpdate" element={<CarrerDetails />} />
+            <Route path="/newsUpdate" element={<NewsUpdate />} />
           </Routes>
         </Router>
       )}
