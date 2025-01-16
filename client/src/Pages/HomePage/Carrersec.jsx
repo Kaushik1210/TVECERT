@@ -8,7 +8,7 @@ const Carrersec = () => {
   return (
     <div id='career' className='relative'>
 
-    <section  className='animate-appear timeline-view timeline-range mx-100 my-10 relative z-10
+    <section  className=' mx-100 my-10 relative z-10
                            max-lg:mx-20
                            max-[850px]:mx-14
                            max-sm:mx-6'>
@@ -27,7 +27,7 @@ const Carrersec = () => {
             <p className=' text-justify flex flex-col gap-2 text-darkblue'>
             We're building a culture at HubSpot where amazing people (like you) can do their best work. If you're ready to grow your career and help millions of organizations grow better, you've come to the right place.
             </p>
-            <Link to='/carrers'><Button text="See all open positions"/>
+            <Link to='/career'><Button text="See all open positions"/>
             </Link>
             
         </div>

@@ -13,7 +13,7 @@ import image from '../../Assets/dummy'
 const Aboutus = () => {
   return (
     <div className='relative'>
-    <section id='aboutus' className=' animate-appear timeline-view timeline-range relative mx-100  my-50
+    <section id='aboutus' className=' relative mx-100  my-50
                                       max-lg:mx-20
                                       max-[850px]:mx-14
                                       max-sm:mx-6

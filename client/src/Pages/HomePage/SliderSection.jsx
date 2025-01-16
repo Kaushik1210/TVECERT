@@ -11,7 +11,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 // Import required modules
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 
 const SliderSection = () => {
   return (
@@ -22,8 +22,8 @@ const SliderSection = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        autoplay={{ delay: 3000 }}
-        initialSlide={2} 
+        autoplay={{ delay: 3000 }} // Autoplay delay in milliseconds
+        initialSlide={2}
         loop={true}
         coverflowEffect={{
           rotate: 0,
@@ -35,7 +35,7 @@ const SliderSection = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Pagination, Autoplay]} // Add Autoplay module here
         className="mySwiper"
       >
         <SwiperSlide className="slide">

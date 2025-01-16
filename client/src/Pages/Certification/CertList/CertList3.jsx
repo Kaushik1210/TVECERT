@@ -23,7 +23,7 @@ const CertList3 = () => {
   };
   return (
     <>
-      <div className="animate-appear timeline-view timeline-range my-10 flex">
+      <div className=" my-10 flex">
         <div className="flex-1 flex items-center max-md:hidden">
           <img className=" rounded-xl shadow-xl" src={image.c3} alt="" />
         </div>

@@ -47,7 +47,7 @@ const CertList = () => {
         <div className="w-[500px] mx-6 border mb-10 border-gray-500" />
       </div>
 
-      <div className="animate-appear timeline-view timeline-range my-10 flex">
+      <div className=" my-10 flex">
         <div className="flex-1 flex justify-center flex-col gap-3 p-10 py-5 max-md:p-0">
           <p className=" capitalize text-35 font-semibold text-ldarkblue ">
             Transition plan From <br />
@@ -75,7 +75,7 @@ const CertList = () => {
         <div className="w-[500px] mx-6 border mb-10 border-gray-500" />
       </div>
 
-      <div className="animate-appear timeline-view timeline-range my-10 flex">
+      <div className=" my-10 flex">
         <div className="flex-1 flex items-center max-md:hidden">
           <img className=" rounded-xl shadow-xl" src={image.c7} alt="" />
         </div>

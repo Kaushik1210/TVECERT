@@ -23,7 +23,7 @@ const CertList4 = () => {
   };
   return (
     <>
-      <div className="animate-appear timeline-view timeline-range my-10 flex">
+      <div className="my-10 flex">
         <div className="flex-1 flex justify-center flex-col gap-3 p-10 py-5 max-md:p-0">
           <p className=" capitalize text-35 font-semibold text-ldarkblue ">
             Appeals
