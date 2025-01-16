@@ -103,9 +103,13 @@ const HomeNavBar = () => {
 
         {/* Login Button for Desktop */}
         <div className="text-white flex gap-2 items-center max-[950px]:hidden">
-          <p onClick={openLoginInNewTab} className="cursor-pointer">
+          {/* <p onClick={openLoginInNewTab} className="cursor-pointer">
             Login as Employee
-          </p>
+          </p> */}
+          <Link className=" text-16 text-white" to="/updation">
+            
+          Login as Employee
+          </Link>
         </div>
 
         {/* Menu Toggle Button */}
@@ -144,7 +148,7 @@ const HomeNavBar = () => {
             </a>
 
             <div className="w-full border my-2" />
-            <p
+            {/* <p
               onClick={() => {
                 setHomeMenu(false);
                 openLoginInNewTab();
@@ -152,7 +156,11 @@ const HomeNavBar = () => {
               className="mt-1 text-blue-600 font-semibold hover:underline-offset-0 cursor-pointer"
             >
               Login as Employee
-            </p>
+            </p> */}
+            <Link className=" mt-1 text-blue-600 font-semibold hover:underline-offset-0 cursor-pointer" to="/updation">
+            
+            Login as Employee
+            </Link>
           </div>
         )}
       </div>
