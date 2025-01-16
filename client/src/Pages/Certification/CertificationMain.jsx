@@ -11,7 +11,7 @@ const CertificationMain = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1000); // 5 seconds
+    }, 5000); // 5 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -27,7 +27,7 @@ const CertificationMain = () => {
           <CertHeroSec />
           <CertList />
           <CertInfoSec />
-          <Newsletter />
+          {/* <Newsletter /> */}
           <Footer />
         </div>
       )}

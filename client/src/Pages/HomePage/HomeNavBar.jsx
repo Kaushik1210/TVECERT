@@ -49,17 +49,15 @@ const HomeNavBar = () => {
     };
   }, []);
 
-  // Function to handle smooth scrolling and closing menu on click
   const handleSmoothScroll = (event, href) => {
     event.preventDefault();
     const targetElement = document.querySelector(href);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
-      setHomeMenu(false); // Close the menu after clicking
+      setHomeMenu(false);
     }
   };
 
-  // Function to open login link in a new tab with specific title
   const openLoginInNewTab = () => {
     const newTab = window.open("/updation", "_blank");
     if (newTab) {
@@ -80,25 +78,25 @@ const HomeNavBar = () => {
         </div> */}
 
         {/* Desktop Menu */}
-        <div className="max-[950px]:hidden">
-          <a className="ml-5 text-16 text-white" href="#home">
+        <div className="max-[950px]:hidden flex gap-5">
+          <a className=" text-16 text-white" href="#home">
             Home
           </a>
-          <a className="ml-5 text-16 text-white" href="#aboutus">
+          <a className=" text-16 text-white" href="#aboutus">
             About us
           </a>
-          <a className="ml-5 text-16 text-white" href="#career">
+          <a className=" text-16 text-white" href="#career">
             Career
           </a>
-          <Link className="ml-5 text-16 text-white" to="/certification">
-            {" "}
-            Certification{" "}
+          <Link className=" text-16 text-white" to="/certification">
+            
+            Certification
           </Link>
-          <Link className="ml-5 text-16 text-white" to="/training">
-            {" "}
-            Training{" "}
+          <Link className=" text-16 text-white" to="/training">
+            
+            Training
           </Link>
-          <a className="ml-5 text-16 text-white" href="#contactus">
+          <a className=" text-16 text-white" href="#contactus">
             Contact us
           </a>
         </div>

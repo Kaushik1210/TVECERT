@@ -12,7 +12,7 @@ const TrainingMain = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1000); // 5 seconds
+    }, 5000); // 5 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -29,7 +29,7 @@ const TrainingMain = () => {
           <TrainingList />
           <DelegateInfo/>
           {/* <List /> */}
-          <Newsletter />
+          {/* <Newsletter /> */}
           <Footer />
         </div>
       )}

@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1000); // 5 seconds
+    }, 5000); // 5 seconds
 
     return () => clearTimeout(timer); 
   }, []);
@@ -28,10 +28,7 @@ const Home = () => {
     ) : (
       <>
       <div className="scroll-smooth bg-white">
-          {/* Uncomment if the navbar should remain static */}
-          {/* <div className='absolute top-0 z-50'>
-            <HomeNavBar />
-          </div> */}
+         
           <Herosecmainpage />
           <Aboutus />
           <SliderSection />
