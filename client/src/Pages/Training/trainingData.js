@@ -131,7 +131,7 @@ export const cqiircaTrainingData = [
 
     //Course Period
   
-      pdf:"CQIIRCA/LA/QMSLA.pdf",
+      pdf:"https://drive.google.com/file/d/1frMk8Lxi5eJo_U2tpQ6OCaGUzpy5iydO/view?usp=drive_link",
       FileName:"QUALITY_MANAGEMENT_SYSTEMS_Auditor_/_Lead_Auditor.pdf",
   },
   {
@@ -190,7 +190,7 @@ export const cqiircaTrainingData = [
     courseStyleList3: "Case Studies",
     courseStyleList4: "Discussions",
 
-    pdf:"CQIIRCA/IA/QMSIA.pdf",
+    pdf:"https://drive.google.com/file/d/1xFc2cFN12f4CrQCU3mZdyB5zDwx-Ota1/view?usp=drive_link",
     FileName:"QUALITY_MANAGEMENT_SYSTEMS_Auditor_/_Internal_Auditor.pdf",
   },
   {
@@ -298,13 +298,19 @@ export const cqiircaTrainingData = [
     examTitle: "Exam",
     examPara1:
       " There is a 30 minutes open book exam at the end of each day (pass mark 70%).",
-      pdf:"CQIIRCA/Transition/QMSTransition.pdf",
+      pdf:"https://drive.google.com/file/d/1kKslqPhgkmU1HmWp-hU9le5eqNufZC3x/view?usp=drive_link",
       FileName:"QMS_Transition_Training.pdf",
   },
 
-  //environment
+
+
+
+
+
+
+  //environment///////////////////////////////////////////////////////////
   {
-    pdf:"CQIIRCA/LA/EMSLA.pdf",
+    pdf:"https://drive.google.com/file/d/19ktpFWCtq2VeWMkgoQ8vFiSc3L4pXAEd/view?usp=drive_link",
       FileName:"EMS_Lead_Auditor_Training.pdf",
 
     mainHeading:"CQI & IRCA Training Details",
@@ -432,7 +438,7 @@ export const cqiircaTrainingData = [
       " There is an Open Book Examination Conducted by CQI IRCA (pass mark 50%)",
   },
   {
-    pdf:"CQIIRCA/IA/EMSIA.pdf",
+    pdf:"https://drive.google.com/file/d/1Ole9Jg7aDD7Mz-qGu3BlEAyDU4EUKXK3/view?usp=drive_link",
     FileName:"EMS_Internal_Auditor_Training.pdf",
 
     mainHeading:"CQI & IRCA Training Details",
@@ -483,7 +489,7 @@ export const cqiircaTrainingData = [
     examPara1: "There will be 1 hour exam at the last day of the training",
   },
   {
-    pdf:"CQIIRCA/Transition/EMSTransition.pdf",
+    pdf:"https://drive.google.com/file/d/1Z2v8IBZsD13Lpky-vg4wWwG4CB_B_G5D/view?usp=drive_link",
     FileName:"EMS_Auditor_Transition_Training.pdf",
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 14001:2015 Auditor Transition",
@@ -728,9 +734,15 @@ export const cqiircaTrainingData = [
     examPara1:
       "There is a 1 hour 40 mins close book exam on the final day (pass mark 70%)",
   },
-  //Occupational Health & Safety Management Systems
+
+
+
+
+
+
+  //Occupational Health & Safety Management Systems///////////////////////////////
   {
-    pdf:"CQIIRCA/LA/OHSMSLA.pdf",
+    pdf:"https://drive.google.com/file/d/1kowi5O2I7CJ0Oa_KKLH2D5xlohgbY1W0/view?usp=drive_link",
     FileName:"OHSMS_Lead_Auditor_Training.pdf",
 
 
@@ -868,11 +880,161 @@ export const cqiircaTrainingData = [
       " There is a 2 hours close book exam on the final day (pass mark 70%)",
   },
   {
-    
+    selection: "QM/ISO 9001:2015 Internal Auditor",
+    mainTitle:
+      "ISO 9001:2015 Internal Auditor (Quality Management Systems) Training Course (CQI & IRCA Ref. No: 1661)",
+
+    //why cqi & irca
+    whyTitle: "Who will benefit?",
+
+    whyList1: "Management Representatives.",
+    whyList2:
+      "ISO consultants, Personnel from Institutions / Companies wishing to monitor Quality Management System Performance and identify improvement opportunities through the use of Internal Audits.",
+    whyList3: "Students / Job Seekers in Quality Management Systems.",
+
+    //who will benifit?
+
+    //Learning Objectives
+    learningObjTitle: "Learning Objectives",
+    learningObjPara1: "Why perform internal audits?",
+    learningObjPara2:
+      "What are your responsibilities as an Internal Auditor and how can you contribute to improvement?",
+    learningObjPara3:
+      "Why and how do you plan internal audits in relation to the identified risk and to your company’s business goals?",
+    learningObjPara4:
+      "How do you conduct an effective audit in a constructive and positive environment?",
+    learningObjPara5:
+      "How do you report and communicate audit results in a manner which creates impact and inspires change?",
+    learningObjPara6:
+      "What is the purpose and content of ISO 9001 and ISO 19011?",
+
+    courceContentTitle: "Cource Content",
+    courceContent1: "Interpretation of ISO 9001:2015 Standard",
+    courceContent2: "Principles of Quality Management Systems",
+    courceContent3: "Elements of ISO 9001:2015",
+    courceContent4: "Process Approach &Process Modeling",
+    courceContent5: "Principles of Auditing Audit",
+    courceContent6: "Planning-Pre Audit Activities",
+    courceContent7: "Interpretation of ISO 19011 Auditing Standard",
+    courceContent8: "Auditor Competence",
+    courceContent9: "Audit Management",
+    courceContent10: "Post Audit activities",
+    courceContent11: "Non Conformities-Writing Classification",
+    courceContent12: "Audit Reporting",
+
+    //skill
+    skillTitle: "Certificate of Achievement ",
+    skillList1:
+      "TVE will issue a certificate of achievement to successful Participants based on performance during the course.",
+
+    //Training Methodology
+    courseStyleTitle: "Training Methodology",
+    courseStyleList1: "Lectures",
+    courseStyleList2: "Group Work",
+    courseStyleList3: "Case Studies",
+    courseStyleList4: "Discussions",
+
+    pdf:"https://drive.google.com/file/d/1xFc2cFN12f4CrQCU3mZdyB5zDwx-Ota1/view?usp=drive_link",
+    FileName:"QUALITY_MANAGEMENT_SYSTEMS_Auditor_/_Internal_Auditor.pdf",
+  },
+  {
+    pdf:"https://drive.google.com/file/d/173HMNVhfzx2dfhXY8P59uBLDPnDYCBD0/view?usp=drive_link",
+    mainHeading:"CQI & IRCA Training Details",
+    selection: "ISO 45001:2018 Internal Auditor",
+    mainTitle:
+      "Internal Auditor Training Course OHSMS ISO 45001:2018 (course ID:2430)",
+
+    //why cqi & irca
+    whyTitle: "Why CQI & IRCA?",
+    whyPara1:
+      "CQI & IRCA is the leading professional body for management system auditors and offers a globally recognized business qualification. CQI & IRCA represents over 10,000 registered auditors in 150 countries and every year, around 60,000 delegates attend CQI & IRCA certified training course. CQI & IRCA Certified courses are recognized as an industry leader and CQI & IRCA endorsement means that you can be confident that the course you are attending:",
+    whyList1:
+      "-Covers the key knowledge and skills you need to start your journey as a management systems auditor",
+    whyList2:
+      "-Will be taught by tutors who are experienced auditors and trainers who have fulfilled CQI & IRCA tutor competency requirements",
+    whyList3:
+      "-Will be taught using a variety of proven practical student- focused learning techniques to help you learn and enjoy the course",
+    whyList4:
+      "-Has a limited class size to maximize participation and optimize your learning",
+    whyList5:
+      "-Has been regularly assessed by CQI & IRCA approved technical assessor.",
+    whyList6:
+      "-Completion of this course is the first step to becoming CQI & IRCA registered, to find out more please visit www.irca.org/join",
+    whyPara2:
+      "CQI & IRCA recognize that attending a training course is usually a major commitment, both in terms of cost and time. When choosing the right training organizations and the right course, make sure you look for those that display the CQI & IRCA certification mark.",
+    whyPara3:
+      "CQI & IRCA  only approves organizations that have demonstrated a high standard of technical and training expertise. All training organizations approved by CQI & IRCA must demonstrate that they have the competence to achieve the learning outcomes for each course and to examine the performance of students.",
+    whyPara4:
+      "When you are choosing an CQI & IRCA certified Course and Training Organization you can be certain that;",
+    whyList7:
+      "-Your knowledge and skills are developed through an interactive and practical approach to tasks and audit activities.",
+    whyList8:
+      "-Courses are delivered by tutors who are experts in management systems in auditing and experienced in training.",
+    whyList9: "-Students are formally assessed and examined during training.",
+
+    //who will benifit?
+    benefitTitle: "Who Will Benifit?",
+    benefitPara1:
+      "Quality-Managers (QA/QC Personnel), Engineers, Professionals, Technical Experts. Document Controllers, Internal Auditors, Implementation Managers. NBA / NAAC Coordinators & Consultants, Management System/ ISO / TQM Consultants. Students and Job seekers in Quality field /Abroad Placements/Career Development.",
+
+    //Learning Objectives
+    learningObjTitle: "Learning Objectives",
+    learningObjPara1:
+      "2.1 Briefly describe what students will know and be able to do by the end of the course. On completion successful students will  have the knowledge and skills to:",
+
+    //knowledge
+    knowledgeTitle: "Knowledge",
+    knowledgeList1:
+      "- Explain the purpose of a quality management system, of quality management systems    standards, of management system audit, of third party certification and the business benefits of improved performance of the quality management system (see 3.1).",
+    knowledgeList2:
+      "- Explain the role and responsibilities of an auditor to plan, conduct, report and follow-up a quality management system audit in accordance with ISO 19011, and ISO/IEC 17021.",
+
+    //skill
+    skillTitle: "Skill",
+    skillList1:
+      "Plan, conduct, report and follow-up an audit of a quality management system to establish conformity (or otherwise) with ISO 9001 and in accordance with ISO 19011, and ISO/IEC 17021.",
+
+    //course format
+    courseFormatTitle: "Course Format",
+    courseFormatList1: "Course Program",
+    courseFormatList2:
+      "Each day is divided into four sessions, two before lunch and two after lunch.",
+    courseFormatList3:
+      "The first session precedes the mid-morning break and the second follows mid morning break.",
+    courseFormatList4: "The afternoon sessions are similarly divided.",
+    courseFormatList5:
+      "The output of the exercise are a part of the formal continuous assessment and will therefore be marked.",
+    courseFormatList6:
+      "Although the exercises are group exercises individual score to the delegate will be based on their overall participation.",
+    courseFormatList7:
+      "You will need to allow sufficient time to read and understand the notes which have been provided",
+
+    //course style
+    courseStyleTitle: "Course Style",
+    courseStyleList1:
+      "All sessions are delegate interactive and delegate participation is encouraged. Delivery will include presentations by lecture, overhead and slide projection. There are numerous exercises and each activity is assessed as part of the overall candidature evaluation.",
+
+    //CQI&IRCA Registration
+    registrationTitle: "CQI&IRCA Registration",
+    registrationPara1:
+      "TVE International Academy (ATP No – 6023829) is a CQI & IRCA registered Training Organization. This ISO 9001:2015 Auditor Transition Training Course (17900 & 17901) is registered by the CQI & IRCA.",
+
+    //Expected Prior knowledge
+    expectedPriorknowledgeTitle: "Expected Prior knowledge",
+    expectedPriorknowledgePara1:
+      "Persons who have completed CQI & IRCA registered. Training Program Lead  Auditor  / Internal Auditor. Also individual who have knowledge is QMS and willing to upgrade to new version ISO 9001:2015.",
+
+    //Highlights
+    highlightsTitle: "Highlights",
+    highlightsList1:
+      "Training Programs are handled by Highly Experienced and CQI & IRCA Qualified Lead Auditors.",
+    highlightsList2: "The Batches once committed will not be cancelled.",
+    highlightsList3:
+      "Fully Equipped Training Halls available at Trichy to carry out Multi Program at the same time.",
   },
   {
 
-    pdf:"CQIIRCA/LA/OHSMSLA.pdf",
+    pdf:"https://drive.google.com/file/d/18G1esay4Vje-SRb-YW05aT60MNXJ4rE3/view?usp=drive_link",
     FileName:"OHSMS_Lead_Auditor_Training.pdf",
 
 
@@ -997,12 +1159,144 @@ export const cqiircaTrainingData = [
       " There is a 30 minutes open book exam at the end of each day (pass mark 70%).",
   },
 
-  // Information Securiy
+
+
+
+
+  // Information Securiy ///////////////////////////////////////////////
   {
+    pdf:"https://drive.google.com/file/d/1XkYerCsuHNKNTP09qERncOUxymtl1LWm/view?usp=drive_link",
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 27001:2022 Lead Auditor",
     mainTitle:
-      "CQI & IRCA Certified QMS Lead Auditor – ISO 27001:2022 Lead Auditor (Information Security Management Systems) Training Course (CQI & IRCA Ref: 2557)",
+      "CQI & IRCA Certified ISMS Lead Auditor – ISO 27001:2022 Lead Auditor (Information Security Management Systems) Training Course (CQI & IRCA Ref: 2557)",
+
+    //why cqi & irca
+    whyTitle: "Why CQI & IRCA?",
+    whyPara1:
+      "CQI & IRCA is the leading professional body for management system auditors and offers a globally recognized business qualification. CQI & IRCA represents over 10,000 registered auditors in 150 countries and every year, around 60,000 delegates attend CQI & IRCA certified training course. CQI & IRCA Certified courses are recognized as an industry leader and CQI & IRCA endorsement means that you can be confident that the course you are attending:",
+    whyList1:
+      "-Covers the key knowledge and skills you need to start your journey as a management systems auditor",
+    whyList2:
+      "-Will be taught by tutors who are experienced auditors and trainers who have fulfilled CQI & IRCA tutor competency requirements",
+    whyList3:
+      "-Will be taught using a variety of proven practical student- focused learning techniques to help you learn and enjoy the course",
+    whyList4:
+      "-Has a limited class size to maximize participation and optimize your learning",
+    whyList5:
+      "-Has been regularly assessed by CQI & IRCA approved technical assessor.",
+    whyList6:
+      "-Completion of this course is the first step to becoming CQI & IRCA registered, to find out more please visit www.irca.org/join",
+    whyPara2:
+      "CQI & IRCA recognize that attending a training course is usually a major commitment, both in terms of cost and time. When choosing the right training organizations and the right course, make sure you look for those that display the CQI & IRCA certification mark.",
+    whyPara3:
+      "CQI & IRCA  only approves organizations that have demonstrated a high standard of technical and training expertise. All training organizations approved by CQI & IRCA must demonstrate that they have the competence to achieve the learning outcomes for each course and to examine the performance of students.",
+    whyPara4:
+      "When you are choosing an CQI & IRCA certified Course and Training Organization you can be certain that;",
+    whyList7:
+      "-Your knowledge and skills are developed through an interactive and practical approach to tasks and audit activities.",
+    whyList8:
+      "-Courses are delivered by tutors who are experts in management systems in auditing and experienced in training.",
+    whyList9: "-Students are formally assessed and examined during training.",
+
+    //who will benifit?
+    benefitTitle: "Who Will Benifit?",
+    benefitPara1:
+      "Project Managers, Engineers, Professionals in Information security Field, Technical Experts. Document Controllers, Internal Auditors, and Implementation Managers in IT field. IT Consultants, Management System / ISO / Consultants. Students and Job seekers in Information Technology /Abroad Placements /Career Development",
+
+    //Learning Objectives
+    learningObjTitle: "Learning Objectives",
+    learningObjPara1:
+      "Briefly describe what students will know and be able to do by the end of the course. On completion successful students will  have the knowledge and skills to:",
+
+    //knowledge
+    
+
+    //skill
+    
+
+    //course format
+    courseFormatTitle: "Course Format",
+    courseFormatList1: "Course Program",
+    courseFormatList2:
+      "Each day is divided into four sessions, two before lunch and two after lunch.",
+    courseFormatList3:
+      "The first session precedes the mid-morning break and the second follows mid morning break.",
+    courseFormatList4: "The afternoon sessions are similarly divided.",
+    courseFormatList5:
+      "The output of the exercise are a part of the formal continuous assessment and will therefore be marked.",
+    courseFormatList6:
+      "Although the exercises are group exercises individual score to the delegate will be based on their overall participation.",
+    courseFormatList7:
+      "A mock audit - Role play will be conducted on Days 4 & 5 of the Training for the delegates to demonstrate the skills learned and understood during the course. All sessions are interactive and delegate participation is encouraged.",
+    courseFormatList8:
+      "You will need to allow sufficient time to read and understand the notes which have been provided",
+
+    //course style
+    courseStyleTitle: "Course Style",
+    courseStyleList1:
+      "All sessions are delegate interactive and delegate participation is encouraged. Delivery will include presentations by lecture, overhead and slide projection.",
+    courseStyleList2:
+      "There are numerous exercises and each activity is assessed as part of the overall candidature evaluation.",
+    courseStyleList3:
+      "A model factory will be used and wherever possible practical illustrations will be given. All course presenters will have experience of QMS design and implementation, and have some experience of QMS certification and assessment.",
+    courseStyleList4:
+      "A live audit in a host organization(or an audit role play) will take place on day 4 so as the delegates may demonstrates the skills learned and developed during the course.",
+
+    //CQI&IRCA Registration
+    registrationTitle: "CQI&IRCA Registration",
+    registrationPara1:
+      "TVE International Academy (ATP No – 6023829) is a CQI & IRCA approved Training Organization. This QMS Auditor / Lead Auditor – ISO 9001:2015 (17980) Training Course is registered by the CQI & IRCA",
+
+    //Expected Prior knowledge
+    expectedPriorknowledgeTitle: "Expected Prior knowledge",
+    expectedPriorknowledgePara1:
+      "Students are expected to have the following prior knowledge,",
+    expectedPriorknowledgePara2:
+      "Management systems Understand the Plan-Do-Check-Act (PDCA) cycle",
+
+    //Management systems
+    
+
+    //Management Type
+    managementTypeTitle: "Information security management",
+    managementTypePara1:
+      "Knowledge of the following information security management principles and concepts:",
+    managementTypeList1: "Awareness of the need for information security the assignment of responsibility for information security incorporating management commitment and the nterests of stakeholders enhancing societal values.",
+    managementTypeList2: "Using the results of risk assessments to determine appropriate controls to reach acceptable levels of risk",
+    managementTypeList3: "Incorporating security as an essential element of information networks and systems the active prevention and detection of information security incidents ensuring a omprehensive approach to information security management",
+    managementTypeList4: "Continual reassessment of information security and making of modifications as appropriate",
+    
+
+    //ISO
+    
+
+    //Highlights
+    highlightsTitle: "Highlights",
+    highlightsList1:
+      "Training Programs are handled by Highly Experienced and CQI & IRCA Qualified Lead Auditors.",
+    highlightsList2: "The Batches once committed will not be cancelled.",
+    highlightsList3:
+      "Fully Equipped Training Halls available at Trichy to carry out Multi Program at the same time.",
+
+    //Course Period
+    coursePeriodTitle: "Course Period",
+    classroomTraining: "5 days",
+    virtualTraining: "6 days",
+    from: "09:00 am",
+    to: "06:00 pm",
+
+    //Exam
+    examTitle: "Exam",
+    examPara1:
+      " There is an Open Book Examination Conducted by CQI IRCA (pass mark 50%)",
+  },
+  {
+    pdf:"https://drive.google.com/file/d/1QYQ4c0jEu-MG3Bppkhvk9HTfPQePfi3M/view?usp=drive_link",
+    mainHeading:"CQI & IRCA Training Details",
+    selection: "ISO 27001:2022 Internal Auditor",
+    mainTitle:
+      "CQI & IRCA Certified ISMS Internal Auditor – ISO 27001:2022 Internal Auditor (Information Security Management Systems) Training Course (CQI & IRCA Ref: 2558)",
 
     //why cqi & irca
     whyTitle: "Why CQI & IRCA?",
@@ -1125,7 +1419,10 @@ export const cqiircaTrainingData = [
       " There is an Open Book Examination Conducted by CQI IRCA (pass mark 50%)",
   },
 
-  //food security management
+
+
+
+  //food security management ////////////////////////////////////////////////////
   {
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 22000:2005 Lead Auditor",

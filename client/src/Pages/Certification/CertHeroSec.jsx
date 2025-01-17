@@ -56,8 +56,8 @@ const CertHeroSec = () => {
         <CountBanner
           count1="3,500"
           category1="Certified Companies"
-          count2="20"
-          category2="Countries"
+          count2="15"
+          category2="Countries Global Presence"
           count3="40"
           category3="Empaneled Auditors"
         />

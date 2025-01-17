@@ -9,16 +9,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 
 const Result = ({ open, onClose, result }) => {
-  const handleDownload = () => {
-    const pdf = result.pdf;// PDF file name stored in the result object
-    const fileName = result.FileName
-    const link = document.createElement("a");
-        link.href = `/pdfs/${pdf}`; 
-        link.download = `${fileName}`; 
-                document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-  };
+  // const handleDownload = () => {
+  //   const pdf = result.pdf;// PDF file name stored in the result object
+  //   const fileName = result.FileName
+  //   const link = document.createElement("a");
+  //       link.href = `/pdfs/${pdf}`; 
+  //       link.download = `${fileName}`; 
+  //               document.body.appendChild(link);
+  //       link.click();
+  //       document.body.removeChild(link);
+  // };
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
@@ -155,14 +155,13 @@ const Result = ({ open, onClose, result }) => {
 
               {/* PDF Download Button */}
               {result.pdf && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleDownload}
+                <a
+                  href={result.pdf}
+                  // onClick={handleDownload}
                   className="self-center mt-4"
                 >
                   Download PDF
-                </Button>
+                </a>
               )}
             </div>
           ) : (

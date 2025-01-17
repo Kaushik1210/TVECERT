@@ -69,7 +69,7 @@ const Footer = () => {
         <div className="flex flex-1 max-[950px]:flex-col max-[950px]:gap-8">
           <div className="flex flex-1 gap-3 items-center">
             <MdOutlineMailOutline className="text-18" />
-            <p>abcdef@gmail.com</p>
+            <p>info@tvecert.org</p>
           </div>
 
           <div className="flex flex-1 gap-3 items-center">
