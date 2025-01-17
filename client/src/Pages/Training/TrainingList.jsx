@@ -79,7 +79,7 @@ const TrainingList = () => {
           {/* CQI & IRCA Training Section */}
           <div className="flex-1 flex flex-col m-4 p-4 gap-4 shadow-lg rounded-2xl hover:shadow-xl hover:border-none duration-300">
             <p className="font-bold">CQI & IRCA Training</p>
-            <FormControl sx={{ m: 0, minWidth: 300 }}>
+            <FormControl sx={{ m: 0, minWidth: 200 }}>
               <InputLabel htmlFor="cqiirca-select">Training in</InputLabel>
               <Select
                 id="cqiirca-select"
@@ -104,61 +104,62 @@ const TrainingList = () => {
                   <strong>Quality</strong>
                 </MenuItem>
                 <MenuItem value="QM/ISO 9001:2015 Lead Auditor">
-                  QM/ISO 9001:2015 Lead Auditor
+                QM/ISO 9001:2015 <br className="min-[450px]:hidden" /> Lead Auditor
+                 
                 </MenuItem>
                 <MenuItem value="QM/ISO 9001:2015 Internal Auditor">
-                  QM/ISO 9001:2015 Internal Auditor
+                  QM/ISO 9001:2015<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="QM/ISO 9001:2015 Transition Training">
-                  QM/ISO 9001:2015 Transition Training
+                  QM/ISO 9001:2015<br className="min-[450px]:hidden" /> Transition Training
                 </MenuItem>
                 <MenuItem disabled>
                   <strong>Environmental</strong>
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Lead Auditor">
-                  ISO 14001:2015 Lead Auditor
+                  ISO 14001:2015<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Internal Auditor">
-                  ISO 14001:2015 Internal Auditor
+                  ISO 14001:2015<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Auditor Transition">
-                  ISO 14001:2015 Auditor Transition
+                  ISO 14001:2015<br className="min-[450px]:hidden" /> Auditor Transition
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Auditor Conversion">
-                  ISO 14001:2015 Auditor Conversion
+                  ISO 14001:2015<br className="min-[450px]:hidden" /> Auditor Conversion
                 </MenuItem>
                 <MenuItem disabled>
-                  <strong>Occupational Health and Safety</strong>
+                  <strong>Occupational Health<br className="min-[400px]:hidden" /> and Safety</strong>
                 </MenuItem>
                 <MenuItem value="ISO 45001:2018 Lead Auditor">
-                  ISO 45001:2018 Lead Auditor
+                  ISO 45001:2018<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 45001:2018 Internal Auditor">
-                  ISO 45001:2018 Internal Auditor
+                  ISO 45001:2018<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 45001:2018 Auditor Migration">
-                  ISO 45001:2018 Auditor Migration
+                  ISO 45001:2018<br className="min-[450px]:hidden" /> Auditor Migration
                 </MenuItem>
                 <MenuItem disabled>
                   <strong>Information Security</strong>
                 </MenuItem>
                 <MenuItem value="ISO 27001:2022 Lead Auditor">
-                  ISO 27001:2022 Lead Auditor
+                  ISO 27001:2022<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 27001:2022 Internal Auditor">
-                  ISO 27001:2022 Internal Auditor
+                  ISO 27001:2022<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem disabled>
                   <strong>Food Safety</strong>
                 </MenuItem>
                 <MenuItem value="ISO 22000:2005 Lead Auditor">
-                  ISO 22000:2005 Lead Auditor
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 22000:2005 Internal Auditor">
-                  ISO 22000:2005 Internal Auditor
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 22000:2018 Auditor Transition">
-                  ISO 22000:2018 Auditor Transition
+                  ISO 22000:2018<br className="min-[450px]:hidden" /> Auditor Transition
                 </MenuItem>
               </Select>
             </FormControl>
@@ -170,7 +171,7 @@ const TrainingList = () => {
           {/* Exemplar Global Training Section */}
           <div className="flex-1 flex flex-col m-4 p-4 gap-4 shadow-lg rounded-2xl hover:shadow-xl hover:border-none duration-300">
             <p className="font-bold">Exemplar Global Training</p>
-            <FormControl sx={{ m: 0, minWidth: 300 }}>
+            <FormControl sx={{ m: 0, minWidth: 200 }}>
               <InputLabel htmlFor="exemplar-select">Training in</InputLabel>
               <Select
                 id="exemplar-select"
@@ -195,59 +196,59 @@ const TrainingList = () => {
                   <strong>Quality</strong>
                 </MenuItem>
                 <MenuItem value="QM/ISO 9001:2015 Lead Auditor">
-                  QM/ISO 9001:2015 Lead Auditor
+                  QM/ISO 9001:2015<br className="min-[450px]:hidden" /><br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="QM/ISO 9001:2015 Internal Auditor">
-                  QM/ISO 9001:2015 Internal Auditor
+                  QM/ISO 9001:2015<br className="min-[450px]:hidden" /><br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="QM/ISO 9001:2015 Transition Training">
-                  QM/ISO 9001:2015 Transition Training
+                  QM/ISO 9001:2015<br className="min-[450px]:hidden" /><br className="min-[450px]:hidden" /> Transition Training
                 </MenuItem>
                 <MenuItem disabled>
                   <strong>Environmental</strong>
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Lead Auditor">
-                  ISO 14001:2015 Lead Auditor
+                  ISO 14001:2015<br className="min-[450px]:hidden" /><br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Internal Auditor">
-                  ISO 14001:2015 Internal Auditor
+                  ISO 14001:2015<br className="min-[450px]:hidden" /><br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 14001:2015 Auditor Transition">
-                  ISO 14001:2015 Auditor Transition
+                  ISO 14001:2015<br className="min-[450px]:hidden" /><br className="min-[450px]:hidden" /> Auditor Transition
                 </MenuItem>
 
                 <MenuItem disabled>
-                  <strong>Occupational Health and Safety</strong>
+                  <strong>Occupational Health<br className="min-[400px]:hidden" /> and Safety</strong>
                 </MenuItem>
                 <MenuItem value="ISO 45001:2018 Lead Auditor">
-                  ISO 45001:2018 Lead Auditor
+                  ISO 45001:2018<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 45001:2018 Internal Auditor">
-                  ISO 45001:2018 Internal Auditor
+                  ISO 45001:2018<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 45001:2018 Auditor Migration">
-                  ISO 45001:2018 Auditor Migration
+                  ISO 45001:2018<br className="min-[450px]:hidden" /> Auditor Migration
                 </MenuItem>
                 <MenuItem disabled>
                   <strong>Information Security</strong>
                 </MenuItem>
                 <MenuItem value="ISO 27001:2022 Lead Auditor">
-                  ISO 27001:2022 Lead Auditor
+                  ISO 27001:2022<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 27001:2022 Internal Auditor">
-                  ISO 27001:2022 Internal Auditor
+                  ISO 27001:2022<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem disabled>
                   <strong>Food Safety</strong>
                 </MenuItem>
                 <MenuItem value="ISO 22000:2005 Lead Auditor">
-                  ISO 22000:2005 Lead Auditor
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
                 <MenuItem value="ISO 22000:2005 Internal Auditor">
-                  ISO 22000:2005 Internal Auditor
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 22000:2018 Auditor Transition">
-                  ISO 22000:2018 Auditor Transition
+                  ISO 22000:2018<br className="min-[450px]:hidden" /> Auditor Transition
                 </MenuItem>
               </Select>
             </FormControl>

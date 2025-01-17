@@ -190,7 +190,7 @@ export const cqiircaTrainingData = [
     courseStyleList3: "Case Studies",
     courseStyleList4: "Discussions",
 
-    pdf:"https://drive.google.com/file/d/1xFc2cFN12f4CrQCU3mZdyB5zDwx-Ota1/view?usp=drive_link",
+    pdf:"https://drive.google.com/file/d/13ZA4OtSHbuTT388cWROtyk99fqizvmxy/view?usp=drive_link",
     FileName:"QUALITY_MANAGEMENT_SYSTEMS_Auditor_/_Internal_Auditor.pdf",
   },
   {
@@ -298,7 +298,7 @@ export const cqiircaTrainingData = [
     examTitle: "Exam",
     examPara1:
       " There is a 30 minutes open book exam at the end of each day (pass mark 70%).",
-      pdf:"https://drive.google.com/file/d/1kKslqPhgkmU1HmWp-hU9le5eqNufZC3x/view?usp=drive_link",
+      pdf:"https://drive.google.com/file/d/1Dtsiwx9EgXhVVas1rcmXDpaNPe6Y7E_R/view?usp=drive_link",
       FileName:"QMS_Transition_Training.pdf",
   },
 
@@ -310,7 +310,7 @@ export const cqiircaTrainingData = [
 
   //environment///////////////////////////////////////////////////////////
   {
-    pdf:"https://drive.google.com/file/d/19ktpFWCtq2VeWMkgoQ8vFiSc3L4pXAEd/view?usp=drive_link",
+    pdf:"https://drive.google.com/file/d/1DVdw_ySMxjD1XovTriC7DcRJJqC-Wls6/view?usp=drive_link",
       FileName:"EMS_Lead_Auditor_Training.pdf",
 
     mainHeading:"CQI & IRCA Training Details",
@@ -438,7 +438,7 @@ export const cqiircaTrainingData = [
       " There is an Open Book Examination Conducted by CQI IRCA (pass mark 50%)",
   },
   {
-    pdf:"https://drive.google.com/file/d/1Ole9Jg7aDD7Mz-qGu3BlEAyDU4EUKXK3/view?usp=drive_link",
+    pdf:"https://drive.google.com/file/d/1mcFP7BY7UYCtYF38LQnGBscrWtvPO8JA/view?usp=drive_link",
     FileName:"EMS_Internal_Auditor_Training.pdf",
 
     mainHeading:"CQI & IRCA Training Details",
@@ -489,7 +489,7 @@ export const cqiircaTrainingData = [
     examPara1: "There will be 1 hour exam at the last day of the training",
   },
   {
-    pdf:"https://drive.google.com/file/d/1Z2v8IBZsD13Lpky-vg4wWwG4CB_B_G5D/view?usp=drive_link",
+    pdf:"https://drive.google.com/file/d/1f7dWvO2JlEYTIf64a8QiFgy9J55Zb8sN/view?usp=drive_link",
     FileName:"EMS_Auditor_Transition_Training.pdf",
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 14001:2015 Auditor Transition",
@@ -879,64 +879,7 @@ export const cqiircaTrainingData = [
     examPara1:
       " There is a 2 hours close book exam on the final day (pass mark 70%)",
   },
-  {
-    selection: "QM/ISO 9001:2015 Internal Auditor",
-    mainTitle:
-      "ISO 9001:2015 Internal Auditor (Quality Management Systems) Training Course (CQI & IRCA Ref. No: 1661)",
-
-    //why cqi & irca
-    whyTitle: "Who will benefit?",
-
-    whyList1: "Management Representatives.",
-    whyList2:
-      "ISO consultants, Personnel from Institutions / Companies wishing to monitor Quality Management System Performance and identify improvement opportunities through the use of Internal Audits.",
-    whyList3: "Students / Job Seekers in Quality Management Systems.",
-
-    //who will benifit?
-
-    //Learning Objectives
-    learningObjTitle: "Learning Objectives",
-    learningObjPara1: "Why perform internal audits?",
-    learningObjPara2:
-      "What are your responsibilities as an Internal Auditor and how can you contribute to improvement?",
-    learningObjPara3:
-      "Why and how do you plan internal audits in relation to the identified risk and to your company’s business goals?",
-    learningObjPara4:
-      "How do you conduct an effective audit in a constructive and positive environment?",
-    learningObjPara5:
-      "How do you report and communicate audit results in a manner which creates impact and inspires change?",
-    learningObjPara6:
-      "What is the purpose and content of ISO 9001 and ISO 19011?",
-
-    courceContentTitle: "Cource Content",
-    courceContent1: "Interpretation of ISO 9001:2015 Standard",
-    courceContent2: "Principles of Quality Management Systems",
-    courceContent3: "Elements of ISO 9001:2015",
-    courceContent4: "Process Approach &Process Modeling",
-    courceContent5: "Principles of Auditing Audit",
-    courceContent6: "Planning-Pre Audit Activities",
-    courceContent7: "Interpretation of ISO 19011 Auditing Standard",
-    courceContent8: "Auditor Competence",
-    courceContent9: "Audit Management",
-    courceContent10: "Post Audit activities",
-    courceContent11: "Non Conformities-Writing Classification",
-    courceContent12: "Audit Reporting",
-
-    //skill
-    skillTitle: "Certificate of Achievement ",
-    skillList1:
-      "TVE will issue a certificate of achievement to successful Participants based on performance during the course.",
-
-    //Training Methodology
-    courseStyleTitle: "Training Methodology",
-    courseStyleList1: "Lectures",
-    courseStyleList2: "Group Work",
-    courseStyleList3: "Case Studies",
-    courseStyleList4: "Discussions",
-
-    pdf:"https://drive.google.com/file/d/1xFc2cFN12f4CrQCU3mZdyB5zDwx-Ota1/view?usp=drive_link",
-    FileName:"QUALITY_MANAGEMENT_SYSTEMS_Auditor_/_Internal_Auditor.pdf",
-  },
+  
   {
     pdf:"https://drive.google.com/file/d/173HMNVhfzx2dfhXY8P59uBLDPnDYCBD0/view?usp=drive_link",
     mainHeading:"CQI & IRCA Training Details",
