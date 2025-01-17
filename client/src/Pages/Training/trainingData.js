@@ -131,7 +131,7 @@ export const cqiircaTrainingData = [
 
     //Course Period
   
-      pdf:"https://drive.google.com/file/d/1frMk8Lxi5eJo_U2tpQ6OCaGUzpy5iydO/view?usp=drive_link",
+      pdf:"https://drive.google.com/file/d/1jLaxfNxrISzRijS5y7qAX7mBEEDuXFQF/view?usp=drive_link",
       FileName:"QUALITY_MANAGEMENT_SYSTEMS_Auditor_/_Lead_Auditor.pdf",
   },
   {
