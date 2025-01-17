@@ -18,7 +18,7 @@ const Carrersec = () => {
           
         </div>
 
-        <div className='flex-1 flex justify-center flex-col gap-3 pl-10 border-l border-x-blue-500
+        <div className='flex-1 flex justify-center flex-col gap-3 pl-10 border-l
                         max-[850px]:border-none
                         max-[850px]:pl-0'>
             <p className='underline underline-offset-4'>Carrer</p>

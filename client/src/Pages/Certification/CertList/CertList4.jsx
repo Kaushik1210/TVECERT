@@ -26,11 +26,11 @@ const CertList4 = () => {
       <div className="my-10 flex">
         <div className="flex-1 flex justify-center flex-col gap-3 p-10 py-5 max-md:p-0">
           <p className=" capitalize text-35 font-semibold text-ldarkblue ">
-            Appeals
+          Granting, Maintaining and Suspension
           </p>
           <img
             className=" rounded-xl hidden shadow-xl max-md:block"
-            src={image.c2}
+            src={image.c4}
             alt=""
           />
           <p className=" text-justify flex flex-col gap-2 text-darkblue">
