@@ -35,24 +35,24 @@ const CertHeroSec = () => {
             >
               TVE Certification Services is a well-known certification
               organization that certifies companies in a number of ISO
-              standards. <br /> Our worldwide presence spans over 20
+              standards. Our worldwide presence spans over 20
               nations and is growing.
             </p>
-            <div
+            {/* <div
               className="mt-4 flex gap-6 
                    max-md:justify-center                   
                    max-md:items-center
                    max-sm:flex-col"
             >
-              {/* <a
+              <a
                 href="#certificateinfo"
                 onClick={(event) =>
                   handleSmoothScroll(event, "certificateinfo")
                 }
               >
                 <Button text="Certification Info" />
-              </a> */}
-            </div>
+              </a>
+            </div> */}
           </div>
         </div>
       </div>
