@@ -5,39 +5,7 @@ import { Link } from "react-router-dom";
 
 import image from "../../Assets/dummy";
 
-const mainmenu = [
-  {
-    id: 1,
-    menuname: "Home",
-    href: "home",
-  },
-  {
-    id: 1,
-    menuname: "Home",
-    href: "home",
-  },
-  {
-    id: 1,
-    menuname: "Home",
-    href: "home",
-  },
 
-  {
-    id: 2,
-    menuname: "About us",
-    href: "aboutus",
-  },
-  {
-    id: 3,
-    menuname: "Career",
-    href: "career",
-  },
-  {
-    id: 4,
-    menuname: "Contact us",
-    href: "contactus",
-  },
-];
 
 const HomeNavBar = () => {
   const [homeMenu, setHomeMenu] = useState(false);
@@ -87,22 +55,13 @@ const HomeNavBar = () => {
 
         {/* Desktop Menu */}
         <div className="max-[950px]:hidden flex gap-5">
-          {/* {mainmenu.map((menu) => (
-            <a
-              key={menu.id}
-              className="text-16 text-white cursor-pointer"
-              onClick={(event) => handleSmoothScroll(event, menu.href)}
-            >
-              {menu.menuname}
-            </a>
-          ))} */}
           <a
             className="text-16 text-white cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "home")}
           >
             Home
           </a>
-          <Link className="text-16 text-white" to="/certification">
+          <Link className="text-16 text-white" to="/certification#certificateinfo">
             Certification
           </Link>
           <Link className="text-16 text-white" to="/training">
@@ -150,35 +109,35 @@ const HomeNavBar = () => {
             className="absolute text-darkblue flex flex-col font-semibold right-0 top-10 w-[300px] gap-2 px-8 py-10 rounded-2xl m-5 bg-white"
           >
             <a
-            className="text-16  cursor-pointer"
-            onClick={(event) => handleSmoothScroll(event, "home")}
-          >
-            Home
-          </a>
-          <Link className="text-16 " to="/certification">
-            Certification
-          </Link>
-          <Link className="text-16 " to="/training">
-            Training
-          </Link>
-          <a
-            className="text-16  cursor-pointer"
-            onClick={(event) => handleSmoothScroll(event, "aboutus")}
-          >
-            About us
-          </a>
-          <a
-            className="text-16  cursor-pointer"
-            onClick={(event) => handleSmoothScroll(event, "career")}
-          >
-            Career
-          </a>
-          <a
-            className="text-16  cursor-pointer"
-            onClick={(event) => handleSmoothScroll(event, "contactus")}
-          >
-            Contact us
-          </a>
+              className="text-16  cursor-pointer"
+              onClick={(event) => handleSmoothScroll(event, "home")}
+            >
+              Home
+            </a>
+            <Link className="text-16 " to="/certification">
+              Certification
+            </Link>
+            <Link className="text-16 " to="/training">
+              Training
+            </Link>
+            <a
+              className="text-16  cursor-pointer"
+              onClick={(event) => handleSmoothScroll(event, "aboutus")}
+            >
+              About us
+            </a>
+            <a
+              className="text-16  cursor-pointer"
+              onClick={(event) => handleSmoothScroll(event, "career")}
+            >
+              Career
+            </a>
+            <a
+              className="text-16  cursor-pointer"
+              onClick={(event) => handleSmoothScroll(event, "contactus")}
+            >
+              Contact us
+            </a>
             <div className="w-full border my-2" />
             <p
               onClick={() => {
