@@ -23,7 +23,7 @@ const Herosecmainpage = () => {
             <h1 className=" text-H leading-snug text-white font-semibold">
               {/* Certification <br /> & <br /> Training */}
               {/* TVE GROUPS */}
-              An innovative approach to Certification and Education
+              An Innovative Approach to Certification and Education
             </h1>
             <p
               className=" w-[420px] mt-4 text-white text-P font-light

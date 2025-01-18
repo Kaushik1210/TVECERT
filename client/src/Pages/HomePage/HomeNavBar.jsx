@@ -3,30 +3,34 @@ import { TbMenu2 } from "react-icons/tb";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
+import { IoIosArrowDown } from "react-icons/io";
+
 import image from "../../Assets/dummy";
 
-
-
 const HomeNavBar = () => {
-  const [homeMenu, setHomeMenu] = useState(false);
-  const menuRef = useRef(null); // Ref for the menu
+  const [homeMenu, setHomeMenu] = useState(false); // State for mobile menu toggle
+  const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown toggle
+  const menuRef = useRef(null); 
+  const dropdownRef = useRef(null);
 
-  // Function to handle clicks outside the menu
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setHomeMenu(false); // Close the menu if clicked outside
-      }
-    };
+    
 
-    // Add event listener for clicks outside
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Clean up the event listener on component unmount
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setHomeMenu(false); 
+    }
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(false); 
+    }
+  };
 
   const handleSmoothScroll = (event, href) => {
     event.preventDefault();
@@ -61,7 +65,8 @@ const HomeNavBar = () => {
           >
             Home
           </a>
-          <Link className="text-16 text-white" to="/certification#certificateinfo">
+          
+          <Link className="text-16 text-white" to="/certification">
             Certification
           </Link>
           <Link className="text-16 text-white" to="/training">
@@ -73,6 +78,37 @@ const HomeNavBar = () => {
           >
             About us
           </a>
+          <div className="relative">
+            <button
+            ref={dropdownRef}
+              className="text-16 flex items-center text-white cursor-pointer"
+              onClick={() => setDropdownOpen((prev) => !prev)} // Toggle dropdown on click
+            >
+              Certification Info
+              <IoIosArrowDown />
+            </button>
+            {dropdownOpen && (
+              <div
+                ref={dropdownRef}
+                className="absolute top-full mt-2 bg-white shadow-lg rounded-md py-2 w-[250px] z-10"
+              >
+                <Link
+                  className="block px-4 py-2 text-darkblue hover:bg-gray-100"
+                  to="/certification#certificateinfo"
+                  onClick={() => setDropdownOpen(false)}
+                >
+                  Client's Certificate Info
+                </Link>
+                <Link
+                  className="block px-4 py-2 text-darkblue hover:bg-gray-100"
+                  to="/training#delegateinfo"
+                  onClick={() => setDropdownOpen(false)}
+                >
+                  Delegate Certificate Info
+                </Link>
+              </div>
+            )}
+          </div>
           <a
             className="text-16 text-white cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "career")}
@@ -114,6 +150,7 @@ const HomeNavBar = () => {
             >
               Home
             </a>
+           
             <Link className="text-16 " to="/certification">
               Certification
             </Link>
@@ -126,6 +163,35 @@ const HomeNavBar = () => {
             >
               About us
             </a>
+            <div className="relative">
+              <button
+                className="text-16 flex items-center cursor-pointer w-full text-left"
+                onClick={() => setDropdownOpen((prev) => !prev)} // Toggle dropdown on click
+              >
+                Certification Info<IoIosArrowDown />
+              </button>
+              {dropdownOpen && (
+                <div
+                  ref={dropdownRef}
+                  className="absolute top-full mt-2 bg-white shadow-lg rounded-md py-2 w-full z-10"
+                >
+                  <Link
+                    className="block px-4 py-2 text-darkblue hover:bg-gray-100"
+                    to="/certification#clientsCertificateInfo"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Client's Certificate Info
+                  </Link>
+                  <Link
+                    className="block px-4 py-2 text-darkblue hover:bg-gray-100"
+                    to="/training#delegateinfo"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Delegate Certificate Info
+                  </Link>
+                </div>
+              )}
+            </div>
             <a
               className="text-16  cursor-pointer"
               onClick={(event) => handleSmoothScroll(event, "career")}

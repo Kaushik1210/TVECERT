@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { BiSearchAlt } from "react-icons/bi";
 import { URL } from '../../constant';
 
+import { useLocation } from "react-router-dom";
+
 const DelegateInfo = () => {
   const [searchCert, setSearchCert] = useState('');
   const [result, setResult] = useState(null);
@@ -9,7 +11,8 @@ const DelegateInfo = () => {
   const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false); // New state for the search loader
 
-  // Fetch the delegate data from the API
+    const location = useLocation();
+  
   useEffect(() => {
     const fetchDelegateData = async () => {
       try {
@@ -25,6 +28,16 @@ const DelegateInfo = () => {
 
     fetchDelegateData();
   }, []);
+
+  useEffect(() => {
+      if (location.hash) {
+        const id = location.hash.substring(1); // Remove the '#' from the hash
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, [location]);
 
   const handleSearch = () => {
     setSearching(true); // Start the search loader
