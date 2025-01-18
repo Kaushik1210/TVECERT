@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { BiSearchAlt } from "react-icons/bi";
 import { URL } from '../../constant';
 
+import { useLocation } from "react-router-dom";
+
 const CertInfoSec = () => {
   const [searchCert, setSearchCert] = useState('');
   const [result, setResult] = useState(null);
   const [certData, setCertData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false); // New state for loader during search
+
+  const location = useLocation();
 
   // Fetch the certification data from the API
   useEffect(() => {
@@ -25,6 +29,17 @@ const CertInfoSec = () => {
 
     fetchCertData();
   }, []);
+
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    if (location.hash) {
+      const id = location.hash.substring(1); // Remove the '#' from the hash
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   // Search handler
   const handleSearch = () => {
