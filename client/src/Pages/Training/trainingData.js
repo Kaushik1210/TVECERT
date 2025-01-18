@@ -1367,6 +1367,7 @@ export const cqiircaTrainingData = [
 
   //food security management ////////////////////////////////////////////////////
   {
+    pdf:"https://drive.google.com/file/d/1HvLsGtb17Fk1L9I_7xi0ZU1lpzGiyhkR/view?usp=drive_link",
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 22000:2005 Lead Auditor",
     mainTitle:
@@ -1495,6 +1496,7 @@ export const cqiircaTrainingData = [
       " There is a 1.45mins Open Book – Online exam conducted CQI IRCA.",
   },
   {
+    pdf:"https://drive.google.com/file/d/1pzs_AgBr6m7ZkeqskOuRg6sqYY3msKcq/view?usp=drive_link",
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 22000:2005 Internal Auditor",
     mainTitle:
@@ -1599,6 +1601,7 @@ export const cqiircaTrainingData = [
       " There is an Open Book Examination Conducted by CQI IRCA (pass mark 50%)",
   },
   {
+    pdf:"https://drive.google.com/file/d/1OIQFO0tVLHHXe9GCQhZuu_3KH7j4AIwe/view?usp=drive_link",
     mainHeading:"CQI & IRCA Training Details",
     selection: "ISO 22000:2018 Auditor Transition",
     mainTitle:
