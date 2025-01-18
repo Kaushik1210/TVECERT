@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
@@ -58,9 +58,10 @@ const Footer = () => {
       {/* About Text */}
       <div>
         <p className="font-light">
-          We are a lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-          do eiusmod tempor incididunt ut labore exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat...
+          TVE Certification Services is a well renowned Certification Body to
+          provide the Certification Services. <br /> TVE International Academy
+          is the globally recognised Training Body in delivering various
+          professional Trainings.
         </p>
       </div>
 
@@ -101,13 +102,19 @@ const Footer = () => {
       <div className="flex max-[950px]:flex-col max-[950px]:gap-12">
         <div className="flex-1 flex max-[700px]:flex-col max-[700px]:gap-12">
           <div className="flex-1 gap-3 flex flex-col">
-            <Link href="#home"  className="underline underline-offset-4 text-white hover:text-gray-300">
+            <Link
+              href="#home"
+              className="underline underline-offset-4 text-white hover:text-gray-300"
+            >
               Home
             </Link>
           </div>
 
           <div className="flex-1 gap-3 flex flex-col">
-            <Link to="/training"  className="underline underline-offset-4 text-white hover:text-gray-300">
+            <Link
+              to="/training"
+              className="underline underline-offset-4 text-white hover:text-gray-300"
+            >
               Training
             </Link>
           </div>
@@ -115,15 +122,24 @@ const Footer = () => {
 
         <div className="flex-1 flex max-[700px]:flex-col max-[700px]:gap-12">
           <div className="flex-1 gap-3 flex flex-col">
-            <Link to="/certification"  className="underline underline-offset-4 text-white hover:text-gray-300">
+            <Link
+              to="/certification"
+              className="underline underline-offset-4 text-white hover:text-gray-300"
+            >
               Certification Info
             </Link>
           </div>
 
           <div className="flex-1 gap-3 flex flex-col">
-            <a href="" className="underline underline-offset-4 text-white hover:text-gray-300">
+            {/* <a href="" className="underline underline-offset-4 text-white hover:text-gray-300">
               Online Payment
-            </a>
+            </a> */}
+            <Link
+              to="/training"
+              className="underline underline-offset-4 text-white hover:text-gray-300"
+            >
+              Delegate Certificate Info
+            </Link>
           </div>
         </div>
       </div>

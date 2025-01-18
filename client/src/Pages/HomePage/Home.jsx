@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 5000); // 5 seconds
+    }, 2000); // 2 seconds
 
     return () => clearTimeout(timer); 
   }, []);

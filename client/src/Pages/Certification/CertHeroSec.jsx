@@ -23,18 +23,20 @@ const CertHeroSec = () => {
               max-md:text-center               
               max-md:m-14"
           >
-            <h1 className="text-H leading-snug text-white font-semibold capitalize">
-              get certified <br className="max-md:hidden" />
-              with us
+            <h1 className="text-H leading-snug text-white font-semibold ">
+              {/* get certified <br className="max-md:hidden" />
+              with us */}
+              Have a Business breakthrough <br className="max-md:hidden" /> by
+              getting Certified with TVE
             </h1>
             <p
-              className="w-500 mt-4 text-white text-P font-light
+              className=" mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              We know that finding a meaningful and rewarding career can be a
-              long journey. Our goal is to make that process easy for you and to
-              create a work environment that's enriching—one that you'll look
-              forward to every day.
+              TVE Certification Services is a well-known certification
+              organization that certifies companies in a number of ISO
+              standards. <br /> Our worldwide presence spans over 20
+              nations and is growing.
             </p>
             <div
               className="mt-4 flex gap-6 
@@ -42,12 +44,14 @@ const CertHeroSec = () => {
                    max-md:items-center
                    max-sm:flex-col"
             >
-              <a
+              {/* <a
                 href="#certificateinfo"
-                onClick={(event) => handleSmoothScroll(event, "certificateinfo")}
+                onClick={(event) =>
+                  handleSmoothScroll(event, "certificateinfo")
+                }
               >
                 <Button text="Certification Info" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -56,8 +60,8 @@ const CertHeroSec = () => {
         <CountBanner
           count1="3,500"
           category1="Certified Companies"
-          count2="15"
-          category2="Countries Global Presence"
+          count2="20"
+          category2="Countries"
           count3="40"
           category3="Empaneled Auditors"
         />

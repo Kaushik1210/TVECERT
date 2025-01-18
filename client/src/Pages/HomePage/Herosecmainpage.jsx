@@ -21,20 +21,27 @@ const Herosecmainpage = () => {
               max-md:m-14 "
           >
             <h1 className=" text-H leading-snug text-white font-semibold">
-              A New Way To Learn <br className=" max-md:hidden" />& Get
-              Certified
+              {/* Certification <br /> & <br /> Training */}
+              {/* TVE GROUPS */}
+              An innovative approach to Certification and Education
             </h1>
             <p
-              className="w-500 mt-4 text-white text-P font-light
+              className=" w-[420px] mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              fkdjsnfsdnf skdfjksdf sdfjsdf dsjfsd fjdsf sdjfsdkf jsdff dslf
-              flsdfjkdsg dsgjsd fsdjfsd fjsdflj sdfjnsdlkfselirfes gfesjghsbg
-              sdfnskdjgksnfjshef eljflsegjbsje bglssgs kgksjekgnk snrgknsrng
-              nsgnsnjgh gjsmngsj bgfmsng fnjsbg jbfjb ,vskdjfksdngvsd.
+              TVE Certification Services is a well renowned Certification Body 
+              to provide the Certification Services.
+            </p>
+            <p
+              className=" w-[450px] mt-3 text-white text-P font-light
+                   max-md:w-full"
+            >
+               TVE International Academy
+              is the globally recognised Training Body in delivering various
+              professional Trainings.
             </p>
             <div
-              className="mt-4 flex gap-6 
+              className="mt-5 flex gap-6 
                    max-md:justify-center                   
                    max-md:items-center
                    max-sm:flex-col"
@@ -58,8 +65,8 @@ const Herosecmainpage = () => {
           category1="Certified Companies"
           count2="15000"
           category2="Students"
-          count3="15"
-          category3="Countries Global Presence"
+          count3="20"
+          category3="Countries"
         />
       </div>
     </>

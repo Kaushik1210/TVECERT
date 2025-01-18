@@ -12,6 +12,17 @@ const mainmenu = [
     href: "home",
   },
   {
+    id: 1,
+    menuname: "Home",
+    href: "home",
+  },
+  {
+    id: 1,
+    menuname: "Home",
+    href: "home",
+  },
+
+  {
     id: 2,
     menuname: "About us",
     href: "aboutus",
@@ -76,7 +87,7 @@ const HomeNavBar = () => {
 
         {/* Desktop Menu */}
         <div className="max-[950px]:hidden flex gap-5">
-          {mainmenu.map((menu) => (
+          {/* {mainmenu.map((menu) => (
             <a
               key={menu.id}
               className="text-16 text-white cursor-pointer"
@@ -84,13 +95,37 @@ const HomeNavBar = () => {
             >
               {menu.menuname}
             </a>
-          ))}
+          ))} */}
+          <a
+            className="text-16 text-white cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "home")}
+          >
+            Home
+          </a>
           <Link className="text-16 text-white" to="/certification">
             Certification
           </Link>
           <Link className="text-16 text-white" to="/training">
             Training
           </Link>
+          <a
+            className="text-16 text-white cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "aboutus")}
+          >
+            About us
+          </a>
+          <a
+            className="text-16 text-white cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "career")}
+          >
+            Career
+          </a>
+          <a
+            className="text-16 text-white cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "contactus")}
+          >
+            Contact us
+          </a>
         </div>
 
         {/* Login Button for Desktop */}
@@ -114,21 +149,36 @@ const HomeNavBar = () => {
             ref={menuRef}
             className="absolute text-darkblue flex flex-col font-semibold right-0 top-10 w-[300px] gap-2 px-8 py-10 rounded-2xl m-5 bg-white"
           >
-            {mainmenu.map((menu) => (
-              <a
-                key={menu.id}
-                className="text-16 cursor-pointer"
-                onClick={(event) => handleSmoothScroll(event, menu.href)}
-              >
-                {menu.menuname}
-              </a>
-            ))}
-            <Link className="text-16" to="/certification">
-              Certification
-            </Link>
-            <Link className="text-16" to="/training">
-              Training
-            </Link>
+            <a
+            className="text-16  cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "home")}
+          >
+            Home
+          </a>
+          <Link className="text-16 " to="/certification">
+            Certification
+          </Link>
+          <Link className="text-16 " to="/training">
+            Training
+          </Link>
+          <a
+            className="text-16  cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "aboutus")}
+          >
+            About us
+          </a>
+          <a
+            className="text-16  cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "career")}
+          >
+            Career
+          </a>
+          <a
+            className="text-16  cursor-pointer"
+            onClick={(event) => handleSmoothScroll(event, "contactus")}
+          >
+            Contact us
+          </a>
             <div className="w-full border my-2" />
             <p
               onClick={() => {

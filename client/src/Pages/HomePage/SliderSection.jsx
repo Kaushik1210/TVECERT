@@ -10,8 +10,11 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
+import { FaMessage } from "react-icons/fa6";
+
 // Import required modules
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const SliderSection = () => {
   return (
@@ -22,7 +25,7 @@ const SliderSection = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        autoplay={{ delay: 3000 }} // Autoplay delay in milliseconds
+        // autoplay={{ delay: 3000 }} // Autoplay delay in milliseconds
         initialSlide={2}
         loop={true}
         coverflowEffect={{
@@ -39,8 +42,12 @@ const SliderSection = () => {
         className="mySwiper"
       >
         <SwiperSlide className="slide">
-          <img src={image.slider1} alt="Exemplar Global" />
+          <img src={image.slider1} className=" relative" alt="Exemplar Global" />
           <p className="slide-title">Exemplar Global</p>
+          <Link to="/training"  className="underline underline-offset-4 text-white hover:text-gray-300">
+                     
+          <FaMessage className=" absolute text-white bottom-[60px] right-[60px] " />
+                      </Link>
         </SwiperSlide>
         <SwiperSlide className="slide">
           <img src={image.slider2} alt="Quality Management Systems" />

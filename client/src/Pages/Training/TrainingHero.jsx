@@ -24,16 +24,16 @@ const TrainingHero = () => {
               max-md:m-14"
           >
             <h1 className="text-H leading-snug text-white font-semibold capitalize">
-              Train with us
+           Learn & Get Certified with TVE
             </h1>
             <p
               className="w-500 mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              We know that finding a meaningful and rewarding career can be a
-              long journey. Our goal is to make that process easy for you and to
-              create a work environment that's enriching—one that you'll look
-              forward to every day.
+              A New way to Career Growth with TVE International Academy, we are one of the most renowned training
+              organization in the world for providing CQI and IRCA approved
+              trainings, as well as Exemplar Global trainings and EOSH Health
+              and Safety trainings.
             </p>
             <div
               className="mt-4 flex gap-6 
@@ -41,12 +41,12 @@ const TrainingHero = () => {
                    max-md:items-center
                    max-sm:flex-col"
             >
-              <a
+              {/* <a
                 href="#delegateinfo"
                 onClick={(event) => handleSmoothScroll(event, "delegateinfo")}
               >
-                <Button text="Delegates Info" />
-              </a>
+                <Button text="Delegate Certificate Info" />
+              </a> */}
             </div>
           </div>
         </div>

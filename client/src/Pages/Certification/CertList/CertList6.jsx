@@ -25,12 +25,13 @@ const CertList6 = () => {
             millions of organizations grow better, you've come to the right
             place.
           </p>
-          <Button text="Read More" />
-         
+          <a className="bg-gradient-to-r from-buttonfrom to to-buttonto w-fit h-45 flex items-center rounded-full" href="https://drive.google.com/file/d/1OkKpYaeSNv3szqkoNI6uXOqiniLE7s6l/view?usp=drive_link">
+            <span className="text-white m-10">View Process</span>
+          </a>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CertList6
+export default CertList6;
