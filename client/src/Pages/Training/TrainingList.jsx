@@ -18,6 +18,7 @@ import {
   cqiircaTrainingData,
   examplarGlobalTrainingData,
   pecbData,
+  eoshPdf,
   healthSafetyData,
   fireData,
   environmentData,
@@ -152,15 +153,28 @@ const TrainingList = () => {
                 <MenuItem disabled>
                   <strong>Food Safety</strong>
                 </MenuItem>
-                <MenuItem value="ISO 22000:2005 Lead Auditor">
+                <MenuItem value="ISO 22000:2018 Lead Auditor">
                   ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
-                <MenuItem value="ISO 22000:2005 Internal Auditor">
+                <MenuItem value="ISO 22000:2018 Internal Auditor">
                   ISO 22000:2005<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
                 <MenuItem value="ISO 22000:2018 Auditor Transition">
                   ISO 22000:2018<br className="min-[450px]:hidden" /> Auditor Transition
                 </MenuItem>
+                <MenuItem disabled>
+                  <strong>Food Safety <br className="min-[400px]:hidden" />System Certification</strong>
+                </MenuItem>
+                <MenuItem value="ISO 22000 Lead Auditor">
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                </MenuItem>
+                <MenuItem disabled>
+                  <strong>Energy </strong>
+                </MenuItem>
+                <MenuItem value="ISO 50001:2018 Lead Auditor">
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                </MenuItem>
+                
               </Select>
             </FormControl>
             <div onClick={handleCqiircaSubmit}>
@@ -226,7 +240,7 @@ const TrainingList = () => {
                 <MenuItem value="ISO 45001:2018 Internal Auditor">
                   ISO 45001:2018<br className="min-[450px]:hidden" /> Internal Auditor
                 </MenuItem>
-                <MenuItem value="ISO 45001:2018 Auditor Migration">
+                <MenuItem value="ISO 45001:2018 Auditor Transition">
                   ISO 45001:2018<br className="min-[450px]:hidden" /> Auditor Migration
                 </MenuItem>
                 <MenuItem disabled>
@@ -249,6 +263,18 @@ const TrainingList = () => {
                 </MenuItem>
                 <MenuItem value="ISO 22000:2018 Auditor Transition">
                   ISO 22000:2018<br className="min-[450px]:hidden" /> Auditor Transition
+                </MenuItem>
+                <MenuItem disabled>
+                  <strong>Food Safety <br className="min-[400px]:hidden" />System Certification</strong>
+                </MenuItem>
+                <MenuItem value="ISO 22000 Lead Auditor">
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                </MenuItem>
+                <MenuItem disabled>
+                  <strong>Energy </strong>
+                </MenuItem>
+                <MenuItem value="ISO 50001:2018 Lead Auditor">
+                  ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
                 </MenuItem>
               </Select>
             </FormControl>
@@ -293,6 +319,12 @@ const TrainingList = () => {
                   <p className="text-center font-bold text-ldarkblue">
                     HEALTH & SAFETY
                   </p>
+                  <a
+                  href={eoshPdf.healthSafety}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
@@ -318,13 +350,20 @@ const TrainingList = () => {
                     </tbody>
                   </table>
                 </div>
+
                 <div
-                  className="overflow-auto mx-4"
+                  className="overflow-auto mx-4 mt-4"
                   style={{ maxHeight: "100%" }}
                 >
                   <p className="text-center font-bold text-ldarkblue">
                     FIRE SAFETY
                   </p>
+                  <a
+                  href={eoshPdf.fire}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
@@ -350,7 +389,7 @@ const TrainingList = () => {
                     </tbody>
                   </table>
                 </div>
-                <div
+                {/* <div
                   className="overflow-auto mx-4"
                   style={{ maxHeight: "100%" }}
                 >
@@ -378,14 +417,21 @@ const TrainingList = () => {
                       ))}
                     </tbody>
                   </table>
-                </div>
+                </div> */}
+
                 <div
-                  className="overflow-auto mx-4"
+                  className="overflow-auto mx-4 mt-4"
                   style={{ maxHeight: "100%" }}
                 >
                   <p className="text-center font-bold text-ldarkblue">
                     ENVIRONMENT
                   </p>
+                  <a
+                  href={eoshPdf.environment}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
@@ -411,13 +457,20 @@ const TrainingList = () => {
                     </tbody>
                   </table>
                 </div>
+
                 <div
-                  className="overflow-auto mx-4"
+                  className="overflow-auto mx-4 mt-4"
                   style={{ maxHeight: "100%" }}
                 >
                   <p className="text-center font-bold text-ldarkblue">
                     ENVIRONMENT SUSTAINABILITY
                   </p>
+                  <a
+                  href={eoshPdf.environmentSustainability}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
@@ -444,12 +497,18 @@ const TrainingList = () => {
                   </table>
                 </div>
                 <div
-                  className="overflow-auto mx-4"
+                  className="overflow-auto mx-4 mt-4"
                   style={{ maxHeight: "100%" }}
                 >
                   <p className="text-center font-bold text-ldarkblue">
                     LIFTING & RIGGING
                   </p>
+                  <a
+                  href={eoshPdf.liftingRigging}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
@@ -476,12 +535,18 @@ const TrainingList = () => {
                   </table>
                 </div>
                 <div
-                  className="overflow-auto mx-4"
+                  className="overflow-auto mx-4 mt-4"
                   style={{ maxHeight: "100%" }}
                 >
                   <p className="text-center font-bold text-ldarkblue">
                     SCAFFOLDING
                   </p>
+                  <a
+                  href={eoshPdf.scaffolfing}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
@@ -508,12 +573,18 @@ const TrainingList = () => {
                   </table>
                 </div>
                 <div
-                  className="overflow-auto mx-4"
+                  className="overflow-auto mx-4 mt-4"
                   style={{ maxHeight: "100%" }}
                 >
                   <p className="text-center font-bold text-ldarkblue">
                     FIRST AID
                   </p>
+                  <a
+                  href={eoshPdf.firstAid}
+                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                >
+                  Download PDF
+                </a>
                   <table className="min-w-full border-collapse border">
                     <thead>
                       <tr className="bg-gray-200">
