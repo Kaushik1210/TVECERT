@@ -62,13 +62,14 @@ const Result = ({ open, onClose, result }) => {
           )}
         </div>
       </div>
-      <DialogActions>
-        <button
+      <div className="  p-5 border-t">
+              <a
           className="bg-blue-700 px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600"
+          href="https://forms.gle/A6YTaCtdhSrbvbtx6"
         >
           Apply
-        </button>
-      </DialogActions>
+        </a>
+              </div>
     </Dialog>
   );
 };
