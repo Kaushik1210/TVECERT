@@ -58,7 +58,7 @@ const HomeNavBar = () => {
         />
 
         {/* Desktop Menu */}
-        <div className="max-[950px]:hidden flex gap-5">
+        <div className="max-[1024px]:hidden flex gap-5">
           <a
             className="text-16 text-white cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "home")}
@@ -124,7 +124,7 @@ const HomeNavBar = () => {
         </div>
 
         {/* Login Button for Desktop */}
-        <div className="text-white flex gap-2 items-center max-[950px]:hidden">
+        <div className="text-white flex gap-2 items-center max-[1024px]:hidden">
           <p onClick={openLoginInNewTab} className="cursor-pointer">
             Login as Employee
           </p>
@@ -132,7 +132,7 @@ const HomeNavBar = () => {
 
         {/* Menu Toggle Button */}
         <div
-          className="relative text-white text-2xl hidden max-[950px]:block cursor-pointer"
+          className="relative text-white text-2xl hidden max-[1024px]:block cursor-pointer"
           onClick={() => setHomeMenu(!homeMenu)}
         >
           {homeMenu ? <IoClose /> : <TbMenu2 />}

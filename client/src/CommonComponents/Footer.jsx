@@ -141,8 +141,20 @@ const Footer = () => {
               Delegate Certificate Info
             </Link>
           </div>
+
         </div>
       </div>
+          <div className="flex  ">
+            {/* <a href="" className="underline underline-offset-4 text-white hover:text-gray-300">
+              Online Payment
+            </a> */}
+            <a
+             
+              className="underline underline-offset-4 text-white hover:text-gray-300"
+            >
+              Online Payment
+            </a>
+          </div>
     </footer>
   );
 };

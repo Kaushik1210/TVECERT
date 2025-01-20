@@ -57,6 +57,9 @@ const TrainingNav = () => {
           <Link className="text-16 text-white" to="/home">
             Home
           </Link>
+          <Link className="text-16 text-white" to="/certification">
+                      Certification
+                    </Link>
           <div className="relative">
             <button
               className="text-16 flex items-center text-white cursor-pointer"
@@ -77,13 +80,12 @@ const TrainingNav = () => {
                 >
                   Client's Certificate Info
                 </Link>
+                
               </div>
             )}
           </div>
 
-          <Link className="text-16 text-white" to="/certification">
-                      Certification
-                    </Link>
+         
 
           <Link className="text-16 text-white" to="/career">
             Career
@@ -94,6 +96,9 @@ const TrainingNav = () => {
           >
             Contact us
           </a>
+          <a href="" className="text-16 text-white">
+                  Online Payment
+                </a>
         </div>
 
         {/* Menu Toggle Button */}
@@ -113,6 +118,9 @@ const TrainingNav = () => {
             <Link className="text-16 " to="/home">
             Home
           </Link>
+          <Link className="text-16" to="/certification">
+                        Certification
+                      </Link>
             <div className="relative">
               <button
                 className="text-16 flex items-center cursor-pointer w-full text-left"
@@ -137,9 +145,7 @@ const TrainingNav = () => {
               )}
             </div>
 
-            <Link className="text-16" to="/certification">
-                        Certification
-                      </Link>
+            
 
            <Link className="text-16 " to="/career">
                           Career
@@ -150,6 +156,9 @@ const TrainingNav = () => {
             >
               Contact us
             </a>
+            <a href="" className="text-16">
+                  Online Payment
+                </a>
           </div>
         )}
       </div>

@@ -57,6 +57,12 @@ const CareerNav = () => {
           <Link className="text-16 text-white" to="/home">
             Home
           </Link>
+          <Link className="text-16 text-white" to="/certification">
+            Certification
+          </Link>
+          <Link className="text-16 text-white" to="/training">
+            Training
+          </Link>
           <div className="relative">
             <button
               className="text-16 flex items-center text-white cursor-pointer"
@@ -88,12 +94,7 @@ const CareerNav = () => {
             )}
           </div>
 
-          <Link className="text-16 text-white" to="/certification">
-            Certification
-          </Link>
-          <Link className="text-16 text-white" to="/training">
-            Training
-          </Link>
+         
           <a
             className="text-16 text-white cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "contactus")}
@@ -118,6 +119,12 @@ const CareerNav = () => {
           >
             <Link className="text-16 " to="/home">
               Home
+            </Link>
+            <Link className="text-16 " to="/certification">
+              Certification
+            </Link>
+            <Link className="text-16 " to="/training">
+              Training
             </Link>
             <div className="relative">
               <button
@@ -150,12 +157,7 @@ const CareerNav = () => {
               )}
             </div>
 
-            <Link className="text-16 " to="/certification">
-              Certification
-            </Link>
-            <Link className="text-16 " to="/training">
-              Training
-            </Link>
+            
 
             <a
               className="text-16  cursor-pointer"

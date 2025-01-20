@@ -68,11 +68,11 @@ const TrainingList = () => {
   };
 
   return (
-    <div className="mx-28 max-md:mx-5">
+    <div className="mx-28 mt-7 max-md:mx-5">
       <div className="flex justify-center">
         <p className="text-center text-24">
-          Some opportunities <br />
-          for you to explore
+          Explore our <br />
+          Accredited Courses
         </p>
       </div>
       <div className="flex flex-col">
