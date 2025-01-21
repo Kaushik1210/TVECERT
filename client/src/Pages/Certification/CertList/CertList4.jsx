@@ -296,15 +296,14 @@ const CertList4 = () => {
           </div>
 
           {/* Dialog Actions with Apply Button */}
-          <DialogActions>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => alert("Apply button clicked")}
-            >
-              Apply
-            </Button>
-          </DialogActions>
+          <div className="  p-5 border-t">
+              <a
+          className="bg-blue-700 px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600"
+          href=""
+        >
+          Apply
+        </a>
+              </div>
         </Dialog>
         <div className="flex-1 flex items-center max-md:hidden">
           <img className=" rounded-xl shadow-xl " src={image.c4} alt="" />
