@@ -38,6 +38,11 @@ import gms11 from './gms11.png'
 
 import tvecertLogo from './tvecertLogo.png'
 
+import leadAuditor from './leadAuditor.jpg'
+import Conversion from './Conversion.jpg'
+import Internal from './Internal.jpg'
+import Transition from './Transition.jpg'
+
 
 
 
@@ -78,6 +83,10 @@ gms9,
 gms10,
 gms11,
 tvecertLogo,
+leadAuditor,
+Conversion,
+Internal,
+Transition
 
 
 }
