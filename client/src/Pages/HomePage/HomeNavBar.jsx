@@ -47,7 +47,7 @@ const HomeNavBar = () => {
     const targetElement = document.getElementById(href);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
-      setHomeMenu(false);
+      setHomeMenu(false); // Close menu after scrolling
     }
   };
 
@@ -858,9 +858,9 @@ const HomeNavBar = () => {
         />
 
         {/* Desktop Menu */}
-        <div className="max-[1024px]:hidden flex gap-5">
+        <div className="max-[1150px]:hidden flex gap-5">
           <a
-            className="text-16 text-white cursor-pointer"
+            className="text-16 text-white  cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "home")}
           >
             Home
@@ -949,68 +949,152 @@ const HomeNavBar = () => {
         </div>
 
         {/* Login Button for Desktop */}
-        <div className="text-white flex gap-2 items-center max-[1024px]:hidden">
+        <div className="text-white flex gap-2 items-center max-[1150px]:hidden">
           <p onClick={openLoginInNewTab} className="cursor-pointer">
             Login as Employee
           </p>
         </div>
 
         {/* Mobile Menu Button */}
-        <IconButton
+        <div
           sx={{
             color: "white",
             fontSize: "2rem",
             display: { xs: "block", md: "none" },
           }}
+          className="  relative min-[1150px]:hidden text-white text-2xl"
           ref={menuButtonRef}
           onClick={() => setHomeMenu(!homeMenu)}
         >
           {homeMenu ? <IoClose /> : <TbMenu2 />}
-        </IconButton>
+        </div>
 
-        {/* Mobile Dropdown Menu */}
-        <Menu
-          anchorEl={menuButtonRef.current}
-          open={homeMenu}
-          onClose={() => setHomeMenu(false)}
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-        >
-          <MenuItem onClick={(event) => handleSmoothScroll(event, "home")}>
-            Home
+        {homeMenu && (
+  <Menu
+    anchorEl={menuButtonRef.current}
+    open={Boolean(homeMenu)}
+    onClose={() => setHomeMenu(false)}
+    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    transformOrigin={{ vertical: "top", horizontal: "right" }}
+    PaperProps={{
+      sx: {
+        width: "200px",
+        borderRadius: "12px",
+        mt: 1,
+      },
+    }}
+  >
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "home");
+        setHomeMenu(false);
+      }}
+    >
+      Home
+    </MenuItem>
+    <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/certification"
+    >
+      Certification
+    </MenuItem>
+    <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/training"
+    >
+      Training
+    </MenuItem>
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "aboutus");
+        setHomeMenu(false);
+      }}
+    >
+      About Us
+    </MenuItem>
+    <MenuItem>
+            <button
+              className="text-16 items-center flex cursor-pointer"
+              onClick={handleCertificationClick}
+            >
+              Certification Info
+              <IoIosArrowDown />
+            </button>
+            <Menu
+              anchorEl={anchorElCertification}
+              open={Boolean(anchorElCertification)}
+              onClose={handleCertificationClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+            >
+              <MenuItem
+                onClick={handleCertificationClose}
+                component={Link}
+                to="/certification#certificateinfo"
+              >
+                Client's Certificate Info
+              </MenuItem>
+              <MenuItem
+                onClick={handleCertificationClose}
+                component={Link}
+                to="/training#delegateinfo"
+              >
+                Delegate Certificate Info
+              </MenuItem>
+            </Menu>
           </MenuItem>
-          <MenuItem component={Link} to="/certification">
-            Certification
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "career");
+        setHomeMenu(false);
+      }}
+    >
+      Career
+    </MenuItem>
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "contactus");
+        setHomeMenu(false);
+      }}
+    >
+      Contact Us
+    </MenuItem>
+    <MenuItem>
+            <button
+              className="text-16 flex  items-center cursor-pointer"
+              onClick={handlePaymentClick}
+            >
+              Online Payment
+              <IoIosArrowDown />
+            </button>
+            <Menu
+              anchorEl={anchorElPayment}
+              open={Boolean(anchorElPayment)}
+              onClose={handlePaymentClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+            >
+              <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
+                Refund Policy
+              </MenuItem>
+              <MenuItem onClick={() => handlePolicyClick("Privacy Policy")}>
+                Privacy Policy
+              </MenuItem>
+              <MenuItem onClick={() => handlePolicyClick("Terms & Conditions")}>
+                Terms & Conditions
+              </MenuItem>
+            </Menu>
           </MenuItem>
-          <MenuItem component={Link} to="/training">
-            Training
-          </MenuItem>
-          <MenuItem onClick={(event) => handleSmoothScroll(event, "aboutus")}>
-            About us
-          </MenuItem>
-          <MenuItem onClick={handleCertificationClick}>
-            Certification Info
-            <IoIosArrowDown />
-          </MenuItem>
-          <MenuItem onClick={(event) => handleSmoothScroll(event, "career")}>
-            Career
-          </MenuItem>
-          <MenuItem onClick={(event) => handleSmoothScroll(event, "contactus")}>
-            Contact us
-          </MenuItem>
-          <MenuItem onClick={handlePaymentClick}>
-            Online Payment
-            <IoIosArrowDown />
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              setHomeMenu(false);
-              openLoginInNewTab();
-            }}
-          >
-            Login as Employee
-          </MenuItem>
-        </Menu>
+  </Menu>
+)}
+
+       
       </div>
 
       <Dialog
@@ -1064,15 +1148,7 @@ const HomeNavBar = () => {
           </div>
         </div>
 
-        {/* Dialog Actions with Apply Button */}
-        <div className="  p-5 border-t">
-              <a
-          className="bg-blue-700 px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600"
-          href=""
-        >
-          Apply
-        </a>
-              </div>
+       
       </Dialog>
     </div>
   );
