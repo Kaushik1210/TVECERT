@@ -69,7 +69,7 @@ module.exports = {
         
       },
       fontSize:{
-        H: "clamp(40px, 6vw, 60px)",
+        H: "clamp(33px, 6vw, 60px)",
         P: "clamp(8px, 3vw, 14px)",
         SH: "clamp(25px, 5vw, 35px)",
         Sl: "clamp(18px, 3vw, 35px)",

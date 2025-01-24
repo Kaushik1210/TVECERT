@@ -4,6 +4,7 @@ import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import image from "../../Assets/dummy";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   IconButton,
@@ -29,10 +30,10 @@ const TrainingNav = () => {
   const [modalTitle, setModalTitle] = useState("");
   const menuButtonRef = useRef(null);
   const [anchorElTraining, setAnchorElTraining] = useState(null);
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [modalImageSrc, setModalImageSrc] = useState("");
-  const [modalImageTitle, setModalImageTitle] = useState("");
-  const [isZoomed, setIsZoomed] = useState(false);
+    const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+    const [modalImageSrc, setModalImageSrc] = useState("");
+    const [modalImageTitle, setModalImageTitle] = useState("");
+    const [isZoomed, setIsZoomed] = useState(false);
 
   const handleCertificationClick = (event) => {
     setAnchorElCertification(event.currentTarget);
@@ -55,16 +56,11 @@ const TrainingNav = () => {
     const targetElement = document.getElementById(href);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
-      setHomeMenu(false);
+      setHomeMenu(false); // Close menu after scrolling
     }
   };
 
-  const openLoginInNewTab = () => {
-    const newTab = window.open("#/updation", "_blank");
-    if (newTab) {
-      newTab.document.title = "TVE CERT Employee";
-    }
-  };
+ 
 
   const handlePolicyClick = (policy) => {
     let content = "";
@@ -850,6 +846,7 @@ const TrainingNav = () => {
     setOpenModal(true);
   };
 
+ 
   const handleCloseModal = () => {
     setOpenModal(false);
     setModalContent("");
@@ -903,61 +900,62 @@ const TrainingNav = () => {
         />
 
         {/* Desktop Menu */}
-        <div className="max-[1024px]:hidden flex gap-5">
-          <Link className="text-16 text-white" to="/home">
+        <div className="max-[1150px]:hidden flex gap-5">
+        <Link className="text-16 text-white" to="/home">
             Home
           </Link>
-          <div>
-            <button
-              className="text-16 text-white items-center flex cursor-pointer"
-              onClick={handleTrainingClick}
-            >
-              Training Calendar
-              <IoIosArrowDown />
-            </button>
-            <Menu
-              anchorEl={anchorElTraining}
-              open={Boolean(anchorElTraining)}
-              onClose={handleTrainingClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              transformOrigin={{ vertical: "top", horizontal: "left" }}
-            >
-              <MenuItem
-                onClick={() =>
-                  openImageModal("Lead Auditor", image.leadAuditor)
-                }
-              >
-                Lead Auditor
-              </MenuItem>
-              <MenuItem
-                onClick={() =>
-                  openImageModal("Conversion Training", image.Conversion)
-                }
-              >
-                Conversion Training
-              </MenuItem>
-              <MenuItem
-                onClick={() =>
-                  openImageModal("Internal Training", image.Internal)
-                }
-              >
-                Internal Training
-              </MenuItem>
-              <MenuItem
-                onClick={() =>
-                  openImageModal(
-                    "Auditor Training Transition",
-                    image.Transition
-                  )
-                }
-              >
-                Auditor Training Transition
-              </MenuItem>
-            </Menu>
-          </div>
 
-          {/* Image Modal */}
-          <Modal
+           <div>
+                      <button
+                        className="text-16 text-white items-center flex cursor-pointer"
+                        onClick={handleTrainingClick}
+                      >
+                        Training Calendar
+                        <IoIosArrowDown />
+                      </button>
+                      <Menu
+                        anchorEl={anchorElTraining}
+                        open={Boolean(anchorElTraining)}
+                        onClose={handleTrainingClose}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                        transformOrigin={{ vertical: "top", horizontal: "left" }}
+                      >
+                        <MenuItem
+                          onClick={() =>
+                            openImageModal("Lead Auditor", image.leadAuditor)
+                          }
+                        >
+                          Lead Auditor
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            openImageModal("Conversion Training", image.Conversion)
+                          }
+                        >
+                          Conversion Training
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            openImageModal("Internal Training", image.Internal)
+                          }
+                        >
+                          Internal Training
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            openImageModal(
+                              "Auditor Training Transition",
+                              image.Transition
+                            )
+                          }
+                        >
+                          Auditor Training Transition
+                        </MenuItem>
+                      </Menu>
+                    </div>
+
+
+                    <Modal
             open={isImageModalOpen}
             onClose={closeImageModal}
             closeAfterTransition
@@ -1020,10 +1018,12 @@ const TrainingNav = () => {
             </Fade>
           </Modal>
 
+
           <Link className="text-16 text-white" to="/certification">
             Certification
           </Link>
-
+          
+         
           <div>
             <button
               className="text-16 text-white items-center flex cursor-pointer"
@@ -1042,16 +1042,16 @@ const TrainingNav = () => {
               <MenuItem
                 onClick={handleCertificationClose}
                 component={Link}
-                to="/training#delegateinfo"
+                to="/certification#certificateinfo"
               >
-                Delegate Certificate Info
+                Client's Certificate Info
               </MenuItem>
+              
             </Menu>
           </div>
-          <Link className="text-16 text-white" to="/career">
+         <Link className="text-16 text-white" to="/career">
             Career
           </Link>
-
           <a
             className="text-16 text-white cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "contactus")}
@@ -1086,58 +1086,183 @@ const TrainingNav = () => {
           </div>
         </div>
 
-        {/* Login Button for Desktop */}
+       
 
         {/* Mobile Menu Button */}
-        <IconButton
+        <div
           sx={{
             color: "white",
             fontSize: "2rem",
             display: { xs: "block", md: "none" },
           }}
+          className="  relative min-[1150px]:hidden text-white text-2xl"
           ref={menuButtonRef}
           onClick={() => setHomeMenu(!homeMenu)}
         >
           {homeMenu ? <IoClose /> : <TbMenu2 />}
-        </IconButton>
+        </div>
 
-        {/* Mobile Dropdown Menu */}
-        <Menu
-          anchorEl={menuButtonRef.current}
-          open={homeMenu}
-          onClose={() => setHomeMenu(false)}
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-        >
-          <MenuItem component={Link} to="/home">
-            Home
+        {homeMenu && (
+  <Menu
+    anchorEl={menuButtonRef.current}
+    open={Boolean(homeMenu)}
+    onClose={() => setHomeMenu(false)}
+    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    transformOrigin={{ vertical: "top", horizontal: "right" }}
+    PaperProps={{
+      sx: {
+        width: "200px",
+        borderRadius: "12px",
+        mt: 1,
+      },
+    }}
+  >
+    <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/home"
+    >
+      Home
+    </MenuItem>
+     <MenuItem>
+                <button
+                  className="text-16  items-center flex cursor-pointer"
+                  onClick={handleTrainingClick}
+                >
+                  Training Calendar
+                  <IoIosArrowDown />
+                </button>
+                <Menu
+                  anchorEl={anchorElTraining}
+                  open={Boolean(anchorElTraining)}
+                  onClose={handleTrainingClose}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                  transformOrigin={{ vertical: "top", horizontal: "left" }}
+                >
+                  <MenuItem
+                    onClick={() =>
+                      openImageModal("Lead Auditor", image.leadAuditor)
+                    }
+                  >
+                    Lead Auditor
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      openImageModal("Conversion Training", image.Conversion)
+                    }
+                  >
+                    Conversion Training
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      openImageModal("Internal Training", image.Internal)
+                    }
+                  >
+                    Internal Training
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      openImageModal(
+                        "Auditor Training Transition",
+                        image.Transition
+                      )
+                    }
+                  >
+                    Auditor Training Transition
+                  </MenuItem>
+                </Menu>
+              </MenuItem>
+    <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/certification"
+    >
+      Certification
+    </MenuItem>
+    
+   
+    <MenuItem>
+            <button
+              className="text-16 items-center flex cursor-pointer"
+              onClick={handleCertificationClick}
+            >
+              Certification Info
+              <IoIosArrowDown />
+            </button>
+            <Menu
+              anchorEl={anchorElCertification}
+              open={Boolean(anchorElCertification)}
+              onClose={handleCertificationClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+            >
+              <MenuItem
+                onClick={handleCertificationClose}
+                component={Link}
+                to="/certification#certificateinfo"
+              >
+                Client's Certificate Info
+              </MenuItem>
+              <MenuItem
+                onClick={handleCertificationClose}
+                component={Link}
+                to="/training#delegateinfo"
+              >
+                Delegate Certificate Info
+              </MenuItem>
+            </Menu>
           </MenuItem>
+          <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/career"
+    >
+      Career
+    </MenuItem>
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "contactus");
+        setHomeMenu(false);
+      }}
+    >
+      Contact Us
+    </MenuItem>
+    <MenuItem>
+            <button
+              className="text-16 flex  items-center cursor-pointer"
+              onClick={handlePaymentClick}
+            >
+              Online Payment
+              <IoIosArrowDown />
+            </button>
+            <Menu
+              anchorEl={anchorElPayment}
+              open={Boolean(anchorElPayment)}
+              onClose={handlePaymentClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+            >
+              <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
+                Refund Policy
+              </MenuItem>
+              <MenuItem onClick={() => handlePolicyClick("Privacy Policy")}>
+                Privacy Policy
+              </MenuItem>
+              <MenuItem onClick={() => handlePolicyClick("Terms & Conditions")}>
+                Terms & Conditions
+              </MenuItem>
+            </Menu>
+          </MenuItem>
+  </Menu>
+)}
 
-          <MenuItem onClick={handleTrainingClick}>
-            Training Calender
-            <IoIosArrowDown />
-          </MenuItem>
-          <MenuItem component={Link} to="/certification">
-            Certification
-          </MenuItem>
-
-          <MenuItem onClick={handleCertificationClick}>
-            Certification Info
-            <IoIosArrowDown />
-          </MenuItem>
-          <MenuItem component={Link} to="/career">
-            Career
-          </MenuItem>
-          
-          
-          <MenuItem onClick={(event) => handleSmoothScroll(event, "contactus")}>
-            Contact us
-          </MenuItem>
-          <MenuItem onClick={handlePaymentClick}>
-            Online Payment
-            <IoIosArrowDown />
-          </MenuItem>
-        </Menu>
+       
       </div>
 
       <Dialog
@@ -1159,7 +1284,7 @@ const TrainingNav = () => {
                 color: (theme) => theme.palette.grey[500],
               }}
             >
-              <IoClose />
+              <CloseIcon />
             </IconButton>
           </div>
         </DialogTitle>
@@ -1191,15 +1316,7 @@ const TrainingNav = () => {
           </div>
         </div>
 
-        {/* Dialog Actions with Apply Button */}
-        {/* <div className="  p-5 border-t">
-              <a
-          className="bg-blue-700 px-4 py-2 rounded-full  font-semibold hover:bg-green-600"
-          href=""
-        >
-          Apply
-        </a>
-              </div> */}
+       
       </Dialog>
     </div>
   );

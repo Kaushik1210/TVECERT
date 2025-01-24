@@ -34,20 +34,14 @@ const CareerNav = () => {
     setAnchorElCertification(null);
   };
 
-  const handlePaymentClick = (event) => {
-    setAnchorElPayment(event.currentTarget);
-  };
 
-  const handlePaymentClose = () => {
-    setAnchorElPayment(null);
-  };
 
   const handleSmoothScroll = (event, href) => {
     event.preventDefault();
     const targetElement = document.getElementById(href);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
-      setHomeMenu(false);
+      setHomeMenu(false); // Close menu after scrolling
     }
   };
 
@@ -59,7 +53,8 @@ const CareerNav = () => {
   };
 
  
- 
+
+
 
   return (
     <div className="flex absolute w-full h-20 bg-gradient-to-b from-navfrom to-navto z-50">
@@ -72,20 +67,18 @@ const CareerNav = () => {
         />
 
         {/* Desktop Menu */}
-        <div className="max-[1024px]:hidden flex gap-5">
-          <a
-            className="text-16 text-white cursor-pointer"
-            onClick={(event) => handleSmoothScroll(event, "home")}
-          >
+        <div className="max-[1150px]:hidden flex gap-5">
+         
+          <Link className="text-16 text-white" to="/home">
             Home
-          </a>
+          </Link>
           <Link className="text-16 text-white" to="/certification">
             Certification
           </Link>
           <Link className="text-16 text-white" to="/training">
             Training
           </Link>
-          
+         
           <div>
             <button
               className="text-16 text-white items-center flex cursor-pointer"
@@ -117,63 +110,122 @@ const CareerNav = () => {
               </MenuItem>
             </Menu>
           </div>
-          
+         
           <a
             className="text-16 text-white cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "contactus")}
           >
             Contact us
           </a>
-         
+        
         </div>
 
-        {/* Login Button for Desktop */}
-       
+      
 
         {/* Mobile Menu Button */}
-        <IconButton
+        <div
           sx={{
             color: "white",
             fontSize: "2rem",
             display: { xs: "block", md: "none" },
           }}
+          className="  relative min-[1150px]:hidden text-white text-2xl"
           ref={menuButtonRef}
           onClick={() => setHomeMenu(!homeMenu)}
         >
           {homeMenu ? <IoClose /> : <TbMenu2 />}
-        </IconButton>
+        </div>
 
-        {/* Mobile Dropdown Menu */}
-        <Menu
-          anchorEl={menuButtonRef.current}
-          open={homeMenu}
-          onClose={() => setHomeMenu(false)}
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-        >
-          <MenuItem component={Link} to="/home">
-            Home
+        {homeMenu && (
+  <Menu
+    anchorEl={menuButtonRef.current}
+    open={Boolean(homeMenu)}
+    onClose={() => setHomeMenu(false)}
+    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    transformOrigin={{ vertical: "top", horizontal: "right" }}
+    PaperProps={{
+      sx: {
+        width: "200px",
+        borderRadius: "12px",
+        mt: 1,
+      },
+    }}
+  >
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "home");
+        setHomeMenu(false);
+      }}
+    >
+      Home
+    </MenuItem>
+    <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/certification"
+    >
+      Certification
+    </MenuItem>
+    <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/training"
+    >
+      Training
+    </MenuItem>
+   
+    <MenuItem>
+            <button
+              className="text-16 items-center flex cursor-pointer"
+              onClick={handleCertificationClick}
+            >
+              Certification Info
+              <IoIosArrowDown />
+            </button>
+            <Menu
+              anchorEl={anchorElCertification}
+              open={Boolean(anchorElCertification)}
+              onClose={handleCertificationClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+            >
+              <MenuItem
+                onClick={handleCertificationClose}
+                component={Link}
+                to="/certification#certificateinfo"
+              >
+                Client's Certificate Info
+              </MenuItem>
+              <MenuItem
+                onClick={handleCertificationClose}
+                component={Link}
+                to="/training#delegateinfo"
+              >
+                Delegate Certificate Info
+              </MenuItem>
+            </Menu>
           </MenuItem>
-          <MenuItem component={Link} to="/certification">
-            Certification
-          </MenuItem>
-          <MenuItem component={Link} to="/training">
-            Training
-          </MenuItem>
-         
-          <MenuItem onClick={handleCertificationClick}>
-                      Certification Info
-                      <IoIosArrowDown />
-                    </MenuItem>
-         
-          <MenuItem onClick={(event) => handleSmoothScroll(event, "contactus")}>
-            Contact us
-          </MenuItem>
-          
-        </Menu>
+    
+    <MenuItem
+      onClick={(event) => {
+        handleSmoothScroll(event, "contactus");
+        setHomeMenu(false);
+      }}
+    >
+      Contact Us
+    </MenuItem>
+  
+  </Menu>
+)}
+
+       
       </div>
 
-      
+   
     </div>
   );
 };
