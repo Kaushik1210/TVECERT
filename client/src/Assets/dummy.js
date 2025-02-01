@@ -62,6 +62,12 @@ import orbitalfarication from './orbitalfarication.png'
 import SRIBALAJIMEDICALCOLLEGE from './SRIBALAJIMEDICALCOLLEGE.png'
 import vkapolymers from './vkapolymers.png'
 
+import pacifichightech from './pacifichightech.png'
+import skyway from './skyway.png'
+import westpoint from './westpoint.png'
+import parkeroil from './parkeroil.png'
+import KMSPECIALITY from './KMSPECIALITY.avif'
+import poonacollege from './poonacollege.jpg'
 
 
 
@@ -129,6 +135,13 @@ ocentra,
 orbitalfarication,
 SRIBALAJIMEDICALCOLLEGE,
 vkapolymers,
+
+pacifichightech,
+skyway,
+westpoint,
+parkeroil,
+KMSPECIALITY,
+poonacollege,
 
 
 }
