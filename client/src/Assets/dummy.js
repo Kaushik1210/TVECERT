@@ -44,6 +44,27 @@ import Internal from './Internal.jpg'
 import Transition from './Transition.jpg'
 
 
+import bahraingalvanizing from './bahraingalvanizing.png'
+import canarabank from './canarabank.png'
+import Casagrand from './Casagrand.png'
+import emco from './emco.jpg'
+import emirates from './emirates.png'
+import gastrocare from './gastrocare.png'
+import holycross from './holycross.png'
+import sriAndal from './sriAndal.png'
+
+import madrasNetworking from './madrasNetworking.avif'
+import muscatsteel from './muscatsteel.png'
+import noormuscat from './noormuscat.png'
+import NEZOoilfield from './NEZOoilfield.png'
+import ocentra from './ocentra.png'
+import orbitalfarication from './orbitalfarication.png'
+import SRIBALAJIMEDICALCOLLEGE from './SRIBALAJIMEDICALCOLLEGE.png'
+import vkapolymers from './vkapolymers.png'
+
+
+
+
 
 
 
@@ -71,6 +92,7 @@ c6,
 c7,
 appeals,
 CertProcess,
+
 gms1,
 gms2,
 gms3,
@@ -82,11 +104,31 @@ gms8,
 gms9,
 gms10,
 gms11,
+
 tvecertLogo,
+
 leadAuditor,
 Conversion,
 Internal,
-Transition
+Transition,
+
+bahraingalvanizing,
+canarabank,
+Casagrand,
+emco,
+emirates,
+gastrocare,
+holycross,
+sriAndal,
+
+madrasNetworking,
+muscatsteel,
+noormuscat,
+NEZOoilfield,
+ocentra,
+orbitalfarication,
+SRIBALAJIMEDICALCOLLEGE,
+vkapolymers,
 
 
 }

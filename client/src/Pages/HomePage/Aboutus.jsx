@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../Components/Button";
 import image from "../../Assets/dummy";
+import ClientsSec from "./ClientsSec";
 
 const Aboutus = () => {
   return (
@@ -67,6 +68,10 @@ const Aboutus = () => {
             </div>
           </div>
         </div>
+
+        {/* our Clients */}
+
+        <ClientsSec/>
 
         {/* our partners */}
         <div>
