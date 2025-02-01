@@ -17,22 +17,28 @@ const ClientsSec = () => {
                          flex-wrap
                         "
           >
-       <img className=" h-12 m-2 " src={image.bahraingalvanizing} alt="" />
-       <img className=" h-12 m-2 " src={image.canarabank} alt="" />
-       <img className=" h-12 m-2 " src={image.Casagrand} alt="" />
-       <img className=" h-12 m-2 " src={image.emco} alt="" />
-       <img className=" h-12 m-2 " src={image.emirates} alt="" />
-       <img className=" h-12 m-2 " src={image.gastrocare} alt="" />
-       <img className=" h-12 m-2 " src={image.holycross} alt="" />
-       <img className=" h-12 m-2 " src={image.sriAndal} alt="" />
-       <img className=" h-12 m-2 " src={image.madrasNetworking} alt="" />
-       <img className=" h-12 m-2 " src={image.muscatsteel} alt="" />
-       <img className=" h-12 m-2 " src={image.noormuscat} alt="" />
-       <img className=" h-12 m-2 " src={image.NEZOoilfield} alt="" />
-       <img className=" h-12 m-2 " src={image.ocentra} alt="" />
-       <img className=" h-12 m-2 " src={image.orbitalfarication} alt="" />
-       <img className=" h-12 m-2 " src={image.SRIBALAJIMEDICALCOLLEGE} alt="" />
-       <img className=" h-12 m-2 " src={image.vkapolymers} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.bahraingalvanizing} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.canarabank} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.Casagrand} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.emco} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.emirates} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.gastrocare} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.holycross} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.sriAndal} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.madrasNetworking} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.muscatsteel} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.noormuscat} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.NEZOoilfield} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.ocentra} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.orbitalfarication} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.SRIBALAJIMEDICALCOLLEGE} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.vkapolymers} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.pacifichightech} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.skyway} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.westpoint} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.parkeroil} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.KMSPECIALITY} alt="" />
+       <img loading="lazy" className=" h-12 m-2 " src={image.poonacollege} alt="" />
       
       </div>
       <div className='w-full mt-20 flex justify-center'>
