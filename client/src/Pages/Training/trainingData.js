@@ -582,10 +582,10 @@ export const firstAidData = [
 export const eoshPdf=[
   {
     healthSafety:"https://drive.google.com/file/d/1BkUXGbyhOchWbIRaDHhYci_tu-ck4jBh/view?usp=drive_link",
-    firstAid:"https://drive.google.com/file/d/1vMt4PYSTmIf3EJt1aDmShXyrRAYQzE0M/view?usp=drive_link",
-    environmentSustainability:"https://drive.google.com/file/d/1Bj15UExvIZH-yvTDed1CnrjUqunqsINY/view?usp=drive_link",
-    environment:"https://drive.google.com/file/d/1LdV0efRf7DTj_rNq6lYIs6tMs4vi3LnW/view?usp=drive_link",
     fire:"https://drive.google.com/file/d/1V9K0eKuhLG__DOwyjkIfoE_snh9uW6Mb/view?usp=drive_link",
+    environment:"https://drive.google.com/file/d/1LdV0efRf7DTj_rNq6lYIs6tMs4vi3LnW/view?usp=drive_link",
+    environmentSustainability:"https://drive.google.com/file/d/1Bj15UExvIZH-yvTDed1CnrjUqunqsINY/view?usp=drive_link",
+    firstAid:"https://drive.google.com/file/d/1vMt4PYSTmIf3EJt1aDmShXyrRAYQzE0M/view?usp=drive_link",
     liftingRigging:"https://drive.google.com/file/d/1-9G3M9B-ZqtPu6SjhItXYdfqx2Bkm9qe/view?usp=drive_link",
     scaffolfing:"https://drive.google.com/file/d/1ATVxn1GtFGnnkHbiArncK9ix5cpoaQFB/view?usp=drive_link",
   }

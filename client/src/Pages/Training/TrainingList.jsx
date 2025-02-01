@@ -320,8 +320,8 @@ const TrainingList = () => {
                     HEALTH & SAFETY
                   </p>
                   <a
-                  href={eoshPdf.healthSafety}
-                  className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
+                  href={eoshPdf[0].healthSafety}
+                  className=" relative z-20 mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
                 </a>
@@ -359,7 +359,7 @@ const TrainingList = () => {
                     FIRE SAFETY
                   </p>
                   <a
-                  href={eoshPdf.fire}
+                  href={eoshPdf[0].fire}
                   className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
@@ -427,7 +427,7 @@ const TrainingList = () => {
                     ENVIRONMENT
                   </p>
                   <a
-                  href={eoshPdf.environment}
+                  href={eoshPdf[0].environment}
                   className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
@@ -466,7 +466,7 @@ const TrainingList = () => {
                     ENVIRONMENT SUSTAINABILITY
                   </p>
                   <a
-                  href={eoshPdf.environmentSustainability}
+                  href={eoshPdf[0].environmentSustainability}
                   className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
@@ -504,7 +504,7 @@ const TrainingList = () => {
                     LIFTING & RIGGING
                   </p>
                   <a
-                  href={eoshPdf.liftingRigging}
+                  href={eoshPdf[0].liftingRigging}
                   className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
@@ -542,7 +542,7 @@ const TrainingList = () => {
                     SCAFFOLDING
                   </p>
                   <a
-                  href={eoshPdf.scaffolfing}
+                  href={eoshPdf[0].scaffolfing}
                   className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
@@ -580,7 +580,7 @@ const TrainingList = () => {
                     FIRST AID
                   </p>
                   <a
-                  href={eoshPdf.firstAid}
+                  href={eoshPdf[0].firstAid}
                   className=" mt-4 mb-3 bg-blue-700 px-4 py-2 rounded-r-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF
