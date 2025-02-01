@@ -9,7 +9,7 @@ const Herosecmainpage = () => {
   return (
     <>
       <div
-        id="home"
+        id="home" loading="lazy"
         className=" relative h-screen bg-herobg  bg-no-repeat w-full bg-cover z-0 "
       >
         <HomeNavBar />

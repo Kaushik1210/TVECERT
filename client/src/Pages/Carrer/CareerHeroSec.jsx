@@ -14,7 +14,7 @@ const CareerHeroSec = () => {
 
   return (
     <>
-      <div className="relative h-screen bg-careerherobg bg-no-repeat w-full bg-cover">
+      <div loading="lazy" className="relative h-screen bg-careerherobg bg-no-repeat w-full bg-cover">
         <CareerNav />
         <div className="w-full h-full flex items-center">
           <div

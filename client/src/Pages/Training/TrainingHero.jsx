@@ -14,7 +14,7 @@ const TrainingHero = () => {
 
   return (
     <>
-      <div className="relative h-screen bg-trainbg bg-no-repeat w-full bg-cover">
+      <div loading="lazy" className="relative h-screen bg-trainbg bg-no-repeat w-full bg-cover">
         <TrainingNav />
         <div className="w-full h-full flex items-center">
           <div

@@ -14,7 +14,7 @@ const CertHeroSec = () => {
 
   return (
     <>
-      <div className="relative h-screen bg-certbg bg-no-repeat w-full bg-cover">
+      <div loading="lazy" className="relative h-screen bg-certbg bg-no-repeat w-full bg-cover">
         <CertNav />
         <div className="w-full h-full flex items-center">
           <div
