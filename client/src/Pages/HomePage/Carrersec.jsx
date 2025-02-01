@@ -23,6 +23,7 @@ const Carrersec = () => {
                         max-[850px]:pl-0'>
             <p className='underline underline-offset-4'>Carrer</p>
             <p className=' capitalize text-SH font-semibold text-ldarkblue '>Let's grow together.</p>
+            <img className=' rounded-2xl shadow-xl hidden max-[850px]:block ' src={image.carrerpic}/>
             <div className=' w-[250px] border border-darkblue hidden max-[850px]:block' />
             <p className=' text-justify flex flex-col gap-2 text-darkblue'>
             We're building a culture at HubSpot where amazing people (like you) can do their best work. If you're ready to grow your career and help millions of organizations grow better, you've come to the right place.

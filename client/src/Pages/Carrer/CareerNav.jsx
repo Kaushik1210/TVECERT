@@ -151,11 +151,13 @@ const CareerNav = () => {
       },
     }}
   >
+   
     <MenuItem
-      onClick={(event) => {
-        handleSmoothScroll(event, "home");
+      onClick={() => {
         setHomeMenu(false);
       }}
+      component={Link}
+      to="/home"
     >
       Home
     </MenuItem>

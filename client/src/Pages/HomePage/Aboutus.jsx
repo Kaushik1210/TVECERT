@@ -63,9 +63,9 @@ const Aboutus = () => {
 
              
             </div>
-            <div className="flex max-sm:justify-center">
+            {/* <div className="flex max-sm:justify-center">
               <Button text="More About TVE" />
-            </div>
+            </div> */}
           </div>
         </div>
 
