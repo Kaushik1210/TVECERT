@@ -15,6 +15,8 @@ import { AiFillLinkedin } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { URL } from "../../../constant";
+import { Alert } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 
 const EmpLogin = ({ setIsAuthenticated }) => {
   const [step, setStep] = useState("login");
@@ -24,11 +26,12 @@ const EmpLogin = ({ setIsAuthenticated }) => {
   const [error, setError] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [timer, setTimer] = useState(0); // Initialize with 0
+  const [timer, setTimer] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const timeoutRef = useRef(null); // For user activity timeout
-  const activityRef = useRef(Date.now()); // Last activity timestamp
+  const timeoutRef = useRef(null);
+  const activityRef = useRef(Date.now());
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   const resetTimeout = () => {
     activityRef.current = Date.now();
@@ -123,9 +126,12 @@ const EmpLogin = ({ setIsAuthenticated }) => {
         email: userEmail,
         otp,
       });
-      alert("Login successful!");
-      setIsAuthenticated(true);
-      navigate("/updation", { state: { username: userName } });
+
+      setShowSuccessAlert(true);
+      setTimeout(() => {
+        setIsAuthenticated(true);
+        navigate("/updation", { state: { username: userName } });
+      }, 2000);
     } catch (err) {
       setError("Invalid OTP");
     } finally {
@@ -144,6 +150,22 @@ const EmpLogin = ({ setIsAuthenticated }) => {
 
   return (
     <div className="h-screen bg-loginbg backdrop-blur-md bg-no-repeat bg-cover">
+      <div className=" w-full absolute z-20 flex justify-center">
+      <div className="  w-[500px]">
+
+{showSuccessAlert && (
+                 <Alert
+                 variant="filled"
+                   icon={<CheckIcon fontSize="inherit" />}
+                   severity="success"
+                 >
+                   OTP verified successfully! 
+                 </Alert>
+               )}
+</div>
+      </div>
+      
+
       <div className="bg-black h-full w-full bg-opacity-40 backdrop-blur-sm flex justify-center items-center">
         <div className="relative bg-loginbg bg-opacity-50 flex shadow-xl rounded-2xl bg-no-repeat w-[800px] h-[500px] bg-cover">
           <div className="flex-1 flex flex-col justify-center p-4">
@@ -273,6 +295,7 @@ const EmpLogin = ({ setIsAuthenticated }) => {
                   )}
                   {step === "otpVerification" && (
                     <>
+                     
                       <div className="w-full flex justify-center -mt-5">
                         <img
                           className="w-[80px] bg-white rounded-lg"
@@ -309,8 +332,8 @@ const EmpLogin = ({ setIsAuthenticated }) => {
                         Verify OTP
                       </Button>
                       {timer === 0 && (
-                        <button className=" my-4 bg-blue-600 w-full p-2 text-white shadow-md rounded-md"
-                          
+                        <button
+                          className=" my-4 bg-blue-600 w-full p-2 text-white shadow-md rounded-md"
                           onClick={handleLoginAgain}
                         >
                           Login Again
