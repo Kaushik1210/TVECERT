@@ -41,9 +41,7 @@ const ClientsSec = () => {
        <img loading="lazy" className=" h-12 m-2 " src={image.poonacollege} alt="" />
       
       </div>
-      <div className='w-full mt-20 flex justify-center'>
-        <div className='w-[500px] mx-6 border mb-10 border-gray-500' />
-      </div>
+     
     </div>
   )
 }
