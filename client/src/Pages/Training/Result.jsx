@@ -51,6 +51,7 @@ const Result = ({ open, onClose, result }) => {
               {result.pdf && (
                 <a
                   href={result.pdf}
+                  target="_blank"
                   className="self-center mt-4 bg-blue-700 px-4 py-2 rounded-full shadow-lg text-white font-semibold hover:bg-green-600"
                 >
                   Download PDF

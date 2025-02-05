@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const SliderSection = () => {
   return (
     <div className="slider-container  flex flex-col items-center  max-md:mx-0">
-      <h1 className="slider-title">What We Do</h1>
+      {/* <h1 className="slider-title">What We Do</h1> */}
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

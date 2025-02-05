@@ -21,7 +21,7 @@ const Carrersec = () => {
         <div className='flex-1 flex justify-center flex-col gap-3 pl-10 border-l
                         max-[850px]:border-none
                         max-[850px]:pl-0'>
-            <p className='underline underline-offset-4'>Carrer</p>
+            <p className='underline underline-offset-4'>Career</p>
             <p className=' capitalize text-SH font-semibold text-ldarkblue '>Let's grow together.</p>
             <img className=' rounded-2xl shadow-xl hidden max-[850px]:block ' src={image.carrerpic}/>
             <div className=' w-[250px] border border-darkblue hidden max-[850px]:block' />

@@ -61,7 +61,7 @@ const Herosecmainpage = () => {
       </div>
       <div className=" relative -mt-[40px] z-10 ">
         <CountBanner
-          count1="4000"
+          count1="3500"
           category1="Certified Companies"
           count2="15000"
           category2="Students"

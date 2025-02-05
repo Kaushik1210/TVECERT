@@ -6,7 +6,7 @@ const ClientsSec = () => {
   return (
     <div >
       <div className='flex justify-center'>
-        <p className='text-center text-24 font-medium '>
+        <p className='text-center text-24  underline underline-offset-3 font-medium '>
           Our Clients
         </p>
       </div>

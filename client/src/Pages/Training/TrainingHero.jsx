@@ -24,16 +24,13 @@ const TrainingHero = () => {
               max-md:m-14"
           >
             <h1 className="text-H leading-snug text-white font-semibold capitalize">
-           Learn & Get Certified with TVE
+            A NEW WAY TO CAREER GROWTH...<br/>LEARN & GET CERTIFIED WITH TVE...
             </h1>
             <p
               className="w-500 mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              A New way to Career Growth with TVE International Academy, we are one of the most renowned training
-              organization in the world for providing CQI and IRCA approved
-              trainings, as well as Exemplar Global trainings and EOSH Health
-              and Safety trainings.
+              TVE International Academy is the globally recognised Training Body in delivering various professional Trainings like the CQI and IRCA Certified Trainings,  Exemplar Global Approved Trainings, Health & Safety Trainings etc., Join our pool of 15000+ TVE Students Community & share your knowledge in our exclusive TVE Community Portal.
             </p>
             <div
               className="mt-4 flex gap-6 

@@ -22,8 +22,7 @@ const Aboutus = () => {
           <div className="flex-1 pr-10  content-center">
             <p className="underline underline-offset-4">About us</p>
             <p className=" capitalize text-SH font-semibold text-ldarkblue ">
-              a world-class company in the field of Certification & registration
-              services.
+              a world-class company in the field of Certification & Professional Training Services
             </p>
             <div className=" w-[250px] border border-darkblue hidden max-[850px]:block" />
           </div>
@@ -37,7 +36,7 @@ const Aboutus = () => {
               <ul class="list-none space-y-1">
                 <li class="flex items-start">
                   <span class="before:content-['•'] before:mr-1 before:text-black"></span>
-                  TVE is one of the leading fast growing Certification bodies in
+                  TVE is one of the leading & fast growing Certification bodies in
                   India.
                 </li>
                 <li class="flex items-start">
@@ -54,10 +53,7 @@ const Aboutus = () => {
                 </li>
                 <li class="flex items-start">
                   <span class="before:content-['•'] before:mr-1 before:text-black"></span>
-                  TVE understands the importance of impartiality in carrying out
-                  its Management System Certification activities. Manages
-                  conflict of interest ensures the objectivity of the Management
-                  System Certification activities.
+                  TVE understands the importance of impartiality in carrying out its Management System Certification activities. TVE manages conflict of interest &  ensures the objectivity of the Management System Certification activities
                 </li>
               </ul>
 
@@ -69,13 +65,13 @@ const Aboutus = () => {
           </div>
         </div>
 
-        {/* our Clients */}
+       
 
-        <ClientsSec/>
+        {/* <ClientsSec/> */}
 
         {/* our partners */}
-        <div>
-          <p className="flex justify-center text-24  font-medium">
+        <div className=" mb-10">
+          <p className="flex justify-center text-24 underline underline-offset-3  font-medium">
             Our Partners
           </p>
           <div
@@ -91,6 +87,10 @@ const Aboutus = () => {
             <img className="h-45 " src={image.eosh} alt="" />
           </div>
         </div>
+
+
+        <ClientsSec/>
+
       </section>
 
       <div className=" h-[800px] w-[550px] absolute bg-bbgufill top-0 left-0 bg-no-repeat max-sm:w-[350px] max-[360px]:w-[250px]" />

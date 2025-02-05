@@ -33,10 +33,7 @@ const CertHeroSec = () => {
               className=" mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              TVE Certification Services is a well-known certification
-              organization that certifies companies in a number of ISO
-              standards. Our worldwide presence spans over 20
-              nations and is growing.
+              TVE Certification Services is a renowned certification body that certifies businesses in various ISO standards. Our global reach spreads over 15 countries and adding more.
             </p>
             {/* <div
               className="mt-4 flex gap-6 
