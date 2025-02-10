@@ -19,12 +19,12 @@ const CertList6 = () => {
             src={image.c7}
             alt=""
           />
-          <p className=" text-justify flex flex-col gap-2 text-darkblue">
+          {/* <p className=" text-justify flex flex-col gap-2 text-darkblue">
             We're building a culture at HubSpot where amazing people (like you)
             can do their best work. If you're ready to grow your career and help
             millions of organizations grow better, you've come to the right
             place.
-          </p>
+          </p> */}
           <a className="bg-gradient-to-r from-buttonfrom to to-buttonto w-fit h-45 flex items-center rounded-full" href="https://drive.google.com/file/d/1OkKpYaeSNv3szqkoNI6uXOqiniLE7s6l/view?usp=drive_link">
             <span className="text-white m-10">View Process</span>
           </a>

@@ -30,7 +30,7 @@ const CertHeroSec = () => {
               getting Certified with TVE
             </h1>
             <p
-              className=" mt-4 text-white text-P font-light
+              className=" w-[450px] mt-4 text-white text-P font-light
                    max-md:w-full"
             >
               TVE Certification Services is a renowned certification body that certifies businesses in various ISO standards. Our global reach spreads over 15 countries and adding more.

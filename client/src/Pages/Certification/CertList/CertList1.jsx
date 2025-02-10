@@ -40,12 +40,12 @@ const CertList1 = () => {
             src={image.c1}
             alt=""
           />
-          <p className="text-justify flex flex-col gap-2 text-darkblue">
+          {/* <p className="text-justify flex flex-col gap-2 text-darkblue">
             We're building a culture at HubSpot where amazing people (like you)
             can do their best work. If you're ready to grow your career and help
             millions of organizations grow better, you've come to the right
             place.
-          </p>
+          </p> */}
           <button className="bg-gradient-to-r from-buttonfrom to to-buttonto w-fit h-45 flex items-center rounded-full"  onClick={handleClickOpen}>
             <span className="text-white m-10">Read More</span>
             
