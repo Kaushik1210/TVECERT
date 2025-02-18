@@ -10,6 +10,9 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import image from "../../../Assets/dummy";
 
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
+
+
 const CertList3 = () => {
     const [open, setOpen] = useState(false);
 
@@ -23,31 +26,19 @@ const CertList3 = () => {
   };
   return (
     <>
-      <div className=" my-10 flex">
-        <div className="flex-1 flex items-center max-md:hidden">
-          <img className=" rounded-xl shadow-xl" src={image.c3} alt="" />
-        </div>
-        <div className="flex-1 flex justify-center flex-col gap-3 pl-10 py-5 max-md:pl-0">
-          <p className=" capitalize text-35 font-semibold text-ldarkblue ">
-            certification process
-          </p>
-          <img
-            className=" rounded-xl hidden shadow-xl max-md:block"
-            src={image.c3}
-            alt=""
-          />
-          {/* <p className=" text-justify flex flex-col gap-2 text-darkblue">
-            We're building a culture at HubSpot where amazing people (like you)
-            can do their best work. If you're ready to grow your career and help
-            millions of organizations grow better, you've come to the right
-            place.
-          </p> */}
-          <button
-            className="bg-gradient-to-r from-buttonfrom to to-buttonto w-fit h-45 flex items-center rounded-full"
-            onClick={handleClickOpen}
-          >
-            <span className="text-white m-10">View Process</span>
-          </button>
+      <div className=" mt-4  "> 
+       <div class="relative ">
+                        <img src={image.c3} alt="Example" className="w-full shadow-xl  rounded-xl h-full object-cover" />
+                        <div class="absolute inset-0 p-2 gap-2 flex flex-col rounded-xl items-start justify-end bg-black bg-opacity-50">
+                          <p class="text-white capitalize text-2xl font-bold">certification process</p>
+                          <button className=" "
+                              onClick={handleClickOpen}>
+                          <span className="text-white flex items-center gap-3 "> <p className=" text-xs">View Process</p><FaRegArrowAltCircleRight /></span>
+                          
+                        </button>
+                          
+                        </div>
+                      </div>
           <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
             <DialogTitle>
               <div className="flex justify-between">
@@ -112,7 +103,7 @@ const CertList3 = () => {
               </div>
           </Dialog>
         </div>
-      </div>
+      
     </>
   );
 };

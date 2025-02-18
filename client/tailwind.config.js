@@ -58,6 +58,15 @@ module.exports = {
         'sbgdline':"url(./Assets/sbgdline.svg)",
         'sbguline':"url(./Assets/sbguline.svg)",
 
+        'c1':"url(./Assets/c1.jpg)",
+        'c2':"url(./Assets/c2.jpg)",
+        'c3':"url(./Assets/c3.jpg)",
+        'c4':"url(./Assets/c4.jpg)",
+        'c5':"url(./Assets/c5.jpg)",
+        'c6':"url(./Assets/c6.jpg)",
+
+
+
         'careerherobg':"url(./Assets/careermainbg.jpg)",
 
         'certbg':"url(./Assets/certbg.jpg)",
