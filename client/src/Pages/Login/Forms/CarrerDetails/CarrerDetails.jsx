@@ -86,7 +86,7 @@ const CareerDetails = () => {
     return (
       careerData.jobTitle &&
       careerData.qualification &&
-      filledSkills.length >= 2 &&
+      filledSkills.length >= 1 &&
       careerData.noOfOpenings &&
       careerData.yearsOfExperienceNeeded &&
       careerData.district &&
@@ -110,7 +110,7 @@ const CareerDetails = () => {
 
       setRows((prevRows) => [...prevRows, newRow]);
       alert("Data inserted into the database");
-      window.location.reload();
+      // window.location.reload();
 
       setCareerData({
         jobTitle: "",

@@ -45,11 +45,11 @@ import Transition from './Transition.jpg'
 
 
 import bahraingalvanizing from './bahraingalvanizing.png'
-import canarabank from './canarabank.png'
+import canarabank from './canarabank.jfif'
 import Casagrand from './Casagrand.png'
 import emco from './emco.jpg'
 import emirates from './emirates.png'
-import gastrocare from './gastrocare.png'
+import gastrocare from './gastrocare.jfif'
 import holycross from './holycross.png'
 import sriAndal from './sriAndal.png'
 
@@ -68,6 +68,10 @@ import parkeroil from './parkeroil.png'
 import KMSPECIALITY from './KMSPECIALITY.avif'
 import poonacollege from './poonacollege.jpg'
 import pacifichightech from './pacifichightech.png'
+import jenomaranbuilders from './jenomaranbuilders.png'
+import permasteelisa from './permasteelisa.png'
+import sivachidambaramjewellery from './sivachidambaramjewellery.jfif'
+import vailakanni from './vailakanni.png'
 
 
 
@@ -142,6 +146,11 @@ westpoint,
 parkeroil,
 KMSPECIALITY,
 poonacollege,
+
+jenomaranbuilders,
+permasteelisa,
+sivachidambaramjewellery,
+vailakanni
 
 
 }
