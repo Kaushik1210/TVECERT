@@ -2,7 +2,7 @@ export const cqiircaTrainingData = [
   //quality
   {
     mainHeading: "CQI & IRCA Training Details",
-    selection: "QMS/ISO 9001:2015 Lead Auditor",
+    selection: "QMS - ISO 9001:2015 Lead Auditor",
     mainTitle:
       "CQI & IRCA Certified QUALITY MANAGEMENT SYSTEMS Auditor / Lead Auditor – ISO 9001:2015 Training Course (CQI & IRCA Ref 17980)",
 
@@ -10,7 +10,7 @@ export const cqiircaTrainingData = [
   },
   {
     mainHeading: "CQI & IRCA Training Details",
-    selection: "QMS/ISO 9001:2015 Transition Training",
+    selection: "QMS - ISO 9001:2015 Transition Training",
     mainTitle:
       "CQI & IRCA Certified ISO 9001ۉ2015 Auditor Transition (QMS)Training Course (Course ID: 17901)",
 
@@ -18,7 +18,7 @@ export const cqiircaTrainingData = [
   },
   {
     mainHeading: "CQI & IRCA Training Details",
-    selection: "QMS/ISO 9001:2015 Internal Auditor",
+    selection: "QMS - ISO 9001:2015 Internal Auditor",
     mainTitle:
       "CQI and IRCA Certified ISO 9001ۉ2015 Internal Auditor (QMS)Training Course (Course ID: 1661)",
 
@@ -31,7 +31,7 @@ export const cqiircaTrainingData = [
     FileName: "EMS_Lead_Auditor_Training.pdf",
 
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EMS/ISO 14001:2015 Lead Auditor",
+    selection: "EMS - ISO 14001:2015 Lead Auditor",
     mainTitle:
       "CQI & IRCA Certified EMS Lead Auditor –  ISO 14001:2015 Lead Auditor (Environment Management Systems) Training Course (CQI & IRCA Ref: 1709)",
   },
@@ -40,7 +40,7 @@ export const cqiircaTrainingData = [
     FileName: "EMS_Internal_Auditor_Training.pdf",
 
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EMS/ISO 14001:2015 Internal Auditor",
+    selection: "EMS - ISO 14001:2015 Internal Auditor",
     mainTitle:
       "ISO 14001: 2015 Internal Auditor (Environment Management Systems) Training Course (CQI IRCA Ref. No: 1657)",
   },
@@ -48,13 +48,13 @@ export const cqiircaTrainingData = [
     pdf: "https://drive.google.com/file/d/1f7dWvO2JlEYTIf64a8QiFgy9J55Zb8sN/view?usp=drivesdk ",
     FileName: "EMS_Auditor_Transition_Training.pdf",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EMS/ISO 14001:2015 Auditor Transition",
+    selection: "EMS - ISO 14001:2015 Auditor Transition",
     mainTitle:
       "ISO 14001:2015 Auditor Transition Training Course (CQI & IRCA Ref: 17900 & 17933)",
   },
   {
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EMS/ISO 14001:2015 Auditor Conversion",
+    selection: "EMS - ISO 14001:2015 Auditor Conversion",
     mainTitle:
       "CQI & IRCA Certified EMS (14001:2015) Auditor Conversion Training Course (CQI &IRCA Ref: 1634)",
   },
@@ -64,7 +64,7 @@ export const cqiircaTrainingData = [
     pdf: "https://drive.google.com/file/d/1kizCPw2WJ4Xg3ayaGdrmkXjZkv2WZgP1/view?usp=drivesdk ",
 
     mainHeading: "CQI & IRCA Training Details",
-    selection: "QHSMS/ISO 45001:2018 Lead Auditor",
+    selection: "OHSMS - ISO 45001:2018 Lead Auditor",
     mainTitle:
       "CQI & IRCA OHSMS Lead Auditor –  ISO 45001:2018 Lead Auditor (Occupational Health & Safety  Management Systems) Training Course (CQI & IRCA Ref: 1878)",
   },
@@ -72,7 +72,7 @@ export const cqiircaTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1fmSCiZRHqTDEeFXQcM15_jo3vzx-kYur/view?usp=drivesdk ",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "QHSMS/ISO 45001:2018 Internal Auditor",
+    selection: "OHSMS - ISO 45001:2018 Internal Auditor",
     mainTitle:
       "Internal Auditor Training Course OHSMS ISO 45001:2018 (course ID:2430)",
   },
@@ -81,21 +81,21 @@ export const cqiircaTrainingData = [
     FileName: "OHSMS_Lead_Auditor_Training.pdf",
 
     mainHeading: "CQI & IRCA Training Details",
-    selection: "QHSMS/ISO 45001:2018 Auditor Migration",
+    selection: "OHSMS - ISO 45001:2018 Auditor Migration",
   },
 
   // Information Securiy ///////////////////////////////////////////////
   {
     pdf: "https://drive.google.com/file/d/1XkYerCsuHNKNTP09qERncOUxymtl1LWm/view?usp=drive_link",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "ISMS/ISO 27001:2022 Lead Auditor",
+    selection: "ISMS - ISO 27001:2022 Lead Auditor",
     mainTitle:
       "CQI & IRCA Certified ISMS Lead Auditor – ISO 27001:2022 Lead Auditor (Information Security Management Systems) Training Course (CQI & IRCA Ref: 2557)",
   },
   {
     pdf: "https://drive.google.com/file/d/1QYQ4c0jEu-MG3Bppkhvk9HTfPQePfi3M/view?usp=drive_link",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "ISMS/ISO 27001:2022 Internal Auditor",
+    selection: "ISMS - ISO 27001:2022 Internal Auditor",
     mainTitle:
       "CQI & IRCA Certified ISMS Internal Auditor – ISO 27001:2022 Internal Auditor (Information Security Management Systems) Training Course (CQI & IRCA Ref: 2558)",
   },
@@ -104,21 +104,21 @@ export const cqiircaTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1HvLsGtb17Fk1L9I_7xi0ZU1lpzGiyhkR/view?usp=drive_link",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "FSMS/ISO 22000:2018 Lead Auditor",
+    selection: "FSMS - ISO 22000:2018 Lead Auditor",
     mainTitle:
       "CQI & IRCA Certified FSMS Auditor / Lead Auditor – ISO 22000:2005 Training Course (CQI & IRCA Ref 18205)",
   },
   {
     pdf: "https://drive.google.com/file/d/1pzs_AgBr6m7ZkeqskOuRg6sqYY3msKcq/view?usp=drive_link",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "FSMS/ISO 22000:2018 Internal Auditor",
+    selection: "FSMS - ISO 22000:2018 Internal Auditor",
     mainTitle:
       "CQI & IRCA Certified FSMS Auditor / Internal Auditor – ISO 22000:2005 Training Course ( CQI & IRCA Ref No: 1844)",
   },
   {
     pdf: "https://drive.google.com/file/d/1OIQFO0tVLHHXe9GCQhZuu_3KH7j4AIwe/view?usp=drive_link",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "FSMS/ISO 22000:2018 Auditor Transition",
+    selection: "FSMS - ISO 22000:2018 Auditor Transition",
     mainTitle:
       "ISO 22000:2018 Auditor Transition Training Course (CQI & IRCA Ref: 17900 & 2062)",
   },
@@ -127,7 +127,7 @@ export const cqiircaTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/18JpSLpbpez8xakzxm6otBpIJ2zumzozt/view?usp=sharing",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "FSSC/ISO 22000 Lead Auditor",
+    selection: "FSSC - ISO 22000 Lead Auditor",
     mainTitle:
       "CQI and IRCA Certified FSSC 22000 Version 6 Lead Auditor Training Course (Course ID: 2686)",
   },
@@ -136,7 +136,7 @@ export const cqiircaTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1fVdLeGS4yLxZ6SD2Io1MpOeGMQ9EEkHn/view?usp=sharing",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EnMS/ISO 50001:2018 Lead Auditor",
+    selection: "EnMS - ISO 50001:2018 Lead Auditor",
     mainTitle:
       "CQI and IRCA Certified ISO 50001:2018 Lead Auditor (EnMS) Training Course (Course ID: 2441)",
   },
@@ -147,21 +147,21 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1VzjqEuoV-B5as4p58W6zYKRZJfKUluq_/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "QMS/ISO 9001:2015 Lead Auditor",
+    selection: "QMS - ISO 9001:2015 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified QMS Auditor / Lead Auditor - ISO 9001:2015 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/1tBMKoYFCHfctbcyFLCXvtqVw7wQRmYMX/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "QMS/ISO 9001:2015 Internal Auditor",
+    selection: "QMS - ISO 9001:2015 Internal Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified QMS Auditor / Internal Auditor - ISO 9001:2015 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/1ydjqTpnuDqB81DcPjNL9OVaOqwYGS4AF/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "QMS/ISO 9001:2015 Transition Training",
+    selection: "QMS - ISO 9001:2015 Transition Training",
     mainTitle:"EXEMPLAR GLOBAL Certified QMS Auditor Transition - ISO 9001:2015 Training Course",   
   },
 
@@ -169,21 +169,21 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1gBGHf2lGEg22fIQFegs6rDfaZvqJC2-a/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "EMS/ISO 14001:2015 Lead Auditor",
+    selection: "EMS - ISO 14001:2015 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified EMS Auditor / Lead Auditor - ISO 14001:2015 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/1X1LN2YZV6uYFdtt4ZpX5ikyQq3r19Hbd/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "EMS/ISO 14001:2015 Internal Auditor",
+    selection: "EMS - ISO 14001:2015 Internal Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified EMS Auditor / Internal Auditor - ISO 14001:2015 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/1kltMveQCgcKJT9dDTkC5V46KekEry3gs/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "EMS/ISO 14001:2015 Auditor Transition",
+    selection: "EMS - ISO 14001:2015 Auditor Transition",
     mainTitle: "EXEMPLAR GLOBAL Certified EMS Auditor / Transition Auditor - ISO 14001:ۉ2015 Training Course",
   },
 
@@ -192,7 +192,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1-14MiVjp-rTPSiN9LGfc0JWCLBTVJTKU/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "QHSMS/ISO 45001:2018 Lead Auditor",
+    selection: "OHSMS - ISO 45001:2018 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified OHSMS Auditor / Lead Auditor - ISO 45001:2018 Training Course",
   },
@@ -200,14 +200,14 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1QU7sKxDCkNy5c2Ul7m5Rzc9RxUm71Rcn/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "QHSMS/ISO 45001:2018 Auditor Transition",
+    selection: "OHSMS - ISO 45001:2018 Auditor Transition",
     mainTitle:
       "EXEMPLAR GLOBAL Certified OHSMS Auditor / Transition Auditor - ISO 45001:2018 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/1G8a8chMfVexRe4gfMMCkRIZqW1h5L35i/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "QHSMS/ISO 45001:2018 Internal Auditor",
+    selection: "OHSMS - ISO 45001:2018 Internal Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified OHSMS Auditor / Internal Auditor - ISO 45001:2018 Training Course",
   },
@@ -216,14 +216,14 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/10Z4xajDcixLj17ZAdsc57vCbX82bREq9/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "ISMS/ISO 27001:2022 Lead Auditor",
+    selection: "ISMS - ISO 27001:2022 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified ISMS Auditor / Lead Auditor - ISO 27001:2022 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/10Z4xajDcixLj17ZAdsc57vCbX82bREq9/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "ISMS/ISO 27001:2022 Internal Auditor",
+    selection: "ISMS - ISO 27001:2022 Internal Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified ISMS Auditor / Internal Auditor - ISO 27001:2022 Training Course",
   },
@@ -232,7 +232,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1jRap0f5UMP2OvFE7t5gOSszm8k0qwfyb/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "FSMS/ISO 22000:2005 Lead Auditor",
+    selection: "FSMS - ISO 22000:2005 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified FSMS Auditor / Lead Auditor - ISO 22000:2018 Training Course",
   },
@@ -240,14 +240,14 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1bWpg2WQiGGKe7RLHU6pIWcQ2j-i9WizR/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "FSMS/ISO 22000:2018 Auditor Transition",
+    selection: "FSMS - ISO 22000:2018 Auditor Transition",
     mainTitle:
       "EXEMPLAR GLOBAL Certified FSMS Auditor / Transition Auditor - ISO 22000:2018 Training Course",
   },
   {
     pdf:"https://drive.google.com/file/d/1A9WVBoxr06OjO-bM1Kj9yz184E9xC7J8/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "FSMS/ISO 22000:2005 Internal Auditor",
+    selection: "FSMS - ISO 22000:2005 Internal Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified FSMS Auditor / Internal Auditor - ISO 22000:2018 Training Course",
   },
@@ -256,7 +256,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1iPisb170AVgz4R6XsCh2OCcxGSIXx3kZ/view?usp=drive_link",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "FSSC/ISO 22000 Lead Auditor",
+    selection: "FSSC - ISO 22000 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified FSSC Auditor / Lead Auditor - FSSC 22000 Ver 6.0 Training Course",
   },
@@ -265,7 +265,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1X08-uzHhdPKLEVHwXtLOpnM9YKXiRDDP/view?usp=sharing",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EnMS/ISO 50001:2018 Lead Auditor",
+    selection: "EnMS - ISO 50001:2018 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified EnMS Auditor / Lead Auditor - ISO 50001ۉ2018 Training Course",
   },
@@ -589,8 +589,8 @@ export const firstAidData = [
 
 export const eoshPdf=[
   {
-    healthSafety:"https://drive.google.com/file/d/1BkUXGbyhOchWbIRaDHhYci_tu-ck4jBh/view?usp=drive_link",
-    fire:"https://drive.google.com/file/d/1V9K0eKuhLG__DOwyjkIfoE_snh9uW6Mb/view?usp=drive_link",
+    healthSafety:"https://drive.google.com/file/d/1CpyoSSo11TMaoAKEhpWWfbuUDcyjAj3_/view?usp=drive_link",
+    fire:"https://drive.google.com/file/d/1fBjohcgvnwQIguXBwvWUYsiHCVhFG6gN/view?usp=drive_link",
     environment:"https://drive.google.com/file/d/1LdV0efRf7DTj_rNq6lYIs6tMs4vi3LnW/view?usp=drive_link",
     environmentSustainability:"https://drive.google.com/file/d/1Bj15UExvIZH-yvTDed1CnrjUqunqsINY/view?usp=drive_link",
     firstAid:"https://drive.google.com/file/d/1vMt4PYSTmIf3EJt1aDmShXyrRAYQzE0M/view?usp=drive_link",

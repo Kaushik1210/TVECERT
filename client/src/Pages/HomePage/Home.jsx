@@ -31,7 +31,7 @@ const Home = () => {
          
           <Herosecmainpage />
           <Aboutus />
-          <SliderSection />
+          {/* <SliderSection /> */}
           <Carrersec />
           {/* <Newsletter /> */}
           <NewsSec/>

@@ -141,7 +141,7 @@ const Policy2 = () => {
             <b>Contact Us</b>
             <p className=" indent-3">
               If you have any questions or suggestions about our Privacy Policy,
-              do not hesitate to contact us at <b>+91 9345101472.</b>
+              do not hesitate to contact us at <b>+919361444418</b>
               This Privacy Policy page was created at <b>www.tvecert.org </b>
             </p>
           </div>

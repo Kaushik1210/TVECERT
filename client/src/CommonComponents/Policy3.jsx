@@ -562,13 +562,13 @@ const Policy3 = () => {
           </div>
 
           <div className=" flex-col flex">
-            <p>TVE Certification Services Pvt. Ltd.</p>
-            <p>TVE International Academy Pvt.</p>
-            <p>Ltd., 21/26 B, Kamarajar Street,</p>
-            <p>K.K. Nagar, Trichy - 620 021, Tamil</p>
-            <p>Nadu, India.</p>
-            <b>+91 93607 28434 </b>
-            <b>0431 - 4051364</b>
+            <p>TVE Certification Services Pvt.Ltd.</p>
+            <p>TVE International Academy Pvt.Ltd.,</p>
+            <p>Plot No.5, Ganapathy Nagar,</p>
+            <p>K.K. Nagar, Trichy - 620021,</p>
+            <p>Tamil Nadu, India.</p>
+            <b>+919361444418 </b>
+            <b>0431-4051364</b>
           </div>
         </div>
   )

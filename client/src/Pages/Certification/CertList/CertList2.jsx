@@ -90,14 +90,14 @@ const CertList2 = () => {
           </div>
 
           {/* Dialog Actions with Apply Button */}
-          <div className="  p-5 border-t">
+          {/* <div className="  p-5 border-t">
               <a
           className="bg-blue-700 px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600"
           href=""
         >
           Apply
         </a>
-              </div>
+              </div> */}
         </Dialog>
         {/* <div className="flex-1 flex items-center max-md:hidden">
           <img className=" rounded-xl shadow-xl " src={image.c2} alt="" />

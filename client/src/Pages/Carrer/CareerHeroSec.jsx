@@ -14,7 +14,10 @@ const CareerHeroSec = () => {
 
   return (
     <>
-      <div loading="lazy" className="relative h-screen bg-careerherobg bg-no-repeat w-full bg-cover">
+      <div
+        loading="lazy"
+        className="relative h-screen bg-careerherobg bg-no-repeat w-full bg-cover"
+      >
         <CareerNav />
         <div className="w-full h-full flex items-center">
           <div
@@ -23,18 +26,41 @@ const CareerHeroSec = () => {
               max-md:text-center               
               max-md:m-14"
           >
-            <h1 className="text-H leading-snug text-white font-semibold capitalize">
-              work with us
+            <h1 className="text-[35px] text-white font-semibold capitalize">
+              Prosper with Us: <br /> Grow Your Career While Shaping Global
+              Standards
               <br className="max-md:hidden" />
             </h1>
             <p
               className="w-500 mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              We know that finding a meaningful and rewarding career can be a
-              long journey. Our goal is to make that process easy for you and to
-              create a work environment that's enriching—one that you'll look
-              forward to every day.
+              What We Offer:
+            </p>
+            <li
+              className="w-500 mt-1 indent-2 text-white text-P font-light
+                   max-md:w-full"
+            >
+              Thriving Career Growth
+            </li>
+            <li
+              className="w-500 mt-1 indent-2 text-white text-P font-light
+                   max-md:w-full"
+            >
+              Collaborative Work Culture
+            </li>
+            <li
+              className="w-500 mt-1 indent-2 text-white text-P font-light
+                   max-md:w-full"
+            >
+              Prosperous Future
+            </li>
+            <p
+              className="w-500 mt-1  text-white text-P font-light
+                   max-md:w-full"
+            >
+              Join Us Today! Explore our current openings and become a part of
+              the TVE Groups.
             </p>
             <div
               className="mt-4 flex gap-6 
@@ -54,12 +80,12 @@ const CareerHeroSec = () => {
       </div>
       <div className="-mt-10 relative z-10">
         <CountBanner
-          count1="2,000"
-          category1="Certified Companies"
-          count2="36"
-          category2="countries"
-          count3=""
-          category3=""
+          count1="20"
+          category1="Countries"
+          count2="40"
+          category2="Empaneled Tutors"
+          count3="40"
+          category3="Empaneled Auditors"
         />
       </div>
     </>

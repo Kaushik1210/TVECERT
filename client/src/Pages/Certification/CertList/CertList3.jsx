@@ -93,14 +93,14 @@ const CertList3 = () => {
             </div>
 
             {/* Dialog Actions with Apply Button */}
-            <div className="  p-5 border-t">
+            {/* <div className="  p-5 border-t">
               <a
           className="bg-blue-700 px-4 py-2 rounded-full text-white font-semibold hover:bg-green-600"
           href=""
         >
           Apply
         </a>
-              </div>
+              </div> */}
           </Dialog>
         </div>
       
