@@ -54,9 +54,9 @@ const NewsUpdate = () => {
     setNewsData({ ...newsData, [name]: value });
   };
 
-  // const isFormValid = () => {
-  //   return newsData.title && newsData.description && newsData.date && newsData.expiryDate;
-  // };
+  const isFormValid = () => {
+    return newsData.title && newsData.description && newsData.date && newsData.expiryDate;
+  };
 
   const handleNewsSubmit = async (e) => {
     e.preventDefault();
@@ -179,11 +179,11 @@ const NewsUpdate = () => {
           <Button
             type="submit"
             variant="contained"
-            // disabled={!isFormValid()}
+            disabled={!isFormValid()}
             color="success"
           >
-            {/* {!isFormValid() ? "Enter all required data" : "Add News"} */}
-            Add News
+            {!isFormValid() ? "Enter all required data" : "Add News"}
+           
           </Button>
         </Box>
           </div>
