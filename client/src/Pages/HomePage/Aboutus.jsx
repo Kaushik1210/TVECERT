@@ -112,11 +112,24 @@ const Aboutus = () => {
                         max-[850px]:gap-10  
                         "
           >
-            <img className="h-45 " src={image.ias} alt="" />
-            <img className="h-45 " src={image.iaf} alt="" />
-            <img className="h-45 " src={image.cqiirca} alt="" />
-            <img className="h-45 " src={image.eg} alt="" />
-            <img className="h-45 " src={image.eosh} alt="" />
+            <div className=" flex-1 flex justify-center   p-2 w-full">
+              
+              <img src={image.ias} className=" h-32" alt="" />
+            </div>
+            <div className=" flex-1 flex justify-center p-5 w-full">
+            <img className=" h-20 " src={image.iaf} alt="" />
+            </div>
+            <div className=" flex-1 flex justify-center p-5 w-full">
+            <img className="h-24  " src={image.cqiirca} alt="" />
+            </div>
+            <div className=" flex-1 flex justify-center p-5 w-full">
+            
+            <img className=" h-16  " src={image.eg} alt="" />
+            </div>
+            <div className=" flex-1 flex justify-center p-5 w-full">
+            <img className="h-28  " src={image.eosh} alt="" />
+            </div>
+           
           </div>
         </div>
 
