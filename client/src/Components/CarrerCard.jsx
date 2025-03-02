@@ -19,12 +19,13 @@ const CarrerCard = ({cd}) => {
 
         <div className=' h-56  max-md:h-auto'>
         <div className='flex cursor-default  max-h-56 items-Start    flex-wrap'>            
-            <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill1}</div>
-            <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill2}</div>
-            <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill3}</div>
-            <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill4}</div>
-            <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill5}</div>
-            <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill6}</div>
+           { cd.skill1? <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill1}</div> : null}
+           { cd.skill2? <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill2}</div> : null}
+           { cd.skill3? <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill3}</div> : null}
+           { cd.skill4? <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill4}</div> : null}
+           { cd.skill5? <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill5}</div> : null}
+           { cd.skill6? <div className=' text-white w-fit font-bold  bg-blue-400 rounded-full text-xs hover:bg-green-400 transition-all ease-in-out duration-100  flex items-center p-2 mr-1 mb-1 mt-1 shadow-md'>{cd.skill6}</div> : null}
+
         </div>
         </div>
         </div>
@@ -51,7 +52,7 @@ const CarrerCard = ({cd}) => {
 
         <div className=' w-full flex justify-end mt-1 '>
         <div className='  py-1 px-3 flex rounded-3xl bg-white hover:bg-green-400 hover:text-white transition-all ease-in-out duration-500     '>
-            <a href={cd.linkToApply} className=' flex justify-center items-center  font-semibold gap-2'>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSW2AeJt_7uxmsunrTM-ezfD7vmnVP2Es_GIDydVAbdNldVQ/viewform" target='_blanck' className=' flex justify-center items-center  font-semibold gap-2'>
 
              <p className='text-sm' >Apply</p>
             <IoIosArrowForward  />
