@@ -16,7 +16,7 @@ const Aboutus = () => {
       >
         {/* aboutus  */}
         <div
-          className="flex mb-50 gap-5
+          className="flex mb-5 gap-5
                       max-[850px]:flex-col"
         >
           <div className="flex-1 pr-10  content-center">
@@ -59,11 +59,7 @@ const Aboutus = () => {
                   conflict of interest & ensures the objectivity of the
                   Management System Certification activities
                 </li>
-                <li class="flex items-start">
-                  <span class="before:content-['•'] before:mr-1 before:text-black"></span>
-                  TVE CERTIFICATION INTERNATIONAL is now the Training Partner of
-                  PECB.
-                </li>
+                
               </ul>
             </div>
             {/* <div className="flex max-sm:justify-center">
@@ -71,6 +67,37 @@ const Aboutus = () => {
             </div> */}
           </div>
         </div>
+        <div className="  flex flex-col gap-2 mb-5 list-none  text-darkblue">
+              <ul class="list-none space-y-3">
+                <li class=" items-start indent-5 ">
+                  <strong>TVE CERTIFICATION SERVICES & TVE INTERNATIONAL ACADEMY</strong> operates as Management System Certification - Training Body and has its clients in both Certification and Training over 15 countries across the globe.
+                </li>
+                <li class=" items-start indent-5 ">
+                  <strong>TVE CERTIFICATION SERVICES (MSCB No. 129)</strong> is accredited by IAS - International Accreditation Service (American Accreditation) - Member of IAF for ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 and ISO 22000:2018.
+                </li>
+                <li class=" items-start indent-5 ">
+                  <strong>TVE INTERNATIONAL ACADEMY (ATP No. - 6023829)</strong> is the Approved Training Partner of CQI & IRCA to deliver Auditor / Lead Auditor Training Courses (CQI - Chartered Quality Institute and IRCA - International Registered of Certificated Auditors) in QMS- ISO 9001:2015,OHSMS - ISO 45001:2018, EMS - ISO 14001:2015, FSMS - 22000:2018, ISMS - ISO 27001:2013 and EnMS - ISO 50001:2018.
+
+
+                </li>
+                <li class=" items-start indent-5 ">
+                  <strong>TVE INTERNATIONAL ACADEMY</strong> is the Recognised Training Partner of Exemplar Global to provide trainings in different ISO Standards like QMS - ISO 9001:2015, OHSMS - ISO 45001:2018, EMS - ISO 14001:2015, FSMS - 22000:2018, ISMS - ISO 27001:2013 and EnMS - ISO 50001:2018.
+
+
+                </li>
+                <li class=" items-start indent-5 ">
+                  <strong>TVE INTERNATIONAL ACADEMY (ATC No ATC1076)</strong> is the Approved Training Centre of EOSH UK Training Partner to deliver Level 2, Level 3 & Level 4 Training Courses in Health & Safety, Fire Safety, Environment, Environment Sustainability, Lifting & Rigging, First Aid, Scaffolding.
+
+
+                </li>
+
+
+               
+                
+              </ul>
+            </div>
+
+       
 
         {/* <ClientsSec/> */}
 
