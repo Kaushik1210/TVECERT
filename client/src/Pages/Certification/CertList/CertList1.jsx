@@ -46,25 +46,7 @@ const CertList1 = () => {
 
        
        
-        {/* <div className=" relative flex-1 flex items-center max-md:hidden">
-          <img className="rounded-xl shadow-xl" src={image.c1} alt="" />
-        </div> */}
-
-        
-        {/* <div className="flex-1 flex justify-center flex-col gap-3 pl-10 py-5 max-md:pl-0"> */}
-          {/* <p className="capitalize text-35 font-semibold text-ldarkblue">
-            Auditing & System Certification
-          </p>
-          <img
-            className="rounded-xl hidden shadow-xl max-md:block"
-            src={image.c1}
-            alt=""
-          />
-         
-          <button className="bg-gradient-to-r from-buttonfrom to to-buttonto w-fit h-45 flex items-center rounded-full"  onClick={handleClickOpen}>
-            <span className="text-white m-10">Read More</span>
-            
-          </button> */}
+       
 
           <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
             <DialogTitle>

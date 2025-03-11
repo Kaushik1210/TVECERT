@@ -14,6 +14,11 @@ const CertHeroSec = () => {
 
   return (
     <>
+      <head>
+        <title>TVE Certification Services | Get Certified with Global Standards</title>
+        <meta name="description" content="Get ISO certified with TVE Certification Services. We offer globally recognized certifications in ISO 9001, ISO 14001, ISO 45001, and more across 15+ countries." />
+        <meta name="keywords" content="ISO certification, TVE Certification Services, ISO 9001, ISO 14001, ISO 45001, ISO 22000, business certification, accredited certification body" />
+      </head>
       <div loading="lazy" className="relative h-screen bg-certbg bg-no-repeat w-full bg-cover">
         <CertNav />
         <div className="w-full h-full flex items-center">
@@ -23,33 +28,16 @@ const CertHeroSec = () => {
               max-md:text-center               
               max-md:m-14"
           >
-            <h1 className="text-H leading-snug text-white font-semibold ">
-              {/* get certified <br className="max-md:hidden" />
-              with us */}
-              Have a Business breakthrough <br className="max-md:hidden" /> by
-              getting Certified with TVE
+            <h1 className="text-H leading-snug text-white font-semibold">
+              Have a Business Breakthrough <br className="max-md:hidden" /> by
+              Getting Certified with TVE
             </h1>
             <p
-              className=" w-[450px] mt-4 text-white text-P font-light
+              className="w-[450px] mt-4 text-white text-P font-light
                    max-md:w-full"
             >
-              TVE Certification Services is a renowned certification body that certifies businesses in various ISO standards. Our global reach spreads over 15 countries and adding more.
+              TVE Certification Services is a renowned certification body that certifies businesses in various ISO standards, including ISO 9001, ISO 14001, ISO 45001, and ISO 22000. Our global reach spans over 15+ countries and is continuously growing.
             </p>
-            {/* <div
-              className="mt-4 flex gap-6 
-                   max-md:justify-center                   
-                   max-md:items-center
-                   max-sm:flex-col"
-            >
-              <a
-                href="#certificateinfo"
-                onClick={(event) =>
-                  handleSmoothScroll(event, "certificateinfo")
-                }
-              >
-                <Button text="Certification Info" />
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

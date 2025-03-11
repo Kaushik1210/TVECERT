@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../Components/Button";
 import CountBanner from "../../CommonComponents/CountBanner";
 import CareerNav from "./CareerNav";
+import { Helmet } from "react-helmet";
 
 const CareerHeroSec = () => {
   const handleSmoothScroll = (event, targetId) => {
@@ -14,13 +15,25 @@ const CareerHeroSec = () => {
 
   return (
     <>
-      <div
+      <Helmet>
+        <title>Career Opportunities at TVE Group</title>
+        <meta
+          name="description"
+          content="Join TVE Group and grow your career while shaping global standards. Explore current openings and become a part of our thriving team."
+        />
+        <meta
+          name="keywords"
+          content="career, job opportunities, TVE Group, global standards, career growth, collaborative work culture"
+        />
+        <link rel="canonical" href="https://www.tvegroup.com/careers" />
+      </Helmet>
+      <section
         loading="lazy"
         className="relative h-screen bg-careerherobg bg-no-repeat w-full bg-cover"
       >
         <CareerNav />
         <div className="w-full h-full flex items-center">
-          <div
+          <article
             className="ml-100 flex-col
               max-md:justify-center 
               max-md:text-center               
@@ -37,24 +50,26 @@ const CareerHeroSec = () => {
             >
               What We Offer:
             </p>
-            <li
-              className="w-500 mt-1 indent-2 text-white text-P font-light
+            <ul>
+              <li
+                className="w-500 mt-1 indent-2 text-white text-P font-light
                    max-md:w-full"
-            >
-              Thriving Career Growth
-            </li>
-            <li
-              className="w-500 mt-1 indent-2 text-white text-P font-light
+              >
+                Thriving Career Growth
+              </li>
+              <li
+                className="w-500 mt-1 indent-2 text-white text-P font-light
                    max-md:w-full"
-            >
-              Collaborative Work Culture
-            </li>
-            <li
-              className="w-500 mt-1 indent-2 text-white text-P font-light
+              >
+                Collaborative Work Culture
+              </li>
+              <li
+                className="w-500 mt-1 indent-2 text-white text-P font-light
                    max-md:w-full"
-            >
-              Prosperous Future
-            </li>
+              >
+                Prosperous Future
+              </li>
+            </ul>
             <p
               className="w-500 mt-1  text-white text-P font-light
                    max-md:w-full"
@@ -71,13 +86,14 @@ const CareerHeroSec = () => {
               <a
                 href="#careerList"
                 onClick={(event) => handleSmoothScroll(event, "careerList")}
+                aria-label="View Open Roles"
               >
                 <Button text="View Open Roles" />
               </a>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
       <div className="-mt-10 relative z-10">
         <CountBanner
           count1="20"
