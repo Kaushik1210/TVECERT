@@ -44,11 +44,21 @@ const DelegateInfo = () => {
     setTimeout(() => {
       const found = delegateData.find((delegate) => delegate.certificateNo === searchCert);
       setResult(found || null); // Set result or null if not found
+      console.log(result.issueDate)
+      
       setSearching(false); // Stop the search loader after 2 seconds
     }, 2000); // 2-second delay
   };
 
-  const formatDate = (dateString) => {
+  const formatDateStartperiod = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
+  const formatDateEndperiod = (dateString) => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -102,16 +112,16 @@ const DelegateInfo = () => {
             <div className='flex max-md:flex-col max-md:gap-3'>
               <div className='flex flex-1 max-sm:flex-col max-sm:gap-3'>
                 <div className='flex-1 text-center'>
-                  <p className='font-medium'>Issue Date</p>
-                  <p className='font-medium text-gray-500'>{formatDate(result.issueDate)}</p>
+                  <p className='font-medium'>Course Start Date</p>
+                  <p className='font-medium text-gray-500'>{result.issueDate}</p>
                 </div>
                 <div className='flex-1 text-center'>
-                  <p className='font-medium'>Expiry Date</p>
-                  <p className='font-medium text-gray-500'>{formatDate(result.expiryDate)}</p>
+                  <p className='font-medium'>Course End Date</p>
+                  <p className='font-medium text-gray-500'>{result.expiryDate}</p>
                 </div>
                 <div className='flex-1 text-center'>
                   <p className='font-medium'>Status</p>
-                  <p className={result.status}>
+                  <p className='font-medium text-gray-500'>
                     {result.status}
                   </p>
                 </div>
