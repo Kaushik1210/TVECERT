@@ -17,7 +17,7 @@ const CertHeroSec = () => {
       <head>
         <title>TVE Certification Services | Get Certified with Global Standards</title>
         <meta name="description" content="Get ISO certified with TVE Certification Services. We offer globally recognized certifications in ISO 9001, ISO 14001, ISO 45001, and more across 15+ countries." />
-        <meta name="keywords" content="ISO certification, TVE Certification Services, ISO 9001, ISO 14001, ISO 45001, ISO 22000, business certification, accredited certification body" />
+        <meta name="keywords" content="ISO certification,iso certification, TVE Certification Services, ISO 9001, ISO 14001, ISO 45001, ISO 22000, business certification, accredited certification body" />
       </head>
       <div loading="lazy" className="relative h-screen bg-certbg bg-no-repeat w-full bg-cover">
         <CertNav />
