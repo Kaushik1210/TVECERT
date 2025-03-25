@@ -42,11 +42,11 @@ const CarrerCard = ({cd}) => {
             </div>
             <div className=' flex gap-2 items-center '>
                 <MdOutlineWorkOutline className='text-gray-900 text-lg font-bold' />
-                <p className=' text-gray-500'>{cd.yearsOfExperienceNeeded} yrs of exps</p>
+                <p className=' text-gray-500'>{cd.yearsOfExperienceNeeded} </p>
             </div>
             <div className=' flex gap-2 items-center '>
                 <SlLocationPin className='text-gray-900 text-lg font-bold' />
-                <p className=' text-gray-500'>{cd.district} ,{cd.state} ,{cd.country}</p>
+                <p className=' text-gray-500'>{cd.district}, {cd.state}, {cd.country}</p>
             </div>
         </div>
 

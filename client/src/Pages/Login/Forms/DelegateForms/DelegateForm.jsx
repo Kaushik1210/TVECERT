@@ -184,6 +184,8 @@ const DelegateForm = () => {
     status: "",  
   });  
 
+  const [certNoError, setCertNoError] = useState("");
+
   const [rows, setRows] = useState([]);  
   const [error, setError] = useState("");  
   const [selectedRows, setSelectedRows] = useState([]);  
@@ -237,20 +239,38 @@ const DelegateForm = () => {
     });  
   };  
 
+  const validateCertNo = (value) => {
+    const exists = rows.some(row => row.certificateNo === value);
+    if (exists) {
+      setCertNoError("Certificate number already exists");
+      return false;
+    }
+    setCertNoError("");
+    return true;
+  };
+
   const isFormValid = () => {  
     return (  
       delegateData.delegateName &&  
       delegateData.certificateNo &&  
+      !certNoError && 
       delegateData.nameOfTheCourse &&  
       delegateData.issueDate &&  
       delegateData.expiryDate &&  
       delegateData.status  
     );  
-  };  
+  };   
 
   const handleDelegateSubmit = async (e) => {  
     e.preventDefault();  
     setError("");  
+  
+    // Validate certificate number before submission
+    if (!validateCertNo(delegateData.certificateNo)) {
+      showAlert("Certificate number already exists", "error");
+      return;
+    }
+  
     try {  
       const response = await axios.post(  
         `${URL}/data/certificationInfo/delegatesInfo`,  
@@ -263,8 +283,9 @@ const DelegateForm = () => {
       };  
   
       setRows((prevRows) => [...prevRows, newRow]);  
-      showAlert("Data inserted into the database", "success"); // Success alert
+      showAlert("Data inserted into the database", "success");
   
+      // Reset form
       setDelegateData({  
         delegateName: "",  
         certificateNo: "",  
@@ -273,14 +294,26 @@ const DelegateForm = () => {
         expiryDate: null,  
         status: "",  
       });  
+  
+      // Clear any certificate number error
+      setCertNoError("");
+  
     } catch (error) {  
       console.error("Error inserting data", error);  
-      showAlert(  
-        "Failed to insert data: " + (error.response?.data?.message || "Unknown error"),  
-        "error"  
-      ); // Error alert
+      let errorMessage = "Failed to insert data";
+      
+      // More specific error messages if available
+      if (error.response) {
+        if (error.response.data && error.response.data.message) {
+          errorMessage = error.response.data.message;
+        } else if (error.response.status === 409) {
+          errorMessage = "Certificate number already exists in database";
+        }
+      }
+      
+      showAlert(errorMessage, "error");  
     }  
-  };   
+  };  
 
   const handleDelete = async () => {  
     try {  
@@ -348,16 +381,21 @@ const DelegateForm = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <TextField
-              label="Certificate No."
-              variant="outlined"
-              name="certificateNo"
-              fullWidth
-              size="medium"
-              value={delegateData.certificateNo}
-              onChange={handleDelegateInputChange}
-            />
-          </Grid>
+  <TextField
+    label="Certificate No."
+    variant="outlined"
+    name="certificateNo"
+    fullWidth
+    size="medium"
+    value={delegateData.certificateNo}
+    onChange={(e) => {
+      handleDelegateInputChange(e);
+      validateCertNo(e.target.value);
+    }}
+    error={!!certNoError}
+    helperText={certNoError}
+  />
+</Grid>
           {/* <Grid item xs={12} sm={6} md={4}>
             <TextField
               label="Name of the Course"

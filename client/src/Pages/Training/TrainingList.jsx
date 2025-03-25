@@ -193,14 +193,14 @@ const TrainingList = () => {
                   <MenuItem disabled>
                     <strong>Food Safety <br className="min-[400px]:hidden" />System Certification</strong>
                   </MenuItem>
-                  <MenuItem value="FSSC - ISO 22000 Lead Auditor">
-                  FSSC - ISO 22000 Ver 6.0<br className="min-[450px]:hidden" /> Lead Auditor
+                  <MenuItem value="FSSC - 22000 Lead Auditor">
+                  FSSC - 22000 Ver 6.0<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                   <MenuItem disabled>
                     <strong>Energy </strong>
                   </MenuItem>
-                  <MenuItem value="EnMS - ISO 50001:2018 Lead Auditor">
-                    EnMS - ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                  <MenuItem value="EnMS - ISO 22000:2018 Lead Auditor">
+                    EnMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -299,8 +299,8 @@ const TrainingList = () => {
                   <MenuItem disabled>
                     <strong>Energy </strong>
                   </MenuItem>
-                  <MenuItem value="EnMS - ISO 50001:2018 Lead Auditor">
-                    EnMS - ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                  <MenuItem value="EnMS - ISO 22000:2018 Lead Auditor">
+                  EnMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                 </Select>
               </FormControl>
