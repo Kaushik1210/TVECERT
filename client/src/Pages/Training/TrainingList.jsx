@@ -5,6 +5,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Button2 from "../../Components/Button2";
+import image from "../../Assets/dummy";
+
 import {
   Dialog,
   DialogTitle,
@@ -108,7 +110,10 @@ const TrainingList = () => {
           <div className="flex max-[1100px]:flex-col">
             {/* CQI & IRCA Training Section */}
             <article className="flex-1 flex flex-col m-4 p-4 gap-4 shadow-lg rounded-2xl hover:shadow-xl hover:border-none duration-300">
-              <h2 className="font-bold">CQI & IRCA Training</h2>
+<div className=" flex justify-between items-center">
+              <h2 className="font-bold">CQI and IRCA Training</h2>
+              <img src={image.cqiirca} className="h-[60px]" alt="" />
+</div>
               <FormControl sx={{ m: 0, minWidth: 200 }}>
                 <InputLabel htmlFor="cqiirca-select">Training in</InputLabel>
                 <Select
@@ -211,7 +216,10 @@ const TrainingList = () => {
 
             {/* Exemplar Global Training Section */}
             <article className="flex-1 flex flex-col m-4 p-4 gap-4 shadow-lg rounded-2xl hover:shadow-xl hover:border-none duration-300">
+              <div className=" flex justify-between items-center">
               <h2 className="font-bold">Exemplar Global Training</h2>
+              <img src={image.eg} className="h-[60px]" alt="" />
+              </div>
               <FormControl sx={{ m: 0, minWidth: 200 }}>
                 <InputLabel htmlFor="exemplar-select">Training in</InputLabel>
                 <Select
@@ -311,7 +319,10 @@ const TrainingList = () => {
           </div>
           <div className="flex w-full justify-center">
             <div className="flex flex-col w-[600px] m-4 p-4 gap-4 shadow-lg rounded-2xl hover:shadow-xl hover:border-none duration-300">
+              <div className=" flex justify-between items-center">
               <h2 className="font-bold text-lg">EOSH Courses</h2>
+              <img src={image.eosh} className="h-[70px]" alt="" />
+              </div>
               <button
                 className="bg-gradient-to-r from-buttonfrom to to-buttonto w-fit h-45 flex items-center rounded-full"
                 onClick={handleOpen}

@@ -847,7 +847,7 @@ const Footer = () => {
   return (
     <footer
       id="contactus"
-      className="flex flex-col bg-darkblue text-lwhite px-100 py-50 gap-14
+      className="flex relative flex-col bg-darkblue text-lwhite px-100 py-50 gap-14
                 max-lg:px-20 max-[950px]:px-14 max-sm:px-4"
     >
       {/* Logo and Social Icons */}
@@ -1065,6 +1065,7 @@ const Footer = () => {
           </div>
 
         </div>
+        <p className=" absolute bottom-0 text-xs">Copyright C* 2025 TVE Certification Services Pvt Ltd. All Rights Reserved. (Privacy Policy)</p>
     </footer>
   );
 };
