@@ -121,12 +121,12 @@ const CertInfoSec = () => {
                 </div>
                 <div className='flex-1 text-center'>
                   <p className='font-medium'>Expiry Date</p>
-                  <p className='font-medium text-gray-500'>{formatDate(result.expiryDate)}</p>
+                  <p className='font-medium text-gray-500'>{result.expiryDate}</p>
                 </div>
                 <div className='flex-1 text-center'>
                   <p className='font-medium'>Status</p>
-                  <p className={`font-medium ${getStatus(result.expiryDate).color}`}>
-                    {getStatus(result.expiryDate).text}
+                  <p className={`font-medium text-gray-500 `}>
+                    {result.status}
                   </p>
                 </div>
               </div>

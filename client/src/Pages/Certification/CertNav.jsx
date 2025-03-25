@@ -127,12 +127,19 @@ const CertNav = () => {
               transformOrigin={{ vertical: "top", horizontal: "left" }}
             >
               <MenuItem
-                onClick={handleCertificationClose}
-                component={Link}
-                to="/training#delegateinfo"
-              >
-                Delegate Certificate Info
-              </MenuItem>
+                              onClick={handleCertificationClose}
+                              component={Link}
+                              to="#certificateinfo"
+                            >
+                              Client's Certificate Info
+                            </MenuItem>
+                            <MenuItem
+                              onClick={handleCertificationClose}
+                              component={Link}
+                              to="/training#delegateinfo"
+                            >
+                              Delegate Certificate Info
+                            </MenuItem>
             </Menu>
           </div>
           <Link className="text-16 text-white" to="/career">
@@ -241,12 +248,19 @@ const CertNav = () => {
               >
                
                 <MenuItem
-                  onClick={handleCertificationClose}
-                  component={Link}
-                  to="/training#delegateinfo"
-                >
-                  Delegate Certificate Info
-                </MenuItem>
+                                onClick={handleCertificationClose}
+                                component={Link}
+                                to="#certificateinfo"
+                              >
+                                Client's Certificate Info
+                              </MenuItem>
+                              <MenuItem
+                                onClick={handleCertificationClose}
+                                component={Link}
+                                to="/training#delegateinfo"
+                              >
+                                Delegate Certificate Info
+                              </MenuItem>
               </Menu>
             </MenuItem>
             <MenuItem

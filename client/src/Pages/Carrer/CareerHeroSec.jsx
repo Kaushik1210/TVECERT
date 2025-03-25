@@ -36,7 +36,7 @@ const CareerHeroSec = () => {
           <article
             className="ml-100 flex-col
               max-md:justify-center 
-              max-md:text-center               
+              max-md:items-center               
               max-md:m-14"
           >
             <h1 className="text-[35px] text-white font-semibold capitalize">
@@ -50,7 +50,7 @@ const CareerHeroSec = () => {
             >
               What We Offer:
             </p>
-            <ul>
+            <div>
               <li
                 className="w-500 mt-1 indent-2 text-white text-P font-light
                    max-md:w-full"
@@ -69,7 +69,7 @@ const CareerHeroSec = () => {
               >
                 Prosperous Future
               </li>
-            </ul>
+            </div>
             <p
               className="w-500 mt-1  text-white text-P font-light
                    max-md:w-full"

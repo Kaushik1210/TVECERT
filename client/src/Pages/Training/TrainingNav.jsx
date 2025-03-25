@@ -277,12 +277,19 @@ const TrainingNav = () => {
               transformOrigin={{ vertical: "top", horizontal: "left" }}
             >
               <MenuItem
-                onClick={handleCertificationClose}
-                component={Link}
-                to="/certification#certificateinfo"
-              >
-                Client's Certificate Info
-              </MenuItem>
+                              onClick={handleCertificationClose}
+                              component={Link}
+                              to="/certification#certificateinfo"
+                            >
+                              Client's Certificate Info
+                            </MenuItem>
+                            <MenuItem
+                              onClick={handleCertificationClose}
+                              component={Link}
+                              to="#delegateinfo"
+                            >
+                              Delegate Certificate Info
+                            </MenuItem>
             </Menu>
           </div>
           <Link className="text-16 text-white" to="/career">
@@ -443,7 +450,7 @@ const TrainingNav = () => {
                 <MenuItem
                   onClick={handleCertificationClose}
                   component={Link}
-                  to="/training#delegateinfo"
+                  to="#delegateinfo"
                 >
                   Delegate Certificate Info
                 </MenuItem>

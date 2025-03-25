@@ -1048,7 +1048,7 @@ const Footer = () => {
               to="/certification#certificateinfo"
               className="hover:underline text-gray-300 hover:text-white"
             >
-              Certification Info
+             Client's Certificate Info
             </Link>
           </div>
 

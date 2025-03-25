@@ -182,10 +182,10 @@ const TrainingList = () => {
                     <strong>Food Safety</strong>
                   </MenuItem>
                   <MenuItem value="FSMS - ISO 22000:2018 Lead Auditor">
-                    FSMS - ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                    FSMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                   <MenuItem value="FSMS - ISO 22000:2018 Internal Auditor">
-                    FSMS - ISO 22000:2005<br className="min-[450px]:hidden" /> Internal Auditor
+                    FSMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Internal Auditor
                   </MenuItem>
                   <MenuItem value="FSMS - ISO 22000:2018 Auditor Transition">
                     FSMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Auditor Transition
@@ -194,7 +194,7 @@ const TrainingList = () => {
                     <strong>Food Safety <br className="min-[400px]:hidden" />System Certification</strong>
                   </MenuItem>
                   <MenuItem value="FSSC - ISO 22000 Lead Auditor">
-                    FSSC - ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                  FSSC - ISO 22000 Ver 6.0<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                   <MenuItem disabled>
                     <strong>Energy </strong>
@@ -281,11 +281,11 @@ const TrainingList = () => {
                   <MenuItem disabled>
                     <strong>Food Safety</strong>
                   </MenuItem>
-                  <MenuItem value="FSMS - ISO 22000:2005 Lead Auditor">
-                    FSMS - ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                  <MenuItem value="FSMS - ISO 22000:2018 Lead Auditor">
+                    FSMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
-                  <MenuItem value="FSMS - ISO 22000:2005 Internal Auditor">
-                    FSMS - ISO 22000:2005<br className="min-[450px]:hidden" /> Internal Auditor
+                  <MenuItem value="FSMS - ISO 22000:2018 Internal Auditor">
+                    FSMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Internal Auditor
                   </MenuItem>
                   <MenuItem value="FSMS - ISO 22000:2018 Auditor Transition">
                     FSMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Auditor Transition
@@ -294,7 +294,7 @@ const TrainingList = () => {
                     <strong>Food Safety <br className="min-[400px]:hidden" />System Certification</strong>
                   </MenuItem>
                   <MenuItem value="FSSC - ISO 22000 Lead Auditor">
-                    FSSC - ISO 22000:2005<br className="min-[450px]:hidden" /> Lead Auditor
+                  FSSC - ISO 22000 Ver 6.0<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                   <MenuItem disabled>
                     <strong>Energy </strong>

@@ -232,7 +232,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1jRap0f5UMP2OvFE7t5gOSszm8k0qwfyb/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "FSMS - ISO 22000:2005 Lead Auditor",
+    selection: "FSMS - ISO 22000:2018 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified FSMS Auditor / Lead Auditor - ISO 22000:2018 Training Course",
   },
@@ -247,7 +247,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf:"https://drive.google.com/file/d/1A9WVBoxr06OjO-bM1Kj9yz184E9xC7J8/view?usp=drive_link",
     mainHeading: "Examplar Global Training Details",
-    selection: "FSMS - ISO 22000:2005 Internal Auditor",
+    selection: "FSMS - ISO 22000:2018 Internal Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified FSMS Auditor / Internal Auditor - ISO 22000:2018 Training Course",
   },

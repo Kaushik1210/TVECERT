@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, MenuItem, Select, FormControl, InputLabel, Grid } from "@mui/material"; // Add Grid
 import axios from "axios";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateField } from "@mui/x-date-pickers/DateField";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import Paper from "@mui/material/Paper";
 import { DataGrid } from "@mui/x-data-grid";
@@ -20,33 +19,8 @@ const columns = [
     headerName: "Status",
     width: 100,
     renderCell: (params) => {
-      let color;
-      switch (params.value) {
-        case "VALID":
-          color = "green";
-          break;
-        case "EXPIRED":
-          color = "lightblue";
-          break;
-        case "WITHDRAWN":
-          color = "yellow";
-          break;
-        case "SUSPENDED":
-          color = "red";
-          break;
-        default:
-          color = "black";
-      }
-      return <span style={{ color }}>{params.value}</span>;
+      return <span>{params.value}</span>; // Simply display the status text
     },
-  },
-  {
-    field: "availability",
-    headerName: "Availability",
-    width: 150,
-    editable: true,
-    type: "singleSelect",
-    valueOptions: ["SUSPENDED", "WITHDRAWN"],
   },
   { field: "certNo", headerName: "Certificate No.", width: 150 },
   { field: "companyName", headerName: "Organization Name", width: 200 },
@@ -73,7 +47,6 @@ const CertForm = () => {
     scopeOfCertification: "",
     expiryDate: null,
     status: "",
-    availability: "",
   });
 
   const [rows, setRows] = useState([]);
@@ -89,7 +62,6 @@ const CertForm = () => {
         const dataWithIds = response.data.map((item) => ({
           ...item,
           id: item._id || uuidv4(), // Assign a unique id if _id is missing
-          status: getStatus(item.expiryDate, item.availability),
         }));
         setRows(dataWithIds);
       } catch (error) {
@@ -100,15 +72,6 @@ const CertForm = () => {
 
     fetchCertificationData();
   }, []);
-
-  const getStatus = (expiryDate, availability) => {
-    if (availability === "SUSPENDED") return "SUSPENDED";
-    if (availability === "WITHDRAWN") return "WITHDRAWN";
-
-    const now = dayjs();
-    const expiry = dayjs(expiryDate);
-    return now.isBefore(expiry) || now.isSame(expiry) ? "VALID" : "EXPIRED";
-  };
 
   const handleCerticateInputChange = (e) => {
     const { name, value } = e.target;
@@ -131,7 +94,8 @@ const CertForm = () => {
       certificateInfoData.country &&
       certificateInfoData.certType &&
       certificateInfoData.scopeOfCertification &&
-      certificateInfoData.expiryDate
+      certificateInfoData.expiryDate &&
+      certificateInfoData.status // Ensure status is also required
     );
   };
 
@@ -147,12 +111,10 @@ const CertForm = () => {
       const newRow = {
         ...response.data,
         id: response.data._id || uuidv4(), // Assign a unique id if _id is missing
-        status: getStatus(response.data.expiryDate, response.data.availability),
       };
 
       setRows((prevRows) => [...prevRows, newRow]);
       alert("Data inserted into the database and Refresh the page to see the changes");
-      
 
       setCertificateInfoData({
         certNo: "",
@@ -163,7 +125,7 @@ const CertForm = () => {
         certType: "",
         scopeOfCertification: "",
         expiryDate: null,
-        availability: "",
+        status: "",
       });
     } catch (error) {
       console.error("Error inserting data", error);
@@ -232,68 +194,114 @@ const CertForm = () => {
         <div className="w-full border my-5" />
         <Box
           component="form"
-          className="flex flex-wrap justify-center gap-4"
           onSubmit={handleCertificationSubmit}
           autoComplete="off"
         >
-          <TextField
-            label="Certificate No"
-            name="certNo"
-            value={certificateInfoData.certNo}
-            onChange={handleCerticateInputChange}
-          />
-          <TextField
-            label="Organization Name"
-            name="companyName"
-            value={certificateInfoData.companyName}
-            onChange={handleCerticateInputChange}
-          />
-          <TextField
-            label="District"
-            name="district"
-            value={certificateInfoData.district}
-            onChange={handleCerticateInputChange}
-          />
-          <TextField
-            label="State"
-            name="state"
-            value={certificateInfoData.state}
-            onChange={handleCerticateInputChange}
-          />
-          <TextField
-            label="Country"
-            name="country"
-            value={certificateInfoData.country}
-            onChange={handleCerticateInputChange}
-          />
-          <TextField
-            label="Certificate Type"
-            name="certType"
-            value={certificateInfoData.certType}
-            onChange={handleCerticateInputChange}
-          />
-          <TextField
-            label="Scope Of Certification"
-            name="scopeOfCertification"
-            value={certificateInfoData.scopeOfCertification}
-            onChange={handleCerticateInputChange}
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateField
-              label="Expiry Date"
-              value={dayjs(certificateInfoData.expiryDate)}
-              onChange={handleDateChange}
-              format="DD-MM-YYYY"
-            />
-          </LocalizationProvider>
-          <Button
-            type="submit"
-            variant="contained"
-            disabled={!isFormValid()}
-            color="success"
-          >
-            Add Certificate
-          </Button>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="Certificate No"
+                name="certNo"
+                value={certificateInfoData.certNo}
+                onChange={handleCerticateInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="Organization Name"
+                name="companyName"
+                value={certificateInfoData.companyName}
+                onChange={handleCerticateInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="District"
+                name="district"
+                value={certificateInfoData.district}
+                onChange={handleCerticateInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="State"
+                name="state"
+                value={certificateInfoData.state}
+                onChange={handleCerticateInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="Country"
+                name="country"
+                value={certificateInfoData.country}
+                onChange={handleCerticateInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="Certificate Type"
+                name="certType"
+                value={certificateInfoData.certType}
+                onChange={handleCerticateInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                label="Scope Of Certification"
+                name="scopeOfCertification"
+                value={certificateInfoData.scopeOfCertification}
+                onChange={handleCerticateInputChange}
+                fullWidth
+                multiline
+                rows={4} // Set the number of rows for multiline
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Expiry Date"
+                  value={certificateInfoData.expiryDate ? dayjs(certificateInfoData.expiryDate) : null}
+                  onChange={handleDateChange}
+                  format="DD-MM-YYYY"
+                  slotProps={{ textField: { fullWidth: true } }}
+                />
+              </LocalizationProvider>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <FormControl fullWidth>
+                <InputLabel>Status</InputLabel>
+                <Select
+                  label="Status"
+                  name="status"
+                  value={certificateInfoData.status}
+                  onChange={handleCerticateInputChange}
+                >
+                  <MenuItem value="VALID">VALID</MenuItem>
+                  <MenuItem value="EXPIRED">EXPIRED</MenuItem>
+                  <MenuItem value="SUSPENDED">SUSPENDED</MenuItem>
+                  <MenuItem value="WITHDRAWN">WITHDRAWN</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={!isFormValid()}
+                color="success"
+                fullWidth
+              >
+                Add Certificate
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
         {error && <div style={{ color: "red" }}>{error}</div>}
         <div className="w-full border my-5" />
@@ -325,7 +333,7 @@ const CertForm = () => {
           />
         </Paper>
       </div>
-      <Footer />
+      
     </div>
   );
 };
