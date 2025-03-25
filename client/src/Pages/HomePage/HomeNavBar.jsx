@@ -164,7 +164,7 @@ const HomeNavBar = () => {
           >
             Contact us
           </a>
-          <div>
+          {/* <div>
             <button
               className="text-16 flex text-white items-center cursor-pointer"
               onClick={handlePaymentClick}
@@ -189,7 +189,10 @@ const HomeNavBar = () => {
                 Terms & Conditions
               </MenuItem>
             </Menu>
-          </div>
+          </div> */}
+          <Link className="text-16 text-white" to="/onlinePayment">
+            Online Payment
+          </Link>
         </div>
 
         {/* Login Button for Desktop */}
@@ -309,7 +312,7 @@ const HomeNavBar = () => {
     >
       Contact Us
     </MenuItem>
-    <MenuItem>
+    {/* <MenuItem>
             <button
               className="text-16 flex  items-center cursor-pointer"
               onClick={handlePaymentClick}
@@ -334,7 +337,16 @@ const HomeNavBar = () => {
                 Terms & Conditions
               </MenuItem>
             </Menu>
-          </MenuItem>
+          </MenuItem> */}
+          <MenuItem
+      onClick={() => {
+        setHomeMenu(false);
+      }}
+      component={Link}
+      to="/onlinePayment"
+    >
+      Online Payment
+    </MenuItem>
   </Menu>
 )}
 
