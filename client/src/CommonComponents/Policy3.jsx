@@ -3,7 +3,7 @@ import React from 'react'
 const Policy3 = () => {
   return (
     <div className=" flex flex-col gap-3">
-          <b>Terms and conditions of use</b>
+          <b className=' text-H text-darkblue'>Terms and conditions of use</b>
           <b>Introduction</b>
           <div>
             <b>

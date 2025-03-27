@@ -11,8 +11,6 @@ import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import CloseIcon from "@mui/icons-material/Close";
 
-
-
 import image from "../Assets/dummy";
 
 import {
@@ -30,9 +28,9 @@ import Policy2 from "./Policy2";
 import Policy3 from "./Policy3";
 
 const Footer = () => {
-    const [openModal, setOpenModal] = useState(false);
-    const [modalContent, setModalContent] = useState("");
-    const [modalTitle, setModalTitle] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
 
   const [anchorElPayment, setAnchorElPayment] = useState(null);
 
@@ -111,7 +109,7 @@ const Footer = () => {
         //     </li>
         //   </ul>
         // </div>
-        <Policy1/>
+        <Policy1 />
       );
       title = "Refund Policy";
     } else if (policy === "Privacy Policy") {
@@ -260,7 +258,7 @@ const Footer = () => {
         //     </p>
         //   </div>
         // </div>
-        <Policy2/>
+        <Policy2 />
       );
       title = "Privacy Policy";
     } else if (policy === "Terms & Conditions") {
@@ -834,7 +832,7 @@ const Footer = () => {
         //     <b>0431 - 4051364</b>
         //   </div>
         // </div>
-        <Policy3/>
+        <Policy3 />
       );
 
       title = "Terms & Conditions";
@@ -890,7 +888,10 @@ const Footer = () => {
       {/* About Text */}
       <div>
         <p className="font-light">
-        TVE Certification Services is a well renowned Certification Body to provide the Certification Services. <br />TVE International Academy is the globally recognised Training Body in delivering various professional Trainings.
+          TVE Certification Services is a well renowned Certification Body to
+          provide the Certification Services. <br />
+          TVE International Academy is the globally recognised Training Body in
+          delivering various professional Trainings.
         </p>
       </div>
 
@@ -960,60 +961,60 @@ const Footer = () => {
           </div>
 
           <div className="flex-1 gap-3 flex flex-col">
-          <div>
-            <button
-              className="text-16 flex text-gray-300 hover:text-white items-center hover:underline cursor-pointer"
-              onClick={handlePaymentClick}
+            <div>
+              <button
+                className="text-16 flex text-gray-300 hover:text-white items-center hover:underline cursor-pointer"
+                onClick={handlePaymentClick}
+              >
+                Online Payment
+                <IoIosArrowDown />
+              </button>
+              <Menu
+                anchorEl={anchorElPayment}
+                open={Boolean(anchorElPayment)}
+                onClose={handlePaymentClose}
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                transformOrigin={{ vertical: "top", horizontal: "left" }}
+              >
+                <MenuItem component={Link} to="/refundPolicy">
+                  Refund Policy
+                </MenuItem>
+                <MenuItem component={Link} to="/privacyPolicy">
+                  Privacy Policy
+                </MenuItem>
+                <MenuItem component={Link} to="/terms&Conditions">
+                  Terms & Conditions
+                </MenuItem>
+              </Menu>
+            </div>
+            <Dialog
+              open={openModal}
+              onClose={handleCloseModal}
+              fullWidth
+              maxWidth="md"
             >
-              Online Payment
-              <IoIosArrowDown />
-            </button>
-            <Menu
-              anchorEl={anchorElPayment}
-              open={Boolean(anchorElPayment)}
-              onClose={handlePaymentClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              transformOrigin={{ vertical: "top", horizontal: "left" }}
-            >
-              <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
-                Refund Policy
-              </MenuItem>
-              <MenuItem onClick={() => handlePolicyClick("Privacy Policy")}>
-                Privacy Policy
-              </MenuItem>
-              <MenuItem onClick={() => handlePolicyClick("Terms & Conditions")}>
-                Terms & Conditions
-              </MenuItem>
-            </Menu>
-          </div>
-          <Dialog
-        open={openModal}
-        onClose={handleCloseModal}
-        fullWidth
-        maxWidth="md"
-      >
-        <DialogTitle>
-          <div className="flex justify-between">
-            <p className="font-bold text-darkblue">{modalTitle}</p>
-            <IconButton
-              aria-label="close"
-              onClick={handleCloseModal}
-              sx={{
-                // position: "absolute",
-                // right: 8,
-                // top: 8,
-                color: (theme) => theme.palette.grey[500],
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
-          </div>
-        </DialogTitle>
+              <DialogTitle>
+                <div className="flex justify-between">
+                  <p className="font-bold text-darkblue">{modalTitle}</p>
+                  <IconButton
+                    aria-label="close"
+                    onClick={handleCloseModal}
+                    sx={{
+                      // position: "absolute",
+                      // right: 8,
+                      // top: 8,
+                      color: (theme) => theme.palette.grey[500],
+                    }}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </div>
+              </DialogTitle>
 
-        {/* Dialog Content */}
+              {/* Dialog Content */}
 
-        <div
-          className="  h-full  overflow-y-auto
+              <div
+                className="  h-full  overflow-y-auto
   [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:rounded-full
   [&::-webkit-scrollbar-track]:bg-transparent
@@ -1021,9 +1022,9 @@ const Footer = () => {
   [&::-webkit-scrollbar-thumb]:bg-gray-300
   dark:[&::-webkit-scrollbar-track]:bg-transparent
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-300"
-        >
-          <div
-            className="m-5  overflow-scroll 
+              >
+                <div
+                  className="m-5  overflow-scroll 
       rounded-r-md [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:rounded-full
   [&::-webkit-scrollbar-track]:bg-transparent
@@ -1031,41 +1032,47 @@ const Footer = () => {
   [&::-webkit-scrollbar-thumb]:bg-gray-300
   dark:[&::-webkit-scrollbar-track]:bg-transparent
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-300"
-            style={{ maxWidth: "100%", maxHeight: "100%" }}
-          >
-            {modalContent}
+                  style={{ maxWidth: "100%", maxHeight: "100%" }}
+                >
+                  {modalContent}
+                </div>
+              </div>
+            </Dialog>
           </div>
-        </div>
-      </Dialog>
-          </div>
-
         </div>
       </div>
-          
-          <div className="flex-1 flex max-[700px]:flex-col max-[700px]:gap-12">
-          <div className="flex-1 gap-3 flex flex-col">
-            <Link
-              to="/certification#certificateinfo"
-              className="hover:underline text-gray-300 hover:text-white"
-            >
-             Client's Certificate Info
-            </Link>
-          </div>
 
-          <div className="flex-1 gap-3 flex flex-col">
-            {/* <a href="" className="hover:underline text-gray-300 hover:text-gray-300">
+      <div className="flex-1 flex max-[700px]:flex-col max-[700px]:gap-12">
+        <div className="flex-1 gap-3 flex flex-col">
+          <Link
+            to="/certification#certificateinfo"
+            className="hover:underline text-gray-300 hover:text-white"
+          >
+            Client's Certificate Info
+          </Link>
+        </div>
+
+        <div className="flex-1 gap-3 flex flex-col">
+          {/* <a href="" className="hover:underline text-gray-300 hover:text-gray-300">
               Online Payment
             </a> */}
-            <Link
-              to="/training#delegateinfo"
-              className="hover:underline text-gray-300 hover:text-white"
-            >
-              Delegate Certificate Info
-            </Link>
-          </div>
-
+          <Link
+            to="/training#delegateinfo"
+            className="hover:underline text-gray-300 hover:text-white"
+          >
+            Delegate Certificate Info
+          </Link>
         </div>
-        <p className=" absolute bottom-0 text-xs">Copyright C* 2025 TVE Certification Services Pvt Ltd. All Rights Reserved. (Privacy Policy)</p>
+      </div>
+      <p className=" absolute bottom-0 text-xs">
+        Copyright &#169; 2025 TVE Certification Services Pvt Ltd. All Rights
+        Reserved. <Link
+              to="/privacyPolicy"
+             className=" hover:underline"
+            >
+              (Privacy Policy)
+            </Link>
+      </p>
     </footer>
   );
 };

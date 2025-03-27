@@ -2,7 +2,8 @@ import React from 'react'
 
 const Policy1 = () => {
   return (
-    <div className="  flex flex-col gap-2 list-none  text-darkblue">
+    <div className="  flex flex-col gap-4 list-none  text-darkblue">
+      <b className=' text-H text-darkblue'>Refund Policy</b>
           <ul class="list-none space-y-1">
             <li class="flex items-start">
               <span class="before:content-['•'] before:mr-1 before:text-black"></span>

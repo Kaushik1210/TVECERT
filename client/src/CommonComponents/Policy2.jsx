@@ -4,6 +4,7 @@ const Policy2 = () => {
   return (
     <div className=" flex flex-col gap-4">
           <div>
+          <b className=' text-H text-darkblue'>Privacy Policy</b>
             <p className=" indent-3">
               TVE CERT Privacy Policy TVE Certification Services Pvt. Ltd., and
               TVE International Academy Pvt. Ltd., with www.tvecert.org website,

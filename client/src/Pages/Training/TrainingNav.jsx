@@ -316,7 +316,7 @@ const TrainingNav = () => {
               anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
               transformOrigin={{ vertical: "top", horizontal: "left" }}
             >
-              <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
+              {/* <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
                 Refund Policy
               </MenuItem>
               <MenuItem onClick={() => handlePolicyClick("Privacy Policy")}>
@@ -324,7 +324,34 @@ const TrainingNav = () => {
               </MenuItem>
               <MenuItem onClick={() => handlePolicyClick("Terms & Conditions")}>
                 Terms & Conditions
-              </MenuItem>
+              </MenuItem> */}
+              <MenuItem
+                              onClick={() => {
+                                setHomeMenu(false);
+                              }}
+                              component={Link}
+                              to="/refundPolicy"
+                            >
+                              Refund Policy
+                            </MenuItem>
+                            <MenuItem
+                              onClick={() => {
+                                setHomeMenu(false);
+                              }}
+                              component={Link}
+                              to="/privacyPolicy"
+                            >
+                              Privacy Policy
+                            </MenuItem>
+                            <MenuItem
+                              onClick={() => {
+                                setHomeMenu(false);
+                              }}
+                              component={Link}
+                              to="/terms&Conditions"
+                            >
+                              Terms & Conditions
+                            </MenuItem>
             </Menu>
           </div>
         </div>
@@ -488,7 +515,7 @@ const TrainingNav = () => {
                 anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                 transformOrigin={{ vertical: "top", horizontal: "left" }}
               >
-                <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
+                {/* <MenuItem onClick={() => handlePolicyClick("Refund Policy")}>
                   Refund Policy
                 </MenuItem>
                 <MenuItem onClick={() => handlePolicyClick("Privacy Policy")}>
@@ -498,7 +525,34 @@ const TrainingNav = () => {
                   onClick={() => handlePolicyClick("Terms & Conditions")}
                 >
                   Terms & Conditions
-                </MenuItem>
+                </MenuItem> */}
+                <MenuItem
+                                onClick={() => {
+                                  setHomeMenu(false);
+                                }}
+                                component={Link}
+                                to="/refundPolicy"
+                              >
+                                Refund Policy
+                              </MenuItem>
+                              <MenuItem
+                                onClick={() => {
+                                  setHomeMenu(false);
+                                }}
+                                component={Link}
+                                to="/privacyPolicy"
+                              >
+                                Privacy Policy
+                              </MenuItem>
+                              <MenuItem
+                                onClick={() => {
+                                  setHomeMenu(false);
+                                }}
+                                component={Link}
+                                to="/terms&Conditions"
+                              >
+                                Terms & Conditions
+                              </MenuItem>
               </Menu>
             </MenuItem>
           </Menu>

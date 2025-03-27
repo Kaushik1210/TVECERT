@@ -57,8 +57,10 @@ const OnlinepayNavbar = () => {
 
 
   return (
-    <div className="flex absolute w-full h-20 bg-gradient-to-b from-navfrom to-navto z-50">
-      <div className="flex justify-between items-center w-full mx-5">
+    <div className="flex  w-full h-20 
+   
+     ">
+      <div className="flex justify-between items-center w-full mx-5 border-b">
         {/* Logo */}
         <img
           className="w-[80px] bg-white rounded-lg"
@@ -69,19 +71,19 @@ const OnlinepayNavbar = () => {
         {/* Desktop Menu */}
         <div className="max-[1150px]:hidden flex gap-5">
          
-          <Link className="text-16 text-white" to="/home">
+          <Link className="text-16 text-darkblue font-semibold" to="/home">
             Home
           </Link>
-          <Link className="text-16 text-white" to="/certification">
+          <Link className="text-16 text-darkblue font-semibold" to="/certification">
             Certification
           </Link>
-          <Link className="text-16 text-white" to="/training">
+          <Link className="text-16 text-darkblue font-semibold" to="/training">
             Training
           </Link>
          
           <div>
             <button
-              className="text-16 text-white items-center flex cursor-pointer"
+              className="text-16 text-darkblue font-semibold items-center flex cursor-pointer"
               onClick={handleCertificationClick}
             >
               Certification Info
@@ -112,7 +114,7 @@ const OnlinepayNavbar = () => {
           </div>
          
           <a
-            className="text-16 text-white cursor-pointer"
+            className="text-16 text-darkblue font-semibold cursor-pointer"
             onClick={(event) => handleSmoothScroll(event, "contactus")}
           >
             Contact us
@@ -129,7 +131,7 @@ const OnlinepayNavbar = () => {
             fontSize: "2rem",
             display: { xs: "block", md: "none" },
           }}
-          className="  relative min-[1150px]:hidden text-white text-2xl"
+          className="  relative min-[1150px]:hidden text-darkblue text-2xl"
           ref={menuButtonRef}
           onClick={() => setHomeMenu(!homeMenu)}
         >

@@ -15,6 +15,9 @@ import EmpLogin from "./Pages/Login/EmpLogin.jsx/EmpLogin";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import NewsUpdate from "./Pages/Login/Forms/NewsUpdate/NewsUpdate";
 import OnlinepaymentMain from "./Pages/OnlinePayment/OnlinepaymentMain";
+import RefundPolicy from "./Pages/OnlinePayment/RefundPolicy";
+import PrivacyPolicy from "./Pages/OnlinePayment/PrivacyPolicy";
+import TermsAndConditions from "./Pages/OnlinePayment/TermsAndConditions";
 
 function App() {
   const [isAnimationComplete, setAnimationComplete] = useState(false);
@@ -41,7 +44,10 @@ function App() {
             <Route path="/career" element={<CareerMain />} />
             <Route path="/certification" element={<CertificationMain />} />
             <Route path="/training" element={<TrainingMain />} />
-            <Route path="/onlinePayment" element={<OnlinepaymentMain/>} />
+            {/* <Route path="/onlinePayment" element={<OnlinepaymentMain/>} /> */}
+            <Route path="/refundPolicy" element={<RefundPolicy/>} />
+            <Route path="/privacyPolicy" element={<PrivacyPolicy/>} />
+            <Route path="/terms&Conditions" element={<TermsAndConditions/>} />
             <Route
               path="/updation"
               element={
