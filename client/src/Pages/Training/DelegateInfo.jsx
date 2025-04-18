@@ -112,7 +112,7 @@ const DelegateInfo = () => {
             <div className='flex max-md:flex-col max-md:gap-3'>
               <div className='flex flex-1 max-sm:flex-col max-sm:gap-3'>
                 <div className='flex-1 text-center'>
-                  <p className='font-medium'>Course Start Date</p>
+                  <p className='font-medium'>Issue Date</p>
                   <p className='font-medium text-gray-500'>{result.issueDate}</p>
                 </div>
                 <div className='flex-1 text-center'>
