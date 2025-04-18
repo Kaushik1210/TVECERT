@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import OnlinepayNavbar from './OnlinepayNavbar'
-import Policy1 from '../../CommonComponents/Policy1'
-import Footer from '../../CommonComponents/Footer'
+import Policy1 from '../../../CommonComponents/Policy1'
+import Footer from '../../../CommonComponents/Footer'
+import RPnav from "./RPnav";
 
 const RefundPolicy = () => {
       const [showLoader, setShowLoader] = useState(true);
@@ -21,7 +21,7 @@ const RefundPolicy = () => {
             </div>
           ) : (
             <div className='bg-white'>
-      <OnlinepayNavbar/>
+      <RPnav/>
       <div className=' m-5 p-5 bg-white rounded-lg shadow-xl'>
 
       <Policy1/>

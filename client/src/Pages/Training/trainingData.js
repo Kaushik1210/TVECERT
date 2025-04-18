@@ -136,7 +136,7 @@ export const cqiircaTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1fVdLeGS4yLxZ6SD2Io1MpOeGMQ9EEkHn/view?usp=sharing",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EnMS - ISO 22000:2018 Lead Auditor",
+    selection: "EnMS - ISO 50001:2018 Lead Auditor",
     mainTitle:
       "CQI and IRCA Certified ISO 50001:2018 Lead Auditor (EnMS) Training Course (Course ID: 2441)",
   },
@@ -265,7 +265,7 @@ export const examplarGlobalTrainingData = [
   {
     pdf: "https://drive.google.com/file/d/1X08-uzHhdPKLEVHwXtLOpnM9YKXiRDDP/view?usp=sharing",
     mainHeading: "CQI & IRCA Training Details",
-    selection: "EnMS - ISO 22000:2018 Lead Auditor",
+    selection: "EnMS - ISO 50001:2018 Lead Auditor",
     mainTitle:
       "EXEMPLAR GLOBAL Certified EnMS Auditor / Lead Auditor - ISO 50001ۉ2018 Training Course",
   },

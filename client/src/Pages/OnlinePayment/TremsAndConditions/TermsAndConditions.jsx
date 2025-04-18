@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import OnlinepayNavbar from './OnlinepayNavbar'
-import Policy3 from '../../CommonComponents/Policy3'
-import Footer from '../../CommonComponents/Footer'
+import Policy3 from '../../../CommonComponents/Policy3'
+import Footer from '../../../CommonComponents/Footer'
+import TCnav from "./TCnav";
 
 const TermsAndConditions = () => {
     const [showLoader, setShowLoader] = useState(true);
@@ -21,7 +21,7 @@ const TermsAndConditions = () => {
         </div>
       ) : (
         <div className='bg-white'>
-        <OnlinepayNavbar/>
+       <TCnav/>
         <div  className=' m-5 p-5 bg-white rounded-lg shadow-xl'>
           
         <Policy3/>

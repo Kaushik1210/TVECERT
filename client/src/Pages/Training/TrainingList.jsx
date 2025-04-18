@@ -204,8 +204,8 @@ const TrainingList = () => {
                   <MenuItem disabled>
                     <strong>Energy </strong>
                   </MenuItem>
-                  <MenuItem value="EnMS - ISO 22000:2018 Lead Auditor">
-                    EnMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Lead Auditor
+                  <MenuItem value="EnMS - ISO 50001:2018 Lead Auditor">
+                    EnMS - ISO 50001:2018<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -307,8 +307,8 @@ const TrainingList = () => {
                   <MenuItem disabled>
                     <strong>Energy </strong>
                   </MenuItem>
-                  <MenuItem value="EnMS - ISO 22000:2018 Lead Auditor">
-                  EnMS - ISO 22000:2018<br className="min-[450px]:hidden" /> Lead Auditor
+                  <MenuItem value="EnMS - ISO 50001:2018 Lead Auditor">
+                  EnMS - ISO 50001:2018<br className="min-[450px]:hidden" /> Lead Auditor
                   </MenuItem>
                 </Select>
               </FormControl>

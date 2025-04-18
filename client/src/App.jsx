@@ -15,9 +15,9 @@ import EmpLogin from "./Pages/Login/EmpLogin.jsx/EmpLogin";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import NewsUpdate from "./Pages/Login/Forms/NewsUpdate/NewsUpdate";
 import OnlinepaymentMain from "./Pages/OnlinePayment/OnlinepaymentMain";
-import RefundPolicy from "./Pages/OnlinePayment/RefundPolicy";
-import PrivacyPolicy from "./Pages/OnlinePayment/PrivacyPolicy";
-import TermsAndConditions from "./Pages/OnlinePayment/TermsAndConditions";
+import RefundPolicy from "./Pages/OnlinePayment/RefundPolicy/RefundPolicy";
+import PrivacyPolicy from "./Pages/OnlinePayment/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "./Pages/OnlinePayment/TremsAndConditions/TermsAndConditions";
 
 function App() {
   const [isAnimationComplete, setAnimationComplete] = useState(false);

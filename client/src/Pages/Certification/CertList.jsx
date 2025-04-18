@@ -18,6 +18,10 @@ const CertList = () => {
     max-[850px]:mx-14 
     max-sm:mx-6 relative z-50" 
     >
+      <div className=" w-full py-4 max-[850px]:flex-col gap-5 items-center   flex justify-between ">
+        <img className=" h-20" src={image.ias} alt="" />
+        <img className=" h-20" src={image.iaf} alt="" />
+      </div>
       <div className=" flex max-[850px]:flex-col max-[850px]:gap-0 gap-4">
         <div className=" flex-1 ">
           <CertList1 />

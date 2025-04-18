@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import OnlinepayNavbar from "./OnlinepayNavbar";
-import Policy2 from "../../CommonComponents/Policy2";
-import Footer from "../../CommonComponents/Footer";
+import OnlinepayNavbar from "../OnlinepayNavbar";
+import Policy2 from "../../../CommonComponents/Policy2";
+import Footer from "../../../CommonComponents/Footer";
+import PPnav from "./PPnav";
 
 const PrivacyPolicy = () => {
   const [showLoader, setShowLoader] = useState(true);
@@ -21,7 +22,7 @@ const PrivacyPolicy = () => {
         </div>
       ) : (
         <div className="bg-white">
-          <OnlinepayNavbar />
+          <PPnav/>
           <div className=" m-5 p-5 bg-white rounded-lg shadow-xl">
             <Policy2 />
           </div>

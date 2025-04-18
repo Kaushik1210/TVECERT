@@ -46,7 +46,7 @@ const Aboutus = () => {
                         max-[850px]:pl-0"
           >
             <div className="  flex flex-col gap-2 list-none  text-darkblue">
-              <ul class="list-none space-y-1">
+              <ul class="list-none space-y-1 text-justify">
                 <li class="flex items-start">
                   <span class="before:content-['•'] before:mr-1 before:text-black"></span>
                   TVE is one of the leading & fast growing Certification bodies
@@ -75,40 +75,57 @@ const Aboutus = () => {
             </div>
           </div>
         </div>
-        <div className="  flex flex-col gap-2 mb-5   text-darkblue">
-         
-            <li class=" items-start  ">
-              <strong>
+       
+
+        <div className="  flex flex-col gap-2 list-none  text-darkblue">
+              <ul class="list-none space-y-1 text-justify">
+                <li class="flex items-start">
+                  <span class="before:content-['•'] before:mr-1 before:text-black"></span>
+                  <div>
+                  <strong>
                 TVE CERTIFICATION SERVICES & TVE INTERNATIONAL ACADEMY
               </strong>{" "}
               operates as Management System Certification - Training Body and
               has its clients in both Certification and Training over 15
               countries across the globe.
-            </li>
-            <li class=" items-start  ">
-              <strong>TVE CERTIFICATION SERVICES (MSCB No. 129)</strong> is
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="before:content-['•'] before:mr-1 before:text-black"></span>
+                  <div>
+                  <strong>TVE CERTIFICATION SERVICES (MSCB No. 129)</strong> is
               accredited by IAS - International Accreditation Service (American
               Accreditation) - Member of IAF for ISO 9001:2015, ISO 14001:2015,
               ISO 45001:2018 and ISO 22000:2018.
-            </li>
-            <li class=" items-start  ">
-              <strong>TVE INTERNATIONAL ACADEMY (ATP No. - 6023829)</strong> is
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="before:content-['•'] before:mr-1 before:text-black"></span>
+                  <div>
+                  <strong>TVE INTERNATIONAL ACADEMY (ATP No. - 6023829)</strong> is
               the Approved Training Partner of CQI & IRCA to deliver Auditor /
               Lead Auditor Training Courses (CQI - Chartered Quality Institute
               and IRCA - International Registered of Certificated Auditors) in
               QMS- ISO 9001:2015, OHSMS - ISO 45001:2018, EMS - ISO 14001:2015,
               FSMS - ISO 22000:2018, ISMS - ISO 27001:2022 and EnMS - ISO
               50001:2018.
-            </li>
-            <li class=" items-start  ">
-              <strong>TVE INTERNATIONAL ACADEMY</strong> is the Recognised
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="before:content-['•'] before:mr-1 before:text-black"></span>
+                  <div>
+                   <strong>TVE INTERNATIONAL ACADEMY</strong> is the Recognised
               Training Partner of Exemplar Global to provide trainings in
               different ISO Standards like QMS - ISO 9001:2015, OHSMS - ISO
               45001:2018, EMS - ISO 14001:2015, FSMS - ISO 22000:2018, ISMS -
-              ISO 27001:2022 and EnMS - ISO 50001:2018.
-            </li>
-         
-        </div>
+              ISO 27001:2022 and EnMS - ISO 50001:2018. 
+                  </div>
+                  
+                </li>
+              </ul>
+            </div>
+
+
         <div className="flex mb-3 justify-center">
           <p className="text-center text-24  underline underline-offset-3 font-medium ">
             Accreditations & Associations
@@ -120,7 +137,7 @@ const Aboutus = () => {
           <img className=" h-14" src={image.iaf} alt="" />
           <img className=" h-[60px]" src={image.cqiirca} alt="" />
           <img className=" h-14" src={image.eg} alt="" />
-          <img className=" h-[120px]" src={image.eosh} alt="" />
+          <img className=" h-14" src={image.eosh} alt="" />
         </div>
         <ClientsSec />
       </section>
