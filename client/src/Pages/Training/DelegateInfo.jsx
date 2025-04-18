@@ -44,7 +44,7 @@ const DelegateInfo = () => {
     setTimeout(() => {
       const found = delegateData.find((delegate) => delegate.certificateNo === searchCert);
       setResult(found || null); // Set result or null if not found
-      console.log(result.issueDate)
+      // console.log(result.issueDate)
       
       setSearching(false); // Stop the search loader after 2 seconds
     }, 2000); // 2-second delay
@@ -113,7 +113,10 @@ const DelegateInfo = () => {
               <div className='flex flex-1 max-sm:flex-col max-sm:gap-3'>
                 <div className='flex-1 text-center'>
                   <p className='font-medium'>Issue Date</p>
-                  <p className='font-medium text-gray-500'>{result.issueDate}</p>
+                  <p className='font-medium text-gray-500'>{
+                  // result.issueDate === null ? "-":
+                  result.issueDate
+                  }</p>
                 </div>
                 <div className='flex-1 text-center'>
                   <p className='font-medium'>Course End Date</p>
