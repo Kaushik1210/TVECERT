@@ -439,8 +439,8 @@ const DelegateForm = () => {
                 onChange={handleDelegateInputChange}
               >
                 <MenuItem value="ATTENDED">ATTENDED</MenuItem>
-                <MenuItem value="SATISFACTORY COMPLETED">SATISFACTORY COMPLETED</MenuItem>
-                <MenuItem value="PARTICIPATED">PARTICIPATED</MenuItem>
+                <MenuItem value="SATISFACTORILY COMPLETED">SATISFACTORILY COMPLETED</MenuItem>
+                {/* <MenuItem value="PARTICIPATED">PARTICIPATED</MenuItem> */}
               </Select>
             </FormControl>
           </Grid>

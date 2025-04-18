@@ -283,9 +283,11 @@ const CertForm = () => {
                   value={certificateInfoData.status}
                   onChange={handleCerticateInputChange}
                 >
-                  <MenuItem value="VALID">VALID</MenuItem>
+                  {/* <MenuItem value="VALID">VALID</MenuItem>
                   <MenuItem value="EXPIRED">EXPIRED</MenuItem>
                   <MenuItem value="SUSPENDED">SUSPENDED</MenuItem>
+                  <MenuItem value="WITHDRAWN">WITHDRAWN</MenuItem> */}
+                  <MenuItem value="ACTIVE">ACTIVE</MenuItem>
                   <MenuItem value="WITHDRAWN">WITHDRAWN</MenuItem>
                 </Select>
               </FormControl>
