@@ -18,19 +18,19 @@ const CertList6 = () => {
   const obligations = [
     {
       title: "ISO 9001:2015",
-      link: "https://drive.google.com/file/d/1n2D1ecOg_9DO2DtM3f3t9P_-nzDXMoRM/view?usp=drive_link"
+      link: "https://drive.google.com/file/d/1adQkX2M8zjhXyvQJdnQ07e55pWq5cNUN/view?usp=drive_link"
     },
     {
       title: "ISO 14001:2015",
-      link: "https://drive.google.com/file/d/1m7C_qoFM0myWyycHMgCyrQMvJMERO-xb/view?usp=drive_link"
+      link: "https://drive.google.com/file/d/1rL6WJGzN-hx6RBMJrLBDboFoxTSSqzEV/view?usp=drive_link"
     },
     {
       title: "ISO 45001:2018",
-      link: "https://drive.google.com/file/d/1fhlsM6CgrnISC7AM-oQkfw1qQgas06tL/view?usp=drive_link"
+      link: "https://drive.google.com/file/d/1rSlSkYD5V3k1uLUi0tGsrjC0vaZbAsa3/view?usp=drive_link"
     },
     {
       title: "ISO 22000:2018",
-      link: "https://drive.google.com/file/d/1hAxtE7-hPoP97J4tD-dHc7lESjDahlp-/view?usp=drive_link"
+      link: "https://drive.google.com/file/d/18PouLU4zwCqedYM3flOFVVx6XIexJgNA/view?usp=drive_link"
     }
   ];
 
