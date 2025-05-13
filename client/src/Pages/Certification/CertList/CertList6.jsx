@@ -30,7 +30,7 @@ const CertList6 = () => {
     },
     {
       title: "ISO 22000:2018",
-      link: "https://drive.google.com/file/d/18PouLU4zwCqedYM3flOFVVx6XIexJgNA/view?usp=drive_link"
+      link: "https://drive.google.com/file/d/14uugb2sJvDrZ6MLMac_P8s9ear-2FW9N/view?usp=drive_link"
     }
   ];
 
