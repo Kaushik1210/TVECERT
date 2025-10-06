@@ -40,11 +40,24 @@ const io = socketIo(server, {
 });
 
 app.use(express.json());
+
+// Enhanced CORS setup
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `CORS policy does not allow access from ${origin}`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // Security headers middleware
 app.use((req, res, next) => {
@@ -54,7 +67,7 @@ app.use((req, res, next) => {
   }
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Credentials');
   res.header('Referrer-Policy', 'strict-origin-when-cross-origin');
   
   if (req.method === 'OPTIONS') {
@@ -67,18 +80,23 @@ app.use((req, res, next) => {
 // Temporary storage for OTPs
 const otpStore = {};
 
-console.log("Environment:", process.env.NODE_ENV);
-console.log("Email User configured:", !!process.env.EMAIL_USER);
-console.log("Email Pass configured:", !!process.env.EMAIL_PASS);
+console.log("🚀 Server Starting...");
+console.log("🌍 Environment:", process.env.NODE_ENV || 'development');
+console.log("📧 Email User configured:", !!process.env.EMAIL_USER);
+console.log("🔑 Email Pass configured:", !!process.env.EMAIL_PASS);
+console.log("🔗 Allowed Origins:", allowedOrigins);
 
-// Enhanced Nodemailer configuration for production
-const createTransporter = () => {
+// Enhanced Email Transporter with Multiple Fallbacks
+const createEmailTransporter = () => {
   try {
-    // Validate email credentials
+    // Check if credentials exist
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      throw new Error('Email credentials are not configured');
+      throw new Error('Email credentials are not configured in environment variables');
     }
 
+    console.log("📧 Creating email transporter with:", process.env.EMAIL_USER);
+    
+    // Gmail with App Password (Recommended)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
@@ -86,39 +104,39 @@ const createTransporter = () => {
       secure: false, // Use TLS
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASS, // Should be 16-character app password
       },
       tls: {
-        rejectUnauthorized: false // For production compatibility
+        rejectUnauthorized: false // For better compatibility
       },
-      // Additional settings for better reliability
+      // Connection pool settings
       pool: true,
       maxConnections: 5,
-      maxMessages: 100,
-      rateDelta: 1000,
-      rateLimit: 5
+      maxMessages: 100
     });
 
+    console.log("✅ Email transporter created successfully");
     return transporter;
+    
   } catch (error) {
-    console.error('Error creating email transporter:', error.message);
+    console.error("❌ Error creating email transporter:", error.message);
     return null;
   }
 };
 
-let transporter = createTransporter();
+let transporter = createEmailTransporter();
 
-// Verify transporter on startup
+// Verify email configuration on startup
 if (transporter) {
   transporter.verify(function (error, success) {
     if (error) {
-      console.log("❌ Email transporter verification failed:", error);
+      console.log("❌ Email transporter verification failed:", error.message);
     } else {
-      console.log("✅ Email server is ready to take our messages");
+      console.log("✅ Email server is ready to send messages");
     }
   });
 } else {
-  console.log("❌ Email transporter not created - check credentials");
+  console.log("❌ Email transporter not created - check your email credentials");
 }
 
 // MongoDB connection management
@@ -127,7 +145,7 @@ async function connectDB() {
   if (!dbClient) {
     try {
       dbClient = await client.connect();
-      console.log("✅ Connected to MongoDB");
+      console.log("✅ Connected to MongoDB successfully");
       return dbClient;
     } catch (error) {
       console.error("❌ MongoDB connection error:", error);
@@ -139,14 +157,18 @@ async function connectDB() {
 
 // Handle client connections
 io.on("connection", (socket) => {
-  console.log("A user connected");
+  console.log("🔌 User connected:", socket.id);
+
+  // Handle authentication events
+  socket.on("login_attempt", (data) => {
+    console.log("🔐 Login attempt via socket:", data);
+  });
+
+  // Handle disconnection
   socket.on("disconnect", () => {
-    console.log("User disconnected");
+    console.log("🔌 User disconnected:", socket.id);
   });
 });
-
-// [ALL YOUR EXISTING ROUTES REMAIN THE SAME - certificates, delegates, news, career info]
-// ... (Include all your existing routes here)
 
 /////// C E R T I F I C A T E S    U P D A T E S ///////
 app.get("/data/certificationInfo/certificateInfo", async (req, res) => {
@@ -156,10 +178,11 @@ app.get("/data/certificationInfo/certificateInfo", async (req, res) => {
     const collection = database.collection("certificateInfo");
 
     const data = await collection.find({}).toArray();
+    console.log(`📊 Fetched ${data.length} certificates`);
     res.status(200).json(data);
   } catch (err) {
-    console.error("Error fetching data:", err);
-    res.status(500).send("Error fetching data from MongoDB");
+    console.error("❌ Error fetching certificate data:", err);
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -171,15 +194,18 @@ app.post("/data/certificationInfo/certificateInfo", async (req, res) => {
     const newData = req.body;
 
     const result = await collection.insertOne(newData);
+
+    // Emit an event to notify all clients about the new data
     io.emit("newData", { ...newData, id: result.insertedId });
 
+    console.log(`✅ New certificate added with ID: ${result.insertedId}`);
     res.status(201).json({
       message: "Data inserted successfully",
       id: result.insertedId,
     });
   } catch (err) {
-    console.error("Error inserting data:", err);
-    res.status(500).send("Error inserting data into MongoDB");
+    console.error("❌ Error inserting certificate data:", err);
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -196,17 +222,19 @@ app.delete("/data/certificationInfo/certificateInfo", async (req, res) => {
     const collection = database.collection("certificateInfo");
 
     const objectIds = ids.map((id) => new ObjectId(id));
+
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
     if (result.deletedCount === 0) {
       return res.status(404).json({ message: "No records found to delete" });
     }
 
+    console.log(`🗑️ Deleted ${result.deletedCount} certificate(s)`);
     res.status(200).json({
       message: `Successfully deleted ${result.deletedCount} record(s)`,
     });
   } catch (error) {
-    console.error("Error deleting records:", error);
+    console.error("❌ Error deleting certificates:", error);
     res.status(500).json({
       message: "Failed to delete records due to an internal error",
       error: error.message,
@@ -222,9 +250,11 @@ app.get("/data/certificationInfo/delegatesInfo", async (req, res) => {
     const collection = database.collection("delegatesInfo");
 
     const data = await collection.find({}).toArray();
+    console.log(`📊 Fetched ${data.length} delegates`);
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).send("Error fetching data from MongoDB");
+    console.error("❌ Error fetching delegates:", err);
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -236,13 +266,17 @@ app.post("/data/certificationInfo/delegatesInfo", async (req, res) => {
     const newData = req.body;
 
     const result = await collection.insertOne(newData);
+
     io.emit("newData", { ...newData, id: result.insertedId });
 
-    res.status(201).send(
-      `Data inserted into certificationInfo/delegatesInfo with id: ${result.insertedId}`
-    );
+    console.log(`✅ New delegate added with ID: ${result.insertedId}`);
+    res.status(201).json({
+      message: "Delegate data inserted successfully",
+      id: result.insertedId,
+    });
   } catch (err) {
-    res.status(500).send("Error inserting data into MongoDB");
+    console.error("❌ Error inserting delegate data:", err);
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -258,12 +292,17 @@ app.delete("/data/certificationInfo/delegatesInfo", async (req, res) => {
     const collection = database.collection("delegatesInfo");
 
     const objectIds = ids.map((id) => new ObjectId(id));
+
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
-    res.status(200).json({ message: "Data deleted successfully" });
+    console.log(`🗑️ Deleted ${result.deletedCount} delegate(s)`);
+    res.status(200).json({ 
+      message: "Data deleted successfully",
+      deletedCount: result.deletedCount
+    });
   } catch (err) {
-    console.error("Error deleting data from MongoDB:", err);
-    res.status(500).send("Error deleting data from MongoDB");
+    console.error("❌ Error deleting delegates:", err);
+    res.status(500).json({ error: "Error deleting data from MongoDB" });
   }
 });
 
@@ -278,15 +317,17 @@ app.post("/data/certificationInfo/newsUpdate", async (req, res) => {
     const newData = { title, description, date, expiryDate };
 
     const result = await collection.insertOne(newData);
+
     io.emit("newData", { ...newData, id: result.insertedId });
 
+    console.log(`✅ New news update added with ID: ${result.insertedId}`);
     res.status(201).json({
       message: "News update added successfully",
       data: { ...newData, id: result.insertedId },
     });
   } catch (err) {
-    console.error("Error inserting data into MongoDB:", err);
-    res.status(500).send("Error inserting data into MongoDB");
+    console.error("❌ Error inserting news data:", err);
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -302,12 +343,17 @@ app.delete("/data/certificationInfo/newsUpdate", async (req, res) => {
     const collection = database.collection("newsUpdate");
 
     const objectIds = ids.map((id) => new ObjectId(id));
+
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
-    res.status(200).json({ message: "News deleted successfully" });
+    console.log(`🗑️ Deleted ${result.deletedCount} news item(s)`);
+    res.status(200).json({ 
+      message: "News deleted successfully",
+      deletedCount: result.deletedCount
+    });
   } catch (err) {
-    console.error("Error deleting data from MongoDB:", err);
-    res.status(500).send("Error deleting data from MongoDB");
+    console.error("❌ Error deleting news:", err);
+    res.status(500).json({ error: "Error deleting data from MongoDB" });
   }
 });
 
@@ -318,9 +364,11 @@ app.get("/data/certificationInfo/newsUpdate", async (req, res) => {
     const collection = database.collection("newsUpdate");
 
     const data = await collection.find({}).toArray();
+    console.log(`📊 Fetched ${data.length} news items`);
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).send("Error fetching data from MongoDB");
+    console.error("❌ Error fetching news:", err);
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -331,9 +379,11 @@ app.get("/data/certificationInfo/careerInfo", async (req, res) => {
     const collection = database.collection("careerInfo");
 
     const data = await collection.find({}).toArray();
+    console.log(`📊 Fetched ${data.length} career items`);
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).send("Error fetching data from MongoDB");
+    console.error("❌ Error fetching career info:", err);
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -345,13 +395,17 @@ app.post("/data/certificationInfo/careerInfo", async (req, res) => {
     const newData = req.body;
 
     const result = await collection.insertOne(newData);
+
     io.emit("newData", { ...newData, id: result.insertedId });
 
-    res.status(201).send(
-      `Data inserted into certificationInfo/careerInfo with id: ${result.insertedId}`
-    );
+    console.log(`✅ New career item added with ID: ${result.insertedId}`);
+    res.status(201).json({
+      message: "Career data inserted successfully",
+      id: result.insertedId,
+    });
   } catch (err) {
-    res.status(500).send("Error inserting data into MongoDB");
+    console.error("❌ Error inserting career data:", err);
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -367,39 +421,75 @@ app.delete("/data/certificationInfo/careerInfo", async (req, res) => {
     const collection = database.collection("careerInfo");
 
     const objectIds = ids.map((id) => new ObjectId(id));
+
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
 
     io.emit("deletedData", ids);
-    res.status(200).send(`${result.deletedCount} document(s) deleted successfully`);
+
+    console.log(`🗑️ Deleted ${result.deletedCount} career item(s)`);
+    res.status(200).json({
+      message: `${result.deletedCount} document(s) deleted successfully`,
+      deletedCount: result.deletedCount
+    });
   } catch (err) {
-    res.status(500).send("Error deleting data from MongoDB");
+    console.error("❌ Error deleting career data:", err);
+    res.status(500).json({ error: "Error deleting data from MongoDB" });
   }
 });
 
 // Enhanced Login Route
 app.post("/api/login", async (req, res) => {
   const { userName, password } = req.body;
+  
+  console.log(`🔐 Login attempt for username: ${userName}`);
+  
+  if (!userName || !password) {
+    return res.status(400).json({ 
+      success: false, 
+      message: "Username and password are required" 
+    });
+  }
+
   try {
     await connectDB();
     const db = client.db("tvecert");
     const collection = db.collection("credentials");
 
-    console.log(`Login attempt for username: ${userName}`);
     const user = await collection.findOne({ userName, password });
     if (user) {
-      console.log("User found:", user);
+      console.log(`✅ Login successful for user: ${userName}`);
+      
+      // Emit login success event
+      io.emit("login_success", { userName: user.userName });
+      
       res.json({
         success: true,
         message: "Credentials verified",
         userEmail: user.Email,
+        userName: user.userName
       });
     } else {
-      console.log("Invalid credentials");
-      res.status(401).json({ success: false, message: "Invalid username or password" });
+      console.log(`❌ Invalid credentials for user: ${userName}`);
+      
+      // Emit login failed event
+      io.emit("login_failed", { userName });
+      
+      res.status(401).json({ 
+        success: false, 
+        message: "Invalid username or password" 
+      });
     }
   } catch (err) {
-    console.error("Error verifying credentials:", err);
-    res.status(500).send("Error verifying credentials");
+    console.error("❌ Error verifying credentials:", err);
+    
+    // Emit login error event
+    io.emit("login_error", { error: err.message });
+    
+    res.status(500).json({ 
+      success: false, 
+      message: "Error verifying credentials",
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
   }
 });
 
@@ -407,8 +497,8 @@ app.post("/api/login", async (req, res) => {
 app.post("/api/verify-email", async (req, res) => {
   const { email } = req.body;
   
-  console.log(`Email verification request for: ${email}`);
-  console.log(`Environment: ${process.env.NODE_ENV}`);
+  console.log(`📧 Email verification request for: ${email}`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
   
   if (!email) {
     return res.status(400).json({ 
@@ -417,15 +507,24 @@ app.post("/api/verify-email", async (req, res) => {
     });
   }
 
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ 
+      success: false, 
+      message: "Please provide a valid email address" 
+    });
+  }
+
   // Check if email transporter is available
   if (!transporter) {
-    console.error("Email transporter not available - recreating...");
-    transporter = createTransporter();
+    console.error("❌ Email transporter not available - recreating...");
+    transporter = createEmailTransporter();
     
     if (!transporter) {
-      return res.status(500).json({ 
+      return res.status(503).json({ 
         success: false, 
-        message: "Email service is currently unavailable. Please try again later." 
+        message: "Email service is currently unavailable. Please contact administrator." 
       });
     }
   }
@@ -443,76 +542,97 @@ app.post("/api/verify-email", async (req, res) => {
         expiresAt: Date.now() + 5 * 60 * 1000, // 5 minutes expiry
       };
 
-      console.log(`Generating OTP for: ${email}`);
-      console.log(`Using email: ${process.env.EMAIL_USER}`);
+      console.log(`✅ Generated OTP for: ${email}`);
+      console.log(`📧 Using email service: ${process.env.EMAIL_USER}`);
 
       const mailOptions = {
         from: {
-          name: "TVECERT System",
+          name: "TVECERT Verification System",
           address: process.env.EMAIL_USER
         },
         to: email,
-        subject: "Your OTP Code - TVECERT",
-        text: `Your OTP verification code is: ${otp}. This code will expire in 5 minutes.`,
+        subject: "Your OTP Code - TVECERT Account Verification",
+        text: `Your OTP verification code is: ${otp}. This code will expire in 5 minutes.\n\nIf you didn't request this OTP, please ignore this email.`,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
-            <h2 style="color: #2563eb; text-align: center;">TVECERT OTP Verification</h2>
-            <p>Hello,</p>
-            <p>Your One-Time Password (OTP) for account verification is:</p>
-            <div style="text-align: center; margin: 30px 0;">
-              <h1 style="font-size: 32px; color: #2563eb; text-align: center; letter-spacing: 5px; background: #f3f4f6; padding: 15px; border-radius: 5px; display: inline-block;">${otp}</h1>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 25px; border: 1px solid #e0e0e0; border-radius: 10px; background: #ffffff;">
+            <div style="text-align: center; margin-bottom: 20px;">
+              <h2 style="color: #2563eb; margin: 0;">TVECERT OTP Verification</h2>
             </div>
-            <p><strong>This OTP will expire in 5 minutes.</strong></p>
-            <p>If you didn't request this OTP, please ignore this email.</p>
-            <br>
-            <p>Best regards,<br>TVECERT Team</p>
+            
+            <p style="font-size: 16px; color: #374151;">Hello,</p>
+            
+            <p style="font-size: 16px; color: #374151;">Your One-Time Password (OTP) for account verification is:</p>
+            
+            <div style="text-align: center; margin: 30px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+              <h1 style="font-size: 42px; color: #2563eb; text-align: center; letter-spacing: 8px; margin: 0; font-weight: bold;">${otp}</h1>
+            </div>
+            
+            <p style="font-size: 14px; color: #ef4444; text-align: center; font-weight: bold;">
+              ⚠️ This OTP will expire in 5 minutes.
+            </p>
+            
+            <p style="font-size: 14px; color: #6b7280; text-align: center;">
+              If you didn't request this OTP, please ignore this email.
+            </p>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+              <p style="font-size: 14px; color: #6b7280; margin: 0;">
+                Best regards,<br>
+                <strong>TVECERT Team</strong>
+              </p>
+            </div>
           </div>
         `
       };
 
-      // Send email with better error handling
+      // Send email with comprehensive error handling
       try {
         const info = await transporter.sendMail(mailOptions);
         console.log(`✅ OTP email sent successfully to ${email}`);
-        console.log(`📧 Message ID: ${info.messageId}`);
+        console.log(`📨 Message ID: ${info.messageId}`);
         
         res.json({ 
           success: true, 
-          message: "OTP sent to your email successfully" 
+          message: "OTP sent to your email successfully. Please check your inbox." 
         });
       } catch (emailError) {
         console.error("❌ Email sending failed:", emailError);
         
         // Specific error handling for common email issues
+        let errorMessage = "Failed to send OTP email. Please try again later.";
+        let statusCode = 500;
+        
         if (emailError.code === 'EAUTH') {
-          return res.status(500).json({ 
-            success: false, 
-            message: "Email authentication failed. Please check email configuration." 
-          });
+          errorMessage = "Email authentication failed. Please use App Password instead of regular Gmail password.";
+          statusCode = 500;
         } else if (emailError.code === 'EENVELOPE') {
-          return res.status(500).json({ 
-            success: false, 
-            message: "Invalid email address." 
-          });
-        } else {
-          return res.status(500).json({ 
-            success: false, 
-            message: "Failed to send OTP email. Please try again later." 
-          });
+          errorMessage = "Invalid email address format.";
+          statusCode = 400;
+        } else if (emailError.responseCode === 535) {
+          errorMessage = "Email authentication failed. Please check if you're using an App Password (16 characters) and not your regular Gmail password.";
+          statusCode = 500;
+        } else if (emailError.code === 'ECONNECTION') {
+          errorMessage = "Cannot connect to email service. Please check your internet connection.";
+          statusCode = 503;
         }
+        
+        return res.status(statusCode).json({ 
+          success: false, 
+          message: errorMessage 
+        });
       }
     } else {
       console.log(`❌ Email not found in database: ${email}`);
       res.status(404).json({ 
         success: false, 
-        message: "Email not found in our system. Please check the email address." 
+        message: "Email not found in our system. Please check the email address or contact administrator." 
       });
     }
   } catch (err) {
     console.error("❌ Error in email verification process:", err);
     res.status(500).json({ 
       success: false, 
-      message: "Internal server error during email verification",
+      message: "Internal server error during email verification. Please try again later.",
       ...(process.env.NODE_ENV === 'development' && { error: err.message })
     });
   }
@@ -522,7 +642,7 @@ app.post("/api/verify-email", async (req, res) => {
 app.post("/api/verify-otp", (req, res) => {
   const { email, otp } = req.body;
 
-  console.log(`OTP verification attempt for: ${email}`);
+  console.log(`🔑 OTP verification attempt for: ${email}`);
 
   if (!email || !otp) {
     return res.status(400).json({ 
@@ -553,6 +673,10 @@ app.post("/api/verify-otp", (req, res) => {
   if (otpData.otp === otp) {
     delete otpStore[email];
     console.log(`✅ OTP verified successfully for: ${email}`);
+    
+    // Emit OTP verification success
+    io.emit("otp_verified", { email });
+    
     res.json({ 
       success: true, 
       message: "OTP verified successfully" 
@@ -566,16 +690,80 @@ app.post("/api/verify-otp", (req, res) => {
   }
 });
 
-// Email Configuration Test Endpoint
-app.get("/api/email-config", (req, res) => {
-  const config = {
-    emailUser: process.env.EMAIL_USER ? "✅ Configured" : "❌ Not configured",
-    emailPass: process.env.EMAIL_PASS ? "✅ Configured" : "❌ Not configured",
+// Password Reset Route
+app.post("/api/reset-password", async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  console.log(`🔄 Password reset request for: ${email}`);
+
+  if (!email || !newPassword) {
+    return res.status(400).json({ 
+      success: false, 
+      message: "Email and new password are required" 
+    });
+  }
+
+  try {
+    await connectDB();
+    const db = client.db("tvecert");
+    const collection = db.collection("credentials");
+
+    const result = await collection.updateOne(
+      { Email: email },
+      { $set: { password: newPassword } }
+    );
+
+    if (result.modifiedCount === 1) {
+      console.log(`✅ Password reset successfully for: ${email}`);
+      
+      // Emit password reset event
+      io.emit("password_reset", { email });
+      
+      res.json({ 
+        success: true, 
+        message: "Password reset successfully" 
+      });
+    } else {
+      console.log(`❌ User not found for password reset: ${email}`);
+      res.status(404).json({ 
+        success: false, 
+        message: "User not found" 
+      });
+    }
+  } catch (err) {
+    console.error("❌ Error resetting password:", err);
+    res.status(500).json({ 
+      success: false, 
+      message: "Error resetting password" 
+    });
+  }
+});
+
+// Email Configuration Status Endpoint
+app.get("/api/email-status", (req, res) => {
+  const status = {
+    success: true,
+    service: "gmail",
+    userConfigured: !!process.env.EMAIL_USER,
+    passConfigured: !!process.env.EMAIL_PASS,
+    transporterAvailable: !!transporter,
     environment: process.env.NODE_ENV || 'development',
-    transporter: transporter ? "✅ Available" : "❌ Not available"
+    timestamp: new Date().toISOString()
   };
   
-  res.json(config);
+  console.log("📧 Email status check:", status);
+  res.json(status);
+});
+
+// CORS Test Endpoint
+app.get("/api/cors-test", (req, res) => {
+  res.json({
+    success: true,
+    message: "CORS is working correctly!",
+    origin: req.headers.origin,
+    allowedOrigins: allowedOrigins,
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Test Email Endpoint
@@ -592,37 +780,46 @@ app.post("/api/test-email", async (req, res) => {
   if (!transporter) {
     return res.status(500).json({ 
       success: false, 
-      message: "Email transporter not available" 
+      message: "Email service not configured properly" 
     });
   }
 
   try {
     const mailOptions = {
       from: {
-        name: "TVECERT Test",
+        name: "TVECERT Test System",
         address: process.env.EMAIL_USER
       },
       to: email,
-      subject: "Test Email from TVECERT Server",
-      text: "This is a test email to verify your email configuration is working correctly.",
+      subject: "Test Email - TVECERT Server Configuration",
+      text: "This is a test email to verify that your TVECERT server email configuration is working correctly.",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563eb;">Test Email - TVECERT</h2>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 25px; border: 1px solid #e0e0e0; border-radius: 10px;">
+          <h2 style="color: #2563eb; text-align: center;">✅ TVECERT Email Test</h2>
           <p>This is a test email from your TVECERT server.</p>
-          <p>If you received this, your email configuration is working correctly! ✅</p>
-          <p><strong>Environment:</strong> ${process.env.NODE_ENV || 'development'}</p>
-          <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+          <p>If you received this, your email configuration is working correctly!</p>
+          
+          <div style="background: #f0f9ff; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <p><strong>Server Information:</strong></p>
+            <p><strong>Environment:</strong> ${process.env.NODE_ENV || 'development'}</p>
+            <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+            <p><strong>Email Service:</strong> Gmail with App Password</p>
+          </div>
+          
+          <p style="color: #059669; font-weight: bold;">🎉 Congratulations! Your email setup is working perfectly.</p>
         </div>
       `
     };
 
     await transporter.sendMail(mailOptions);
+    console.log(`✅ Test email sent successfully to ${email}`);
+    
     res.json({ 
       success: true, 
-      message: "Test email sent successfully" 
+      message: "Test email sent successfully! Check your inbox." 
     });
   } catch (err) {
-    console.error("Test email error:", err);
+    console.error("❌ Test email error:", err);
     res.status(500).json({ 
       success: false, 
       message: "Failed to send test email",
@@ -635,17 +832,28 @@ app.post("/api/test-email", async (req, res) => {
 app.get("/health", async (req, res) => {
   try {
     await connectDB();
-    res.status(200).json({ 
-      status: "OK", 
+    
+    const healthStatus = {
+      status: "OK",
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || 'development',
       database: "Connected",
       email: {
         configured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASS),
-        transporter: !!transporter
+        transporter: !!transporter,
+        service: "gmail"
+      },
+      server: {
+        uptime: process.uptime(),
+        memory: process.memoryUsage(),
+        version: process.version
       }
-    });
+    };
+    
+    console.log("🏥 Health check passed");
+    res.status(200).json(healthStatus);
   } catch (error) {
+    console.error("🏥 Health check failed:", error);
     res.status(500).json({ 
       status: "Error", 
       timestamp: new Date().toISOString(),
@@ -671,24 +879,51 @@ setInterval(() => {
   if (cleanedCount > 0) {
     console.log(`🧹 Cleaned up ${cleanedCount} expired OTPs`);
   }
-}, 60 * 60 * 1000);
+}, 60 * 60 * 1000); // Run every hour
 
 // Graceful shutdown
 process.on('SIGINT', async () => {
-  console.log('Shutting down gracefully...');
+  console.log('🛑 Received SIGINT - Shutting down gracefully...');
   if (dbClient) {
     await dbClient.close();
+    console.log('✅ MongoDB connection closed');
   }
   server.close(() => {
-    console.log('Server closed');
+    console.log('✅ Server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGTERM', async () => {
+  console.log('🛑 Received SIGTERM - Shutting down gracefully...');
+  if (dbClient) {
+    await dbClient.close();
+    console.log('✅ MongoDB connection closed');
+  }
+  server.close(() => {
+    console.log('✅ Server closed');
     process.exit(0);
   });
 });
 
 // Start server
 server.listen(port, () => {
-  console.log(`🚀 Server is running on port ${port}`);
+  console.log('\n' + '='.repeat(50));
+  console.log('🚀 TVECERT Server Started Successfully!');
+  console.log('='.repeat(50));
+  console.log(`📍 Port: ${port}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📧 Email configured: ${!!process.env.EMAIL_USER}`);
+  console.log(`📧 Email Service: ${process.env.EMAIL_USER ? 'Configured' : 'Not Configured'}`);
   console.log(`🔗 Allowed Origins: ${allowedOrigins.join(', ')}`);
+  console.log(`⏰ Server Time: ${new Date().toISOString()}`);
+  console.log('='.repeat(50));
+  console.log('📋 Available Endpoints:');
+  console.log('   🏥 GET  /health              - Health check');
+  console.log('   🔐 POST /api/login           - User login');
+  console.log('   📧 POST /api/verify-email    - Send OTP');
+  console.log('   🔑 POST /api/verify-otp      - Verify OTP');
+  console.log('   📧 POST /api/test-email      - Test email config');
+  console.log('   📊 GET  /api/email-status    - Email config status');
+  console.log('   🌐 GET  /api/cors-test       - CORS test');
+  console.log('='.repeat(50) + '\n');
 });
