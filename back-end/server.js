@@ -19,43 +19,82 @@ const client = new MongoClient(uri, {
   },
 });
 
-
-
 // Create an HTTP server
 const server = http.createServer(app);
 
-// Enhanced CORS configuration
+// CORS configuration
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://127.0.0.1:3000',
+  'https://www.tvecert.org' // Add your production domain
+].filter(Boolean);
+
+// Enhanced CORS configuration for Socket.io
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || "*",
-    methods: ["GET", "POST"],
-    credentials: true
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
   }
 });
 
-app.use(express.json());
-
-// Enhanced CORS setup
+// Enhanced CORS middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "*",
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+      console.log('CORS blocked for origin:', origin);
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
+}));
+
+// Handle preflight requests
+app.options('*', cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
 }));
 
 // Security headers middleware
 app.use((req, res, next) => {
-  res.header('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL || '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Credentials');
+  res.header('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
   next();
 });
+
+// Body parser middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
 // Temporary storage for OTPs
 const otpStore = {};
 
 console.log("Email User:", process.env.EMAIL_USER);
+console.log("Allowed Origins:", allowedOrigins);
 
 // Improved Nodemailer configuration with error handling
 const createTransporter = () => {
@@ -65,7 +104,6 @@ const createTransporter = () => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
-    // Additional settings for better reliability
     pool: true,
     maxConnections: 1,
     maxMessages: 5
@@ -102,6 +140,11 @@ async function connectDB() {
 // Handle client connections
 io.on("connection", (socket) => {
   console.log("A user connected");
+  
+  // Handle authentication events
+  socket.on("login_attempt", (data) => {
+    console.log("Login attempt from socket:", data);
+  });
 
   // Handle disconnection
   socket.on("disconnect", () => {
@@ -120,7 +163,7 @@ app.get("/data/certificationInfo/certificateInfo", async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     console.error("Error fetching data:", err);
-    res.status(500).send("Error fetching data from MongoDB");
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -142,12 +185,12 @@ app.post("/data/certificationInfo/certificateInfo", async (req, res) => {
     });
   } catch (err) {
     console.error("Error inserting data:", err);
-    res.status(500).send("Error inserting data into MongoDB");
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
 app.delete("/data/certificationInfo/certificateInfo", async (req, res) => {
-  const { ids } = req.body; // Expecting an array of `_id` values in the request body
+  const { ids } = req.body;
 
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
@@ -189,7 +232,7 @@ app.get("/data/certificationInfo/delegatesInfo", async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     console.error("Error fetching delegates:", err);
-    res.status(500).send("Error fetching data from MongoDB");
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -210,7 +253,7 @@ app.post("/data/certificationInfo/delegatesInfo", async (req, res) => {
     });
   } catch (err) {
     console.error("Error inserting delegate data:", err);
-    res.status(500).send("Error inserting data into MongoDB");
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -235,7 +278,7 @@ app.delete("/data/certificationInfo/delegatesInfo", async (req, res) => {
     });
   } catch (err) {
     console.error("Error deleting data from MongoDB:", err);
-    res.status(500).send("Error deleting data from MongoDB");
+    res.status(500).json({ error: "Error deleting data from MongoDB" });
   }
 });
 
@@ -259,7 +302,7 @@ app.post("/data/certificationInfo/newsUpdate", async (req, res) => {
     });
   } catch (err) {
     console.error("Error inserting data into MongoDB:", err);
-    res.status(500).send("Error inserting data into MongoDB");
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -284,7 +327,7 @@ app.delete("/data/certificationInfo/newsUpdate", async (req, res) => {
     });
   } catch (err) {
     console.error("Error deleting data from MongoDB:", err);
-    res.status(500).send("Error deleting data from MongoDB");
+    res.status(500).json({ error: "Error deleting data from MongoDB" });
   }
 });
 
@@ -298,7 +341,7 @@ app.get("/data/certificationInfo/newsUpdate", async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     console.error("Error fetching news:", err);
-    res.status(500).send("Error fetching data from MongoDB");
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -312,7 +355,7 @@ app.get("/data/certificationInfo/careerInfo", async (req, res) => {
     res.status(200).json(data);
   } catch (err) {
     console.error("Error fetching career info:", err);
-    res.status(500).send("Error fetching data from MongoDB");
+    res.status(500).json({ error: "Error fetching data from MongoDB" });
   }
 });
 
@@ -333,7 +376,7 @@ app.post("/data/certificationInfo/careerInfo", async (req, res) => {
     });
   } catch (err) {
     console.error("Error inserting career data:", err);
-    res.status(500).send("Error inserting data into MongoDB");
+    res.status(500).json({ error: "Error inserting data into MongoDB" });
   }
 });
 
@@ -360,12 +403,15 @@ app.delete("/data/certificationInfo/careerInfo", async (req, res) => {
     });
   } catch (err) {
     console.error("Error deleting career data:", err);
-    res.status(500).send("Error deleting data from MongoDB");
+    res.status(500).json({ error: "Error deleting data from MongoDB" });
   }
 });
 
-// Enhanced Login Route
+// Enhanced Login Route with CORS headers
 app.post("/api/login", async (req, res) => {
+  console.log("Login endpoint hit from origin:", req.headers.origin);
+  console.log("Login request headers:", req.headers);
+  
   const { userName, password } = req.body;
   
   if (!userName || !password) {
@@ -384,6 +430,10 @@ app.post("/api/login", async (req, res) => {
     const user = await collection.findOne({ userName, password });
     if (user) {
       console.log("User found:", user.userName);
+      
+      // Emit login success event
+      io.emit("login_success", { userName: user.userName });
+      
       res.json({
         success: true,
         message: "Credentials verified",
@@ -392,20 +442,33 @@ app.post("/api/login", async (req, res) => {
       });
     } else {
       console.log("Invalid credentials");
-      res.status(401).json({ success: false, message: "Invalid username or password" });
+      
+      // Emit login failed event
+      io.emit("login_failed", { userName });
+      
+      res.status(401).json({ 
+        success: false, 
+        message: "Invalid username or password" 
+      });
     }
   } catch (err) {
     console.error("Error verifying credentials:", err);
+    
+    // Emit login error event
+    io.emit("login_error", { error: err.message });
+    
     res.status(500).json({ 
       success: false, 
       message: "Error verifying credentials",
-      error: err.message 
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
     });
   }
 });
 
 // Enhanced Email Verification
 app.post("/api/verify-email", async (req, res) => {
+  console.log("Verify-email endpoint hit from origin:", req.headers.origin);
+  
   const { email } = req.body;
   
   if (!email) {
@@ -496,6 +559,8 @@ app.post("/api/verify-email", async (req, res) => {
 
 // Enhanced OTP Verification
 app.post("/api/verify-otp", (req, res) => {
+  console.log("Verify-OTP endpoint hit from origin:", req.headers.origin);
+  
   const { email, otp } = req.body;
 
   if (!email || !otp) {
@@ -524,6 +589,10 @@ app.post("/api/verify-otp", (req, res) => {
 
   if (otpData.otp === otp) {
     delete otpStore[email];
+    
+    // Emit OTP verification success
+    io.emit("otp_verified", { email });
+    
     res.json({ 
       success: true, 
       message: "OTP verified successfully" 
@@ -538,6 +607,8 @@ app.post("/api/verify-otp", (req, res) => {
 
 // Password Reset Route
 app.post("/api/reset-password", async (req, res) => {
+  console.log("Reset-password endpoint hit from origin:", req.headers.origin);
+  
   const { email, newPassword } = req.body;
 
   if (!email || !newPassword) {
@@ -558,6 +629,9 @@ app.post("/api/reset-password", async (req, res) => {
     );
 
     if (result.modifiedCount === 1) {
+      // Emit password reset event
+      io.emit("password_reset", { email });
+      
       res.json({ 
         success: true, 
         message: "Password reset successfully" 
@@ -586,7 +660,11 @@ app.get("/health", async (req, res) => {
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || 'development',
       database: "Connected",
-      email: process.env.EMAIL_USER ? "Configured" : "Not configured"
+      email: process.env.EMAIL_USER ? "Configured" : "Not configured",
+      cors: {
+        allowedOrigins: allowedOrigins,
+        currentOrigin: req.headers.origin
+      }
     });
   } catch (error) {
     res.status(500).json({ 
@@ -597,6 +675,17 @@ app.get("/health", async (req, res) => {
       error: error.message
     });
   }
+});
+
+// CORS test endpoint
+app.get("/api/cors-test", (req, res) => {
+  res.json({
+    success: true,
+    message: "CORS is working!",
+    origin: req.headers.origin,
+    allowedOrigins: allowedOrigins,
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Test email endpoint
@@ -659,7 +748,7 @@ setInterval(() => {
   if (cleanedCount > 0) {
     console.log(`Cleaned up ${cleanedCount} expired OTPs`);
   }
-}, 60 * 60 * 1000); // Run every hour
+}, 60 * 60 * 1000);
 
 // Graceful shutdown
 process.on('SIGINT', async () => {
@@ -691,5 +780,6 @@ server.listen(port, () => {
   console.log(`🚀 Server is running on port ${port}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`📧 Email User: ${process.env.EMAIL_USER || 'Not configured'}`);
-  console.log(`🔗 Frontend URL: ${process.env.FRONTEND_URL || 'Not configured'}`);
+  console.log(`🔗 Allowed Origins:`, allowedOrigins);
+  console.log(`✅ CORS is configured for:`, allowedOrigins.join(', '));
 });
