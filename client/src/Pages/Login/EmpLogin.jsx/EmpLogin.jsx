@@ -19,14 +19,10 @@ import { Alert } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
 const EmpLogin = ({ setIsAuthenticated }) => {
-  const [step, setStep] = useState("login");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
-  const [userEmail, setUserEmail] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [timer, setTimer] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const timeoutRef = useRef(null);
@@ -64,28 +60,6 @@ const EmpLogin = ({ setIsAuthenticated }) => {
     };
   }, []);
 
-  // Timer countdown effect
-  useEffect(() => {
-    let timerInterval;
-    if (step === "otpVerification" && timer > 0) {
-      timerInterval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-    }
-
-    if (timer === 0 && step === "otpVerification") {
-      clearInterval(timerInterval);
-    }
-
-    return () => clearInterval(timerInterval); // Cleanup
-  }, [timer, step]);
-
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-  };
-
   const handleLoginSubmit = async () => {
     setIsLoading(true);
     try {
@@ -93,8 +67,14 @@ const EmpLogin = ({ setIsAuthenticated }) => {
         userName,
         password,
       });
-      setUserEmail(response.data.userEmail);
-      setStep("emailVerification");
+      
+      // Direct login after successful authentication
+      setShowSuccessAlert(true);
+      setTimeout(() => {
+        setIsAuthenticated(true);
+        navigate("/updation", { state: { username: userName } });
+      }, 2000);
+      
       setError("");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
@@ -103,69 +83,22 @@ const EmpLogin = ({ setIsAuthenticated }) => {
     }
   };
 
-  const handleEmailSubmit = async () => {
-    setIsLoading(true);
-    try {
-      await axios.post(`${URL}/api/verify-email`, {
-        email: userEmail,
-      });
-      setStep("otpVerification");
-      setTimer(300); // Start a 5-minute timer
-      setError("");
-    } catch (err) {
-      setError("Email verification failed");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleOtpSubmit = async () => {
-    setIsLoading(true);
-    try {
-      await axios.post(`${URL}/api/verify-otp`, {
-        email: userEmail,
-        otp,
-      });
-
-      setShowSuccessAlert(true);
-      setTimeout(() => {
-        setIsAuthenticated(true);
-        navigate("/updation", { state: { username: userName } });
-      }, 2000);
-    } catch (err) {
-      setError("Invalid OTP");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleLoginAgain = () => {
-    setStep("login");
-    setUserName("");
-    setPassword("");
-    setOtp("");
-    setError("");
-    setTimer(0);
-  };
-
   return (
     <div className="h-screen bg-loginbg backdrop-blur-md bg-no-repeat bg-cover">
       <div className=" w-full absolute z-20 flex justify-center">
-      <div className="  w-[500px]">
-
-{showSuccessAlert && (
-                 <Alert
-                 variant="filled"
-                   icon={<CheckIcon fontSize="inherit" />}
-                   severity="success"
-                 >
-                   OTP verified successfully! 
-                 </Alert>
-               )}
-</div>
+        <div className="  w-[500px]">
+          {showSuccessAlert && (
+            <Alert
+              variant="filled"
+              icon={<CheckIcon fontSize="inherit" />}
+              severity="success"
+            >
+              Login successful! Redirecting...
+            </Alert>
+          )}
+        </div>
       </div>
       
-
       <div className="bg-black h-full w-full bg-opacity-40 backdrop-blur-sm flex justify-center items-center">
         <div className="relative bg-loginbg bg-opacity-50 flex shadow-xl rounded-2xl bg-no-repeat w-[800px] h-[500px] bg-cover">
           <div className="flex-1 flex flex-col justify-center p-4">
@@ -209,138 +142,56 @@ const EmpLogin = ({ setIsAuthenticated }) => {
                 </Box>
               ) : (
                 <>
-                  {step === "login" && (
-                    <>
-                      <div className="w-full flex justify-center -mt-5">
-                        <img
-                          className="w-[80px] bg-white rounded-lg"
-                          src={image.tvecertLogo}
-                          alt="Logo"
-                        />
-                      </div>
-                      <p className="text-darkblue font-semibold flex justify-center text-[25px]">
-                        Sign in to your account
-                      </p>
-                      <TextField
-                        label="Username"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={userName}
-                        onChange={(e) => setUserName(e.target.value)}
-                      />
-                      <TextField
-                        label="Password"
-                        type="password"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={rememberMe}
-                            onChange={(e) => setRememberMe(e.target.checked)}
-                            color="primary"
-                          />
-                        }
-                        label="Remember me"
-                      />
-                      {error && (
-                        <Typography color="error" variant="body2">
-                          {error}
-                        </Typography>
-                      )}
-                      <Button
-                        variant="contained"
+                  <div className="w-full flex justify-center -mt-5">
+                    <img
+                      className="w-[80px] bg-white rounded-lg"
+                      src={image.tvecertLogo}
+                      alt="Logo"
+                    />
+                  </div>
+                  <p className="text-darkblue font-semibold flex justify-center text-[25px]">
+                    Sign in to your account
+                  </p>
+                  <TextField
+                    label="Username"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                  <TextField
+                    label="Password"
+                    type="password"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
                         color="primary"
-                        fullWidth
-                        onClick={handleLoginSubmit}
-                      >
-                        Login
-                      </Button>
-                    </>
-                  )}
-                  {step === "emailVerification" && (
-                    <>
-                      <div className="w-full flex justify-center -mt-5">
-                        <img
-                          className="w-[80px] bg-white rounded-lg"
-                          src={image.tvecertLogo}
-                          alt="Logo"
-                        />
-                      </div>
-                      <p className="text-darkblue font-semibold flex justify-center text-[25px]">
-                        Verify Email
-                      </p>
-                      <p className="text-darkblue font-semibold">
-                        A verification email will be sent to: {userEmail}
-                      </p>
-                      {error && (
-                        <Typography color="error" variant="body2">
-                          {error}
-                        </Typography>
-                      )}
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        onClick={handleEmailSubmit}
-                      >
-                        Send OTP
-                      </Button>
-                    </>
-                  )}
-                  {step === "otpVerification" && (
-                    <>
-                     
-                      <div className="w-full flex justify-center -mt-5">
-                        <img
-                          className="w-[80px] bg-white rounded-lg"
-                          src={image.tvecertLogo}
-                          alt="Logo"
-                        />
-                      </div>
-                      <p className="text-darkblue font-semibold flex justify-center text-[25px]">
-                        Enter OTP
-                      </p>
-                      <Typography variant="body2" gutterBottom>
-                        OTP expires in: {formatTime(timer)}
-                      </Typography>
-                      <TextField
-                        label="OTP"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
                       />
-                      {error && (
-                        <Typography color="error" variant="body2">
-                          {error}
-                        </Typography>
-                      )}
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        onClick={handleOtpSubmit}
-                        disabled={timer === 0}
-                      >
-                        Verify OTP
-                      </Button>
-                      {timer === 0 && (
-                        <button
-                          className=" my-4 bg-blue-600 w-full p-2 text-white shadow-md rounded-md"
-                          onClick={handleLoginAgain}
-                        >
-                          Login Again
-                        </button>
-                      )}
-                    </>
+                    }
+                    label="Remember me"
+                  />
+                  {error && (
+                    <Typography color="error" variant="body2">
+                      {error}
+                    </Typography>
                   )}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    onClick={handleLoginSubmit}
+                  >
+                    Login
+                  </Button>
                 </>
               )}
             </div>
