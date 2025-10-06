@@ -40,24 +40,11 @@ const io = socketIo(server, {
 });
 
 app.use(express.json());
-
-// Enhanced CORS setup
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = `CORS policy does not allow access from ${origin}`;
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
+  origin: allowedOrigins,
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
-
-// Handle preflight requests
-app.options('*', cors());
 
 // Security headers middleware
 app.use((req, res, next) => {
@@ -67,7 +54,7 @@ app.use((req, res, next) => {
   }
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Credentials');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Referrer-Policy', 'strict-origin-when-cross-origin');
   
   if (req.method === 'OPTIONS') {
@@ -80,124 +67,58 @@ app.use((req, res, next) => {
 // Temporary storage for OTPs
 const otpStore = {};
 
-console.log("🚀 Server Starting...");
-console.log("🌍 Environment:", process.env.NODE_ENV || 'development');
+console.log("Environment:", process.env.NODE_ENV);
+console.log("Email User configured:", !!process.env.EMAIL_USER);
+console.log("Email Pass configured:", !!process.env.EMAIL_PASS);
 
-// Enhanced Email Transporter with Multiple Providers
-const createEmailTransporter = () => {
+// Enhanced Nodemailer configuration for production
+const createTransporter = () => {
   try {
-    // Option 1: Gmail with OAuth2 (Most Secure)
-    if (process.env.GMAIL_CLIENT_ID && process.env.GMAIL_CLIENT_SECRET && process.env.GMAIL_REFRESH_TOKEN) {
-      console.log("📧 Using Gmail OAuth2");
-      const { google } = require('googleapis');
-      
-      const OAuth2 = google.auth.OAuth2;
-      const oauth2Client = new OAuth2(
-        process.env.GMAIL_CLIENT_ID,
-        process.env.GMAIL_CLIENT_SECRET,
-        "https://developers.google.com/oauthplayground"
-      );
-
-      oauth2Client.setCredentials({
-        refresh_token: process.env.GMAIL_REFRESH_TOKEN
-      });
-
-      const accessToken = oauth2Client.getAccessToken();
-
-      return nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          type: "OAuth2",
-          user: process.env.EMAIL_USER,
-          clientId: process.env.GMAIL_CLIENT_ID,
-          clientSecret: process.env.GMAIL_CLIENT_SECRET,
-          refreshToken: process.env.GMAIL_REFRESH_TOKEN,
-          accessToken: accessToken
-        }
-      });
+    // Validate email credentials
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      throw new Error('Email credentials are not configured');
     }
 
-    // Option 2: Gmail with App Password
-    else if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      console.log("📧 Using Gmail with App Password");
-      return nodemailer.createTransport({
-        service: "gmail",
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-        tls: {
-          rejectUnauthorized: false
-        }
-      });
-    }
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // Use TLS
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false // For production compatibility
+      },
+      // Additional settings for better reliability
+      pool: true,
+      maxConnections: 5,
+      maxMessages: 100,
+      rateDelta: 1000,
+      rateLimit: 5
+    });
 
-    // Option 3: SendGrid
-    else if (process.env.SENDGRID_API_KEY) {
-      console.log("📧 Using SendGrid");
-      return nodemailer.createTransport({
-        host: 'smtp.sendgrid.net',
-        port: 587,
-        auth: {
-          user: 'apikey',
-          pass: process.env.SENDGRID_API_KEY
-        }
-      });
-    }
-
-    // Option 4: Mailtrap (Testing)
-    else if (process.env.MAILTRAP_USER && process.env.MAILTRAP_PASS) {
-      console.log("📧 Using Mailtrap for testing");
-      return nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
-        auth: {
-          user: process.env.MAILTRAP_USER,
-          pass: process.env.MAILTRAP_PASS
-        }
-      });
-    }
-
-    // Option 5: SMTP with custom service
-    else if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-      console.log("📧 Using Custom SMTP");
-      return nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT || 587,
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS
-        }
-      });
-    }
-
-    else {
-      console.log("❌ No email service configured");
-      return null;
-    }
+    return transporter;
   } catch (error) {
-    console.error("❌ Error creating email transporter:", error.message);
+    console.error('Error creating email transporter:', error.message);
     return null;
   }
 };
 
-let transporter = createEmailTransporter();
+let transporter = createTransporter();
 
-// Verify email configuration on startup
+// Verify transporter on startup
 if (transporter) {
   transporter.verify(function (error, success) {
     if (error) {
-      console.log("❌ Email transporter verification failed:", error.message);
+      console.log("❌ Email transporter verification failed:", error);
     } else {
-      console.log("✅ Email server is ready to send messages");
+      console.log("✅ Email server is ready to take our messages");
     }
   });
 } else {
-  console.log("⚠️ Email transporter not created - emails will not work");
+  console.log("❌ Email transporter not created - check credentials");
 }
 
 // MongoDB connection management
@@ -206,7 +127,7 @@ async function connectDB() {
   if (!dbClient) {
     try {
       dbClient = await client.connect();
-      console.log("✅ Connected to MongoDB successfully");
+      console.log("✅ Connected to MongoDB");
       return dbClient;
     } catch (error) {
       console.error("❌ MongoDB connection error:", error);
@@ -218,13 +139,15 @@ async function connectDB() {
 
 // Handle client connections
 io.on("connection", (socket) => {
-  console.log("🔌 User connected:", socket.id);
+  console.log("A user connected");
   socket.on("disconnect", () => {
-    console.log("🔌 User disconnected:", socket.id);
+    console.log("User disconnected");
   });
 });
 
-// [ALL YOUR EXISTING ROUTES - Keep them exactly as before]
+// [ALL YOUR EXISTING ROUTES REMAIN THE SAME - certificates, delegates, news, career info]
+// ... (Include all your existing routes here)
+
 /////// C E R T I F I C A T E S    U P D A T E S ///////
 app.get("/data/certificationInfo/certificateInfo", async (req, res) => {
   try {
@@ -262,18 +185,23 @@ app.post("/data/certificationInfo/certificateInfo", async (req, res) => {
 
 app.delete("/data/certificationInfo/certificateInfo", async (req, res) => {
   const { ids } = req.body;
+
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
   }
+
   try {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("certificateInfo");
+
     const objectIds = ids.map((id) => new ObjectId(id));
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
+
     if (result.deletedCount === 0) {
       return res.status(404).json({ message: "No records found to delete" });
     }
+
     res.status(200).json({
       message: `Successfully deleted ${result.deletedCount} record(s)`,
     });
@@ -292,6 +220,7 @@ app.get("/data/certificationInfo/delegatesInfo", async (req, res) => {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("delegatesInfo");
+
     const data = await collection.find({}).toArray();
     res.status(200).json(data);
   } catch (err) {
@@ -305,8 +234,10 @@ app.post("/data/certificationInfo/delegatesInfo", async (req, res) => {
     const database = client.db("certificationInfo");
     const collection = database.collection("delegatesInfo");
     const newData = req.body;
+
     const result = await collection.insertOne(newData);
     io.emit("newData", { ...newData, id: result.insertedId });
+
     res.status(201).send(
       `Data inserted into certificationInfo/delegatesInfo with id: ${result.insertedId}`
     );
@@ -320,12 +251,15 @@ app.delete("/data/certificationInfo/delegatesInfo", async (req, res) => {
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
   }
+
   try {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("delegatesInfo");
+
     const objectIds = ids.map((id) => new ObjectId(id));
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
+
     res.status(200).json({ message: "Data deleted successfully" });
   } catch (err) {
     console.error("Error deleting data from MongoDB:", err);
@@ -339,10 +273,13 @@ app.post("/data/certificationInfo/newsUpdate", async (req, res) => {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("newsUpdate");
+
     const { title, description, date, expiryDate } = req.body;
     const newData = { title, description, date, expiryDate };
+
     const result = await collection.insertOne(newData);
     io.emit("newData", { ...newData, id: result.insertedId });
+
     res.status(201).json({
       message: "News update added successfully",
       data: { ...newData, id: result.insertedId },
@@ -358,12 +295,15 @@ app.delete("/data/certificationInfo/newsUpdate", async (req, res) => {
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
   }
+
   try {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("newsUpdate");
+
     const objectIds = ids.map((id) => new ObjectId(id));
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
+
     res.status(200).json({ message: "News deleted successfully" });
   } catch (err) {
     console.error("Error deleting data from MongoDB:", err);
@@ -376,6 +316,7 @@ app.get("/data/certificationInfo/newsUpdate", async (req, res) => {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("newsUpdate");
+
     const data = await collection.find({}).toArray();
     res.status(200).json(data);
   } catch (err) {
@@ -388,6 +329,7 @@ app.get("/data/certificationInfo/careerInfo", async (req, res) => {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("careerInfo");
+
     const data = await collection.find({}).toArray();
     res.status(200).json(data);
   } catch (err) {
@@ -401,8 +343,10 @@ app.post("/data/certificationInfo/careerInfo", async (req, res) => {
     const database = client.db("certificationInfo");
     const collection = database.collection("careerInfo");
     const newData = req.body;
+
     const result = await collection.insertOne(newData);
     io.emit("newData", { ...newData, id: result.insertedId });
+
     res.status(201).send(
       `Data inserted into certificationInfo/careerInfo with id: ${result.insertedId}`
     );
@@ -416,12 +360,15 @@ app.delete("/data/certificationInfo/careerInfo", async (req, res) => {
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
     return res.status(400).json({ message: "Invalid request: 'ids' must be a non-empty array" });
   }
+
   try {
     await connectDB();
     const database = client.db("certificationInfo");
     const collection = database.collection("careerInfo");
+
     const objectIds = ids.map((id) => new ObjectId(id));
     const result = await collection.deleteMany({ _id: { $in: objectIds } });
+
     io.emit("deletedData", ids);
     res.status(200).send(`${result.deletedCount} document(s) deleted successfully`);
   } catch (err) {
@@ -456,11 +403,12 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// FIXED: Email Verification with Fallback and Better Error Handling
+// FIXED: Enhanced Email Verification for Production
 app.post("/api/verify-email", async (req, res) => {
   const { email } = req.body;
   
-  console.log(`📧 Email verification request for: ${email}`);
+  console.log(`Email verification request for: ${email}`);
+  console.log(`Environment: ${process.env.NODE_ENV}`);
   
   if (!email) {
     return res.status(400).json({ 
@@ -471,11 +419,15 @@ app.post("/api/verify-email", async (req, res) => {
 
   // Check if email transporter is available
   if (!transporter) {
-    console.error("❌ Email transporter not available");
-    return res.status(503).json({ 
-      success: false, 
-      message: "Email service is currently unavailable. Please contact administrator." 
-    });
+    console.error("Email transporter not available - recreating...");
+    transporter = createTransporter();
+    
+    if (!transporter) {
+      return res.status(500).json({ 
+        success: false, 
+        message: "Email service is currently unavailable. Please try again later." 
+      });
+    }
   }
 
   try {
@@ -488,25 +440,29 @@ app.post("/api/verify-email", async (req, res) => {
       const otp = Math.floor(100000 + Math.random() * 900000).toString();
       otpStore[email] = {
         otp,
-        expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes expiry
+        expiresAt: Date.now() + 5 * 60 * 1000, // 5 minutes expiry
       };
 
-      console.log(`✅ Generated OTP for: ${email}`);
+      console.log(`Generating OTP for: ${email}`);
+      console.log(`Using email: ${process.env.EMAIL_USER}`);
 
       const mailOptions = {
-        from: process.env.EMAIL_FROM || process.env.EMAIL_USER || 'noreply@tvecert.com',
+        from: {
+          name: "TVECERT System",
+          address: process.env.EMAIL_USER
+        },
         to: email,
         subject: "Your OTP Code - TVECERT",
-        text: `Your OTP is ${otp}. This OTP will expire in 10 minutes.`,
+        text: `Your OTP verification code is: ${otp}. This code will expire in 5 minutes.`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
-            <h2 style="color: #2563eb; text-align: center;">OTP Verification</h2>
+            <h2 style="color: #2563eb; text-align: center;">TVECERT OTP Verification</h2>
             <p>Hello,</p>
-            <p>Your One-Time Password (OTP) for TVECERT verification is:</p>
+            <p>Your One-Time Password (OTP) for account verification is:</p>
             <div style="text-align: center; margin: 30px 0;">
               <h1 style="font-size: 32px; color: #2563eb; text-align: center; letter-spacing: 5px; background: #f3f4f6; padding: 15px; border-radius: 5px; display: inline-block;">${otp}</h1>
             </div>
-            <p>This OTP will expire in 10 minutes.</p>
+            <p><strong>This OTP will expire in 5 minutes.</strong></p>
             <p>If you didn't request this OTP, please ignore this email.</p>
             <br>
             <p>Best regards,<br>TVECERT Team</p>
@@ -514,10 +470,11 @@ app.post("/api/verify-email", async (req, res) => {
         `
       };
 
+      // Send email with better error handling
       try {
         const info = await transporter.sendMail(mailOptions);
         console.log(`✅ OTP email sent successfully to ${email}`);
-        console.log(`📨 Message ID: ${info.messageId}`);
+        console.log(`📧 Message ID: ${info.messageId}`);
         
         res.json({ 
           success: true, 
@@ -526,72 +483,96 @@ app.post("/api/verify-email", async (req, res) => {
       } catch (emailError) {
         console.error("❌ Email sending failed:", emailError);
         
-        // Try to recreate transporter and retry once
-        console.log("🔄 Attempting to recreate email transporter...");
-        transporter = createEmailTransporter();
-        
-        if (transporter) {
-          try {
-            const retryInfo = await transporter.sendMail(mailOptions);
-            console.log(`✅ OTP email sent successfully on retry to ${email}`);
-            res.json({ 
-              success: true, 
-              message: "OTP sent to your email successfully" 
-            });
-          } catch (retryError) {
-            console.error("❌ Email retry failed:", retryError);
-            return res.status(500).json({ 
-              success: false, 
-              message: "Failed to send OTP email. Please try again later or contact support." 
-            });
-          }
+        // Specific error handling for common email issues
+        if (emailError.code === 'EAUTH') {
+          return res.status(500).json({ 
+            success: false, 
+            message: "Email authentication failed. Please check email configuration." 
+          });
+        } else if (emailError.code === 'EENVELOPE') {
+          return res.status(500).json({ 
+            success: false, 
+            message: "Invalid email address." 
+          });
         } else {
           return res.status(500).json({ 
             success: false, 
-            message: "Email service configuration error. Please contact administrator." 
+            message: "Failed to send OTP email. Please try again later." 
           });
         }
       }
     } else {
-      console.log(`❌ Email not found: ${email}`);
+      console.log(`❌ Email not found in database: ${email}`);
       res.status(404).json({ 
         success: false, 
-        message: "Email not found in our system" 
+        message: "Email not found in our system. Please check the email address." 
       });
     }
   } catch (err) {
-    console.error("❌ Error in email verification:", err);
+    console.error("❌ Error in email verification process:", err);
     res.status(500).json({ 
       success: false, 
-      message: "Internal server error during email verification" 
+      message: "Internal server error during email verification",
+      ...(process.env.NODE_ENV === 'development' && { error: err.message })
     });
   }
 });
 
-// OTP Verification
+// Enhanced OTP Verification
 app.post("/api/verify-otp", (req, res) => {
   const { email, otp } = req.body;
 
+  console.log(`OTP verification attempt for: ${email}`);
+
+  if (!email || !otp) {
+    return res.status(400).json({ 
+      success: false, 
+      message: "Email and OTP are required" 
+    });
+  }
+
   const otpData = otpStore[email];
-  if (otpData && otpData.otp === otp && otpData.expiresAt > Date.now()) {
+  
+  if (!otpData) {
+    console.log(`❌ No OTP found for email: ${email}`);
+    return res.status(401).json({ 
+      success: false, 
+      message: "OTP not found or expired. Please request a new OTP." 
+    });
+  }
+
+  if (otpData.expiresAt < Date.now()) {
     delete otpStore[email];
-    res.json({ success: true, message: "OTP verified" });
+    console.log(`❌ OTP expired for email: ${email}`);
+    return res.status(401).json({ 
+      success: false, 
+      message: "OTP has expired. Please request a new OTP." 
+    });
+  }
+
+  if (otpData.otp === otp) {
+    delete otpStore[email];
+    console.log(`✅ OTP verified successfully for: ${email}`);
+    res.json({ 
+      success: true, 
+      message: "OTP verified successfully" 
+    });
   } else {
-    res.status(401).json({ success: false, message: "Invalid or expired OTP" });
+    console.log(`❌ Invalid OTP for email: ${email}`);
+    res.status(401).json({ 
+      success: false, 
+      message: "Invalid OTP. Please try again." 
+    });
   }
 });
 
-// Email Configuration Status Endpoint
+// Email Configuration Test Endpoint
 app.get("/api/email-config", (req, res) => {
   const config = {
-    emailService: "Multiple providers configured",
-    hasGmailOAuth: !!(process.env.GMAIL_CLIENT_ID && process.env.GMAIL_CLIENT_SECRET),
-    hasGmailAppPassword: !!(process.env.EMAIL_USER && process.env.EMAIL_PASS),
-    hasSendGrid: !!process.env.SENDGRID_API_KEY,
-    hasMailtrap: !!(process.env.MAILTRAP_USER && process.env.MAILTRAP_PASS),
-    hasCustomSMTP: !!(process.env.SMTP_HOST && process.env.SMTP_USER),
-    transporterAvailable: !!transporter,
-    environment: process.env.NODE_ENV || 'development'
+    emailUser: process.env.EMAIL_USER ? "✅ Configured" : "❌ Not configured",
+    emailPass: process.env.EMAIL_PASS ? "✅ Configured" : "❌ Not configured",
+    environment: process.env.NODE_ENV || 'development',
+    transporter: transporter ? "✅ Available" : "❌ Not available"
   };
   
   res.json(config);
@@ -617,15 +598,18 @@ app.post("/api/test-email", async (req, res) => {
 
   try {
     const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER || 'noreply@tvecert.com',
+      from: {
+        name: "TVECERT Test",
+        address: process.env.EMAIL_USER
+      },
       to: email,
       subject: "Test Email from TVECERT Server",
-      text: "This is a test email from TVECERT server.",
+      text: "This is a test email to verify your email configuration is working correctly.",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2563eb;">Test Email - TVECERT</h2>
           <p>This is a test email from your TVECERT server.</p>
-          <p>If you received this, your email configuration is working correctly!</p>
+          <p>If you received this, your email configuration is working correctly! ✅</p>
           <p><strong>Environment:</strong> ${process.env.NODE_ENV || 'development'}</p>
           <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
         </div>
@@ -657,7 +641,7 @@ app.get("/health", async (req, res) => {
       environment: process.env.NODE_ENV || 'development',
       database: "Connected",
       email: {
-        configured: !!(process.env.EMAIL_USER || process.env.SENDGRID_API_KEY || process.env.SMTP_HOST),
+        configured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASS),
         transporter: !!transporter
       }
     });
@@ -705,5 +689,6 @@ process.on('SIGINT', async () => {
 server.listen(port, () => {
   console.log(`🚀 Server is running on port ${port}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📧 Email configured: ${!!transporter}`);
+  console.log(`📧 Email configured: ${!!process.env.EMAIL_USER}`);
+  console.log(`🔗 Allowed Origins: ${allowedOrigins.join(', ')}`);
 });
